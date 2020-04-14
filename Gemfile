@@ -61,6 +61,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
+
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
   gem 'rspec-rails'
@@ -69,3 +70,6 @@ gem 'jquery-rails'
   gem 'faker' #ランダム値の生成
   gem 'shoulda-matchers'
   gem 'rails-controller-testing'
+gem 'font-awesome-sass'
+
+
