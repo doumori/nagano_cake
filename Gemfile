@@ -61,15 +61,17 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
-
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'jquery-rails'
-  gem 'rspec-rails'
-  gem "factory_bot_rails"
-  gem 'rspec-parameterized'
-  gem 'faker' #ランダム値の生成
-  gem 'shoulda-matchers'
-  gem 'rails-controller-testing'
+gem 'rspec-rails'
+gem "factory_bot_rails"
+gem 'rspec-parameterized'
+gem 'faker' #ランダム値の生成
+gem 'shoulda-matchers'
+gem 'rails-controller-testing'
 gem 'font-awesome-sass'
-
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"
+gem 'hirb'
+gem 'hirb-unicode'
 
