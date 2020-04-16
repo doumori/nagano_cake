@@ -1,0 +1,2 @@
+module Customers::ShipsHelper
+end
