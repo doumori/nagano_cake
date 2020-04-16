@@ -2,13 +2,6 @@ require 'rails_helper'
 
 RSpec.describe "Customers::Customers", type: :request do
 
-  describe "GET /index" do
-    it "returns http success" do
-      get "/customers/customers/index"
-      expect(response).to have_http_status(:success)
-    end
-  end
-
   describe "GET /show" do
     it "returns http success" do
       get "/customers/customers/show"
@@ -16,9 +9,16 @@ RSpec.describe "Customers::Customers", type: :request do
     end
   end
 
-  describe "GET /top" do
+  describe "GET /edit" do
     it "returns http success" do
-      get "/customers/customers/top"
+      get "/customers/customers/edit"
+      expect(response).to have_http_status(:success)
+    end
+  end
+
+  describe "GET /update" do
+    it "returns http success" do
+      get "/customers/customers/update"
       expect(response).to have_http_status(:success)
     end
   end
