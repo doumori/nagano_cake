@@ -1,4 +1,4 @@
-class Customers::CartItemsController < ApplicationController
+class CartItemsController < ApplicationController
   def index
     @cartitem = CartItems.find(params[:id])
   end
@@ -19,5 +19,4 @@ class Customers::CartItemsController < ApplicationController
   def cart_item_params
     params.require(:cart_item).permit(:customer_id, :item_id, :item_quantity)
   end
-
 end

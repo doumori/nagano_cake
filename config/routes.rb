@@ -23,13 +23,13 @@ Rails.application.routes.draw do
         get 'confirm' => '#confirm'
         patch 'hide' => '#hide'
         put 'hide' => '#hide'
+    end
 
         resources :customers, only: [:show, :edit, :update]
         resources :items, only: [:index, :show]
         resources :ships, only: [:index, :edit, :destroy, :update, :create ]
         resources :orders, only: [:new, :create, :index, :show]
         resources :cart_items, only: [:index,:create,:destroy,:update]
-    end
 
         post 'orders/confirm' => 'customers/orders#confirm'
         get 'orders/thanks' => 'customers/orders#thanks'
