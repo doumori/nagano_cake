@@ -13,4 +13,8 @@ class Customers::ShipsController < ApplicationController
 
   def create
   end
+  private
+  def ship_params
+    params.require(:ship).permit(:customer_id, :address, :name, :code)
+  end
 end

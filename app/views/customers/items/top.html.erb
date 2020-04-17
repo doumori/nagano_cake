@@ -1,2 +1,27 @@
 <h1>Customers::Items#top</h1>
-<p>Find me in app/views/customers/items/top.html.erb</p>
+<p>ようこそ、NaganoCakeへ！
+このサイトは、ケーキ販売のECサイトになります。
+会員でない方も商品の閲覧はできますが、
+購入には会員登録が必要になります。</p>
+
+<h1>おすすめ商品</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>name</th>
+			<th>price</th>
+
+		</tr>
+	</thead>
+	<tbody>
+	<% @push_items.each do |f| %>
+		<tr>
+		<td><%= f.name %></td>
+		<td>¥<%= f.price * 1.1.round %></td>
+		<% end %>
+		</tr>
+	</tbody>
+</table>
+
+<%= link_to "もっと見る",items_path %>
