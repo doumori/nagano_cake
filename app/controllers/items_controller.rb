@@ -1,10 +1,11 @@
-class Customers::ItemsController < ApplicationController
+class ItemsController < ApplicationController
   def index
     @items = Item.all
   end
 
   def show
     @item = Item.find(params[:id])
+    @new_order = Order.new
   end
 
   def top
@@ -12,7 +13,7 @@ class Customers::ItemsController < ApplicationController
   end
 
   def tax
-    @tax = * 1.1
+    @tax = * 1.1.round
   end
 
   private

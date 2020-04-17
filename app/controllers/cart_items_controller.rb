@@ -1,4 +1,4 @@
-class Customers::CartItemsController < ApplicationController
+class CartItemsController < ApplicationController
   def index
     @cartitem = CartItems.find(params[:id])
   end
