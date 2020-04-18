@@ -1,2 +1,45 @@
-<h1>Admins::Customers#edit</h1>
-<p>Find me in app/views/admins/customers/edit.html.erb</p>
+
+<div class="col-xs-12">
+<h2>会員詳細画面</h2>
+	<table class="table table-hover table-inverse">
+		<%= form_for @customer, url:admins_customer_path(@customer.id) do |f| %>
+
+			<div>顧客ID<%= @customer.id %></div>
+			<div class="field row">
+				<%= f.label :氏名 %>
+				<%= f.text_field :last_name_kana %><%= f.text_field :first_name_kana %>
+			</div>
+			<div class="field row">
+				<%= f.label :フリガナ %>
+				<%= f.text_field :last_name %><%= f.text_field :first_name %>
+			</div>
+			<div class="field row">
+				<%= f.label :郵便番号 %>
+				<%= f.text_field :post_code %>
+			</div>
+			<div class="field row">
+				<%= f.label :住所 %>
+				<%= f.text_field :address %>
+			</div>
+			<div class="field row">
+				<%= f.label :電話番号 %>
+				<%= f.text_field :phone_number %>
+			</div>
+			<div class="field row">
+				<%= f.label :メールアドレス %>
+				<%= f.text_field :email %>
+			</div>
+			<div class="field row">
+				<%= f.label :会員ステータス %>
+				<label><%= f.radio_button :is_member_status, "false" %>有効</label>
+				<label><%= f.radio_button :is_member_status, "ture" %>退会済み</label>
+			</div>
+
+
+			<div class="actions row">
+				<%= f.submit "変更を保存する",class: "btn btn-primary" %>
+			</div>
+
+		<% end %>
+	</table>
+</div>
