@@ -3,10 +3,19 @@ class ApplicationController < ActionController::Base
 	# デバイスのコントローラー用
 	before_action :configure_permitted_parameters, if: :devise_controller?
 
+def after_sign_in_path_for(resource)
+  case resource
+  when Admin
+    admins_path
+  when Customer
+    customers_path
+  end
+end
+
 	# ログイン後にマイページに飛ぶ
-	def after_sign_in_path_for(resource)
- 		user_url(resource)
- 	end
+	# def after_sign_in_path_for(resource)
+ # 		root_url(resource)
+ # 	end
 
  	# サインアップ時に保存するカラムを追加する
 	protected
