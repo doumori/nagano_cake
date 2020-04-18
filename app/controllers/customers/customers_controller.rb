@@ -3,9 +3,16 @@ class Customers::CustomersController < ApplicationController
   end
 
   def edit
+    @customer = Customer.find(params[:id])
   end
 
   def update
+    @customer = Customer.find(params[:id])
+    if @customer.update(customer_params)
+      redirect_to admins_customers_path, notice: "successfully updated customer!"
+    else
+      render "edit_admins_customer"
+    end
   end
 
   private
