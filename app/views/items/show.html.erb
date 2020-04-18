@@ -5,7 +5,7 @@
             <p><%= @item.name %></p>
             <p><%= @item.description %></p>
             <p><%= @tax_item.round %>(税込)</p>
-            <p><%= f.select :quantity, ['1', '2', '3'], {include_blank: '個数選択'},class: 'sample' %></p>
+            <p><%= f.select :item_quantity, ['1', '2', '3'], {include_blank: '個数選択'},class: 'sample' %></p>
             <p><%= f.submit"カートに入れる",name: 'cart'%>
         </div>
     <% end %>
