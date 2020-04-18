@@ -15,9 +15,9 @@ class Admins::ItemsController < ApplicationController
   end
 
   def create
-    @item=Item.new(item_params)
-    if @item.save
-      pry-byebug
+    item=Item.new(item_params)
+    if item.save
+      binding
       redirect_to 'admins/items'
     else
       render 'admins/items'
