@@ -1,2 +1,42 @@
 <h1>Admins::Items#edit</h1>
 <p>Find me in app/views/admins/items/edit.html.erb</p>
+
+<h1>商品　編集編集</h1>
+
+<div class="field">
+
+</div>
+
+<p>商品名</p>
+<%= form_for (@item, url:admins_item_path,{method: 'GET'}) do |f| %>
+    <% if@item.errors.any? %>
+        <%= @item.errors.count %>件のerrorが発生しました
+        <% @item.errors.full_messages.each do |message| %>
+            <%= message %>
+        <% end %>
+    <% end %>
+	<div class="field row">
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	</div>
+
+	<div class="field row">
+		<%= f.label :description %> <!-- ここを変更 -->
+		<%= f.text_area :description %>
+	</div>
+	<p>ジャンル</p>
+	<%= f.collection_select :genre_id, @genres, :id, :name %>
+
+	<p>税抜き価格</p>
+		<div class="field row">
+		<%= f.label :price %> <!-- ここを変更 -->
+		<%= f.text_area :price %>
+	</div>
+	<p>販売ステータス</p>
+			<div class="field row">
+		<%= f.select :is_sale_status,[['販売中',true],['売り切れ',false]],{},:class=> 'item_f.select' %> <!-- ここを変更 -->
+
+		<div class="actions row">
+		<%= f.submit class: "btn btn-primary col-xs-12" %>
+	</div>
+	<% end %>
