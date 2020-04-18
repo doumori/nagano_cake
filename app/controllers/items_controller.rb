@@ -6,9 +6,9 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @new_order = Order.new
     # 税込価格の計算
     @tax_item = @item.price * 1.1
+    @cart_item_new = CartItem.new
   end
 
   def top
