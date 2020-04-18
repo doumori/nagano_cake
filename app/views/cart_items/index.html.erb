@@ -5,14 +5,14 @@
             <th>商品名</th>
             <th>単価(税込)</th>
             <th>数量</th>
-            <th>小計!</th>
+            <th>小計</th>
         </tr>
     </thead>
     <tbody>
-        <%= form_with method: :post, model:@cart_item_new, url:cart_items_path,local: true do |f| %>
+        <%= form_with method: :get, model:@order_confirm, url:orders_confirm_path,local: true do |f| %>
         <tr>
-            <td><%= f.name %></td>
-            <td><%= f.price %></td>
+            <td><%= @cart_item.current_customer.name %></td>
+            <td><%= @cart_item.current_customer.name %></td>
             <td><%= f.select :quantity, {sample1: 1, sample2: 2, sample3: 3} %></td>
             <td>data</td>
         </tr>
@@ -21,5 +21,5 @@
 </table>
 <div>
     <p><%= f.submit"買い物を続ける",name: 'back'%></p>
-    <p><%= f.submit"情報入力に進む",name: 'cart'%></p>
+    <p><%= f.submit"情報入力に進む" %></p>
 </div>

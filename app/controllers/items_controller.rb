@@ -1,7 +1,10 @@
 class ItemsController < ApplicationController
   def index
     @items = Item.all
+    # 消費税の計算うまくいかない
     @tax = (1.1.to_i).round
+    @order_confirm = Order.new
+    @cart_item = CartItem.find(params[:id])
   end
 
   def show
