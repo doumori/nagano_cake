@@ -1,25 +1,20 @@
 class Admins::GenresController < ApplicationController
   def index
-  	@genres=Genre.all
-    @genre=Genre.new
-
+  	@genres = Genre.all
+  	@newgenre = Genre.new
   end
 
   def update
-  	genre=Genre.find(params[:id])
-  	if genre.update(genre_params)
-  		redirect_to 'admins/genres'
-  	else
-  		render 'index'
-  	end
+  	@genre = Genre.find(params[:id])
   end
 
   def create
-  	@genre=Genre.new(genre_params)
-  	  	if @genre.save
-  		redirect_to 'admins/genres'
+  	@newgenre = Genre.new
+  	if @newgenre.save #入力されたデータをdbに保存する。
+  		redirect_to admins_genres_path, notice: "successfully created Genre!"#保存された場合の移動先を指定。
   	else
-  		render 'index'
+  		@genres = Genres.all
+  		render admins_genres_path
   	end
   end
 
@@ -29,6 +24,7 @@ class Admins::GenresController < ApplicationController
   private
    def genre_params
     params.require(:genre).permit(:name,:is_active)
+  	@genre = Genre.find(params[:id])
   end
 
 end

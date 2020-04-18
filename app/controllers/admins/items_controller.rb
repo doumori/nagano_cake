@@ -8,19 +8,18 @@ class Admins::ItemsController < ApplicationController
   def update
     item=Item.find(params[:id])
     if item.update(item_params)
-      redirect_to 'admins/items'
+      redirect_to admins_items_path
     else
-      render 'admins/items'
+      render 'index'
     end
   end
 
   def create
     item=Item.new(item_params)
     if item.save
-      binding
-      redirect_to 'admins/items'
+      redirect_to admins_items_path
     else
-      render 'admins/items'
+      render 'index'
     end
   end
 
@@ -37,7 +36,7 @@ class Admins::ItemsController < ApplicationController
   end
   private
     def item_params
-    params.require(:item).permit(:name,:description,:image,:price,:is_status,:genre_id)
+    params.require(:item).permit(:name,:description,:image,:price,:is_sale_status,:genre_id)
   end
   def set_genres
     @genres=Genre.all
