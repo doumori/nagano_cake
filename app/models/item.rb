@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
 	attachment :image
-		belongs_to :genre, optional: true
-	validates :name,presence:true
+  has_many :cart_items, dependent: :destroy
+  belongs_to :genre
 end
+
