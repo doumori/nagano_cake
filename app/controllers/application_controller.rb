@@ -13,6 +13,8 @@ class ApplicationController < ActionController::Base
 	  end
 	end
 
+
+
  	# サインアップ時に保存するカラムを追加する
 	protected
 	def configure_permitted_parameters
