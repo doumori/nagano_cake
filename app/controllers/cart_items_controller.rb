@@ -1,9 +1,14 @@
 class CartItemsController < ApplicationController
   def index
-    @cartitem = CartItems.find(params[:id])
+    @cart_item = CartItem.find(params[:id])
   end
 
   def create
+    @item = Item.find_by(params[:item_id])
+    @cart_item = CartItem.new(cart_item_params)
+    @cart_item.customer_id = current_customer.id
+    @cart_item.item_id = @item.id
+    redirect_to new_order_path
   end
 
   def destroy
