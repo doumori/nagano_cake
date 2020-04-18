@@ -1,2 +1,24 @@
 <h1>Admins::Genres#edit</h1>
 <p>Find me in app/views/admins/genres/edit.html.erb</p>
+
+<h1>ジャンル編集画面</h1>
+
+<p>ジャンル</p>
+<%= form_with(model:@genre,url:admins_genres_path) do |f| %>
+    <% if @genre.errors.any? %>
+        <%= @genre.errors.count %>件のerrorが発生しました
+        <% @genre.errors.full_messages.each do |message| %>
+            <%= message %>
+        <% end %>
+    <% end %>
+
+		<%= f.radio_button :is_active,:male %>
+		<%= f.label :active, "有効", {value: :male, style: "display: inline-block;"} %>
+		<%= f.radio_button :is_active,:female %>
+		<%= f.label :active, "無効", {value: :male, style: "display: inline-block;"} %>
+		<%= f.text_field :name, class: "col-xs-12 book_title" %>
+
+	<div class="actions row">
+		<%= f.submit class: "btn btn-primary col-xs-12" %>
+	</div>
+<% end %>
