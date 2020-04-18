@@ -13,6 +13,7 @@ class ShipsController < ApplicationController
   end
 
   def index
+    @ships = Ship.all
   end
 
   def edit

@@ -1,15 +1,11 @@
-
-<%= form_with model:[@item,@new_order],url:cart_items_path(@item),local: true do |f| %>
-
-		<%= select_tag 'item_id,quantity', options_for_select({quantity: 1, quantity: 2, quantity: 3}, 1), include_blank: true %>
-		<%= attachment_image_tag item, :image, :fill, 200, 400, format: 'jpeg', fallback: "cake.png", size:'250x200' %>
-		<%= @item.name %>
-		<%= @item.description %>
-<!-- 消費税の計算をコントローラでしたい。roundがうまくいかない -->
-		<%= @item.price　* 1.1 %>(税込)
-
-		<%= f.select :quantity, ['1', '2', '3'], {include_blank: '選択ボックス'},
-class: 'sample' %>
-<% end %>
-
-<p><%= f.submit'カートに入れる',class:"btn" %></p>
+<div>
+    <%= form_with method: :post, model:@new_order, url:cart_items_path,local: true do |f| %>
+        <div>
+            <%= attachment_image_tag @item, :image, :fill, 200, 400, format: 'jpeg', fallback: "cake.png", size:'250x200' %>
+            <p><%= @item.name %></p>
+            <p><%= @item.description %></p>
+            <p><%= @tax_item.round %>(税込)</p>
+            <p><%= f.select :quantity, ['1', '2', '3'], {include_blank: '個数選択'},class: 'sample' %></p>
+        </div>
+    <% end %>
+</div>

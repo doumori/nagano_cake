@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-    root to: 'customers/items#top'
-    get 'customers/items' => 'customers#top'
+    root to: 'items#top'
 
     devise_for :admins, controllers: {
           sessions: 'admins/sessions'

@@ -1,19 +1,18 @@
 class ItemsController < ApplicationController
   def index
     @items = Item.all
+    @tax = (1.1.to_i).round
   end
 
   def show
     @item = Item.find(params[:id])
     @new_order = Order.new
+    # 税込価格の計算
+    @tax_item = @item.price * 1.1
   end
 
   def top
     @push_items = Item.last(5)
-  end
-
-  def tax
-    @tax = * 1.1.round
   end
 
   private
