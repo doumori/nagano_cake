@@ -1,1 +1,7 @@
 <h2>注文情報入力</h2>
+<%= form_with method: :get, model:@cart_item_new, url:cart_items_path,local: true do |f| %>
+
+<label for="pay">支払方法</label><br/>
+<%= f.select :pay_method, id:"name", Order.pay_method.keys, :selected=>Order.pay_method[@order.pay_method] %>
+
+<% end %>
