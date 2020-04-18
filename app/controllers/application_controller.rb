@@ -13,9 +13,14 @@ def after_sign_in_path_for(resource)
 end
 
 	# ログイン後にマイページに飛ぶ
-	# def after_sign_in_path_for(resource)
- # 		root_url(resource)
- # 	end
+	def after_sign_in_path_for(resource)
+	  case resource
+	  when Admins
+	    admins_path
+	  when Customer
+	    customer_path
+	  end
+	end
 
  	# サインアップ時に保存するカラムを追加する
 	protected
