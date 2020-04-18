@@ -13,17 +13,20 @@ if Rails.env == "development"
   end
 end
 
+
 if Rails.env == "development"
   (1..9).each do |i|
     Ship.create!(customer_id: "#{1}", address: "test#{1}", name: "test#{1}", code: "123456#{1}")
   end
 end
 
+
 if Rails.env == "development"
   (1..9).each do |i|
     Genre.create!(name: "test#{1}", is_active: "#{1}")
   end
 end
+
 
 if Rails.env == "development"
   (1..9).each do |i|
@@ -32,16 +35,15 @@ if Rails.env == "development"
 end
 
 
-
 if Rails.env == "development"
   (1..9).each do |i|
     OrderItem.create!(item_id: "test#{1}", order_id: "test#{1}", product_status: "test#{1}", price: "test#{1}", quantity: "test#{1}", name: "test#{1}")
   end
 end
 
-
 if Rails.env == "development"
   (1..9).each do |i|
-    Admin.create!(email: "test#{i}@example.com", encrypted_password: "password")
+    Admin.create!(email: "test#{i}@example.com", password: "password")
+
   end
 end
