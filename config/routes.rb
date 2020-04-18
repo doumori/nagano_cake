@@ -5,7 +5,7 @@ Rails.application.routes.draw do
           sessions: 'admins/sessions'
         }
     namespace :admins do
-        get '/' => '#top'
+        get 'top' => '#top'
         resources :customers, only: [:show,:index,:edit, :update]
         resources :order_items, only: [:update]
         resources :orders, only: [:index, :show, :update]

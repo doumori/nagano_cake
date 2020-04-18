@@ -5,8 +5,13 @@ class ApplicationController < ActionController::Base
 
 	# ログイン後にマイページに飛ぶ
 	def after_sign_in_path_for(resource)
- 		user_url(resource)
- 	end
+	  case resource
+	  when Admins
+	    admins_path
+	  when Customer
+	    customer_path
+	  end
+	end
 
  	# サインアップ時に保存するカラムを追加する
 	protected
