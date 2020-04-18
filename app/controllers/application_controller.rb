@@ -7,11 +7,13 @@ class ApplicationController < ActionController::Base
 	def after_sign_in_path_for(resource)
 	  case resource
 	  when Admins
-	    admins_path
+	    admins_top_path
 	  when Customer
-	    customer_path
+	    root_path
 	  end
 	end
+
+
 
  	# サインアップ時に保存するカラムを追加する
 	protected
