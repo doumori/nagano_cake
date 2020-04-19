@@ -13,10 +13,10 @@
 			<tbody>
 				<% @orders.each do |order| %>
 				<tr>
-					<td><%= @order.updated_at %></td>
-					<td><%= @order.current_user %></td>
-					<td><%= @order.quantity %></td>
-					<td><%= @order.status %></td>
+					<td><%= order.updated_at %></td>
+					<td><%= order.customer %></td>
+					<th></th>
+					<td><%= order.status %></td>
 				</tr>
 				<% end %>
 			</tbody>

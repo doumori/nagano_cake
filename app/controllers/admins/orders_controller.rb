@@ -5,14 +5,10 @@ class Admins::OrdersController < ApplicationController
 
   def show
   	@order=Order.find(params[:id])
-  	@user=admin_id
-  	@cart_items=CartItem.find(params[:cart_item_id])
-    
   end
 
   def update
   	@cart_item=CartItem.find(params[:cart_item_id])
-  	@item
   end
   private
   def order_params

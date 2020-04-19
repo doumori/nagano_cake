@@ -1,36 +1,13 @@
 <h1>注文詳細画面</h1>
 
 <p>購入者</p>
-<%= order.name %>
+<%= @order.customer_id %>
 <p>配送先</p>
-<%= order.ship %>
+<%= @order.ship_address %>
 <p>支払い方法</p>
-<%= order.pay_method %>
+<%= @order.pay_method %>
 <p>注文ステータス　</p>
-<%= f.select :status, Order.statuses.map { |k, v| [t(orders.status.#{k}), v] %>
 
 
+<%= select :pay_metod,[['販売中',true],['売り切れ',false]],{include_blank: '--選択してください--'},:class=> 'item_f.select' %>
 
-	<table class="table table-hover table-inverse">
-			<thead>
-				<tr>
-					<th>商品名</th>
-					<th>単価</th>
-					<th>数量</th>
-					<th>小計</th>
-					<th>ステータス</th>
-					<th colspan="1"></th>
-				</tr>
-			</thead>
-
-			<tbody>
-				<% @orders.each do |order| %>
-				<tr>
-					<td><%= @orders.current_user.updated_at %></td>
-					<td><%= @orders.current_user %></td>
-					<td><%= @orders.quantity %></td>
-					<td><%= @orders.status %></td>
-				</tr>
-				<% end %>
-			</tbody>
-		</table>
