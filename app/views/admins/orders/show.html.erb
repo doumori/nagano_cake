@@ -25,13 +25,16 @@
 			</thead>
 
 			<tbody>
-				<% @ocart_itemss.each do |p| %>
+				<% @order_items.each do |item| %>
 				<tr>
-					<td><%= order.updated_at %></td>
-					<td><%= order.customer %></td>
-					<th></th>
-					<td><%= order.status %></td>
+					<td><%= item.item %></td>
+					<td><%= item.price %></td>
+					<th><%= item.item_quantity %></th>
+					<td><%= item.sub_total %></td>
 				</tr>
 				<% end %>
 			</tbody>
 		</table>
+		<h3>商品合計</h3>
+
+
