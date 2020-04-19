@@ -6,8 +6,8 @@ class ApplicationController < ActionController::Base
 	# ログイン後にマイページに飛ぶ
 	def after_sign_in_path_for(resource)
 	  case resource
-	  when Admins
-	    admins_top_path
+	  when Admin
+	    admins_path
 	  when Customer
 	    root_path
 	  end

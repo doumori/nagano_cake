@@ -9,7 +9,7 @@ Rails.application.routes.draw do
         resources :customers, only: [:show,:index,:edit, :update]
         resources :order_items, only: [:update]
         resources :orders, only: [:index, :show, :update]
-        resources :genres, only: [:create, :index, :edit, :update]
+        resources :genres, only: [:create, :index, :edit, :update, :destroy]
         resources :items, only: [:create, :index, :destroy, :new, :show, :edit, :update]
     end
 

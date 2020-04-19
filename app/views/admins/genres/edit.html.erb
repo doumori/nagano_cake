@@ -4,17 +4,12 @@
 <h2>ジャンル編集画面</h2>
 
 		<table class="table table-hover table-inverse ">
-			<%= form_for (@newgenre) do |f| %>
-				<div class="field row">
+			<%= form_for @genre, url:admins_genres_path do |f| %>
 					<%= f.label :ジャンル %>
 					<%= f.text_field :name %>
-				</div>
-				<div class="field row">
 						<label><%= f.radio_button :is_active, "false" %>有効</label>
 						<label><%= f.radio_button :is_active, "ture" %>無効</label>
-					</div>
-				<div class="actions row">
-					<%= f.submit class: "btn btn-primary col-xs-12" %>
+					<%= f.submit class: "btn btn-primary" %>
 				</div>
 			<% end %>
 		</div>
