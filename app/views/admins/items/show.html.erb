@@ -1,15 +1,24 @@
 <h1>商品 詳細画面</h1>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-8"> 
+<%= attachment_image_tag @item, :image, size: '200x200',format: "jpeg" %>
+</div>
+<div class="col-lg-4"> 
 
 		<h3>商品名</h3>
 		<%= @item.name %>
 		<h3>商品説明</h3>
 		<%= @item.description %>
 		<h3>ジャンル</h3>
-	<!-- 	<%= @item.genre_id %> -->
-		<h3>税混価格（税抜き価格）</h3>
-		<%= @item.price %>
+	<%= @item.genre_id %>
+		<h3>税価格（税抜価格）</h3>
+		<%= @item.price %>(<%= @tax.floor %>)円
 		<h3>販売ステータス</h3>
-	<!-- 	<%= @item.is_sale_status %> -->
+<%= @item.is_sale_status %>
 
 
-	<%= link_to '編集する',edit_admins_item_path(@item), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user" %>
+	<%= link_to '編集する',edit_admins_item_path(@item), class: "col-lg-4 btn btn-primary " %>
+</div>
+  </div>
+</div>
