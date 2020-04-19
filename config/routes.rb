@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
     root to: 'items#top'
+        post 'orders/confirm' => 'orders#confirm'
+        get 'orders/thanks' => 'orders#thanks'
+        delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
 
     devise_for :admins, controllers: {
           sessions: 'admins/sessions'
@@ -29,8 +32,4 @@ Rails.application.routes.draw do
         resources :ships, only: [:index, :edit, :destroy, :update, :create ]
         resources :orders, only: [:new, :create, :index, :show]
         resources :cart_items, only: [:index,:create,:destroy,:update]
-
-        post 'orders/confirm' => 'customers/orders#confirm'
-        get 'orders/thanks' => 'customers/orders#thanks'
-        delete 'cart_items/destroy_all' => 'customers/cart_items#destroy_all'
 end

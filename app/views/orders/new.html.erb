@@ -1,7 +1,25 @@
 <h2>注文情報入力</h2>
-<%= form_with method: :get, model:@cart_item_new, url:cart_items_path,local: true do |f| %>
+  <span>支払方法</span><br/>
 
-<label for="pay">支払方法</label><br/>
-<%= f.select :pay_method, id:"name", Order.pay_method.keys, :selected=>Order.pay_method[@order.pay_method] %>
+  <%= form_with(model: @order_new, local: true) do |form| %>
+    <!-- ラジオボタンの書き方が違うかも・・・ -->
+    <%= form.radio_button :pay_method, :クレジットカード %>
+      <%= form.label :pay_method, "クレジットカード", {value: :クレジットカード, style: "display: inline-block;"} %>
+    <%= form.radio_button :pay_method, :銀行振込 %>
+      <%= form.label :pay_method, "銀行振込", {value: :銀行振込, style: "display: inline-block;"} %>
 
-<% end %>
+    <br><span>お届け先</span><br/>
+    <%= form.radio_button :ship_address, :myship %>
+       <%= form.label :ship_address_myship, "ご自身の住所" %><br>
+    <%= current_customer.address %><br>
+
+    <%= form.radio_button :ship_address, :ship %>
+      <%= form.label :ship_address_ship, "登録済住所から選択" %><br>
+      <!-- あとでコントローラで定義する?ship.all -->
+    <%= form.collection_select :ship_address, Ship.all, :id, :address %><br>
+    <%= form.radio_button :ship_address, :newship %>
+      <%= form.label :ship_address_newship, "新しいお届け先" %><br>
+  <% end %>
+  <%= form_with(model: @ship_new, local: true) do |f| %>
+    <%= f.label :ship_postcode_ship, "郵便番号（ハイフンなし）" %>
+  <% end %>
