@@ -1,17 +1,16 @@
 
 <div class="col-xs-12">
 <h2>会員詳細画面</h2>
-	<table class="table table-hover table-inverse">
 		<%= form_for @customer, url:admins_customer_path(@customer.id) do |f| %>
 
 			<div>顧客ID<%= @customer.id %></div>
 			<div class="field row">
 				<%= f.label :氏名 %>
-				<%= f.text_field :last_name_kana %><%= f.text_field :first_name_kana %>
+				<%= f.text_field :last_name %><%= f.text_field :first_name %>
 			</div>
 			<div class="field row">
 				<%= f.label :フリガナ %>
-				<%= f.text_field :last_name %><%= f.text_field :first_name %>
+				<%= f.text_field :last_name_kana %><%= f.text_field :first_name_kana %>
 			</div>
 			<div class="field row">
 				<%= f.label :郵便番号 %>
@@ -41,5 +40,4 @@
 			</div>
 
 		<% end %>
-	</table>
 </div>
