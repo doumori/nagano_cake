@@ -6,11 +6,11 @@ class Admins::ItemsController < ApplicationController
   end
 
   def update
-    item=Item.find(params[:id])
-    if item.update(item_params)
-      redirect_to admins_items_path
+    @item=Item.find(params[:id])
+    if @item.update(item_params)
+      redirect_to admins_item_path
     else
-      render 'index'
+      render :index
     end
   end
 
@@ -29,10 +29,11 @@ class Admins::ItemsController < ApplicationController
 
   def show
      @item=Item.find(params[:id])
+      @tax = @item.price.to_i*1.1
   end
 
   def edit
-        @item=Item.find(params[:id])
+      @item=Item.find(params[:id])
   end
   private
     def item_params

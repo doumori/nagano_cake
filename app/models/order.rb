@@ -4,4 +4,9 @@ class Order < ApplicationRecord
   # 注文ステータス
   enum status: { クレジットカード: 0, 銀行振込: 1 }
   belongs_to :customer
+<<<<<<< HEAD
 end
+=======
+  has_many :order_items, dependent: :destroy
+end
+>>>>>>> master
