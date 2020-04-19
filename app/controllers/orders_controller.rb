@@ -4,14 +4,29 @@ class OrdersController < ApplicationController
   end
 
   def create
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+      # # 確認画面
+      # if params[:back].present?
+      #   render 'customers/new'
+      #   # renderを複数回使う時はreturunで抜ける
+      #   return
+      # end
+      if  @order.save
+        redirect_to orders_thanks_path
+      else
+        render 'customers/new'
+      end
   end
 
   def show
   end
 
   def confirm
-    @orders = Order.all
-
+    @cart_items = current_customer.cart_items.all
+    @order_new = Order.new(order_params)
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
   end
 
   def thanks

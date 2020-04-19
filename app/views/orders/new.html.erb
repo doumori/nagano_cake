@@ -9,11 +9,11 @@
       <%= form.label :pay_method, "銀行振込", {value: :銀行振込, style: "display: inline-block;"} %>
 
     <br><span>お届け先</span><br/>
-    <%= form.radio_button :ship_address, :myship %>
+    <%= form.radio_button :current_customer, :address %>
        <%= form.label :ship_address_myship, "ご自身の住所" %><br>
     <%= current_customer.address %><br>
 
-    <%= form.radio_button :ship_address, :ship %>
+    <%= form.radio_button :ship_address, :ship_address %>
       <%= form.label :ship_address_ship, "登録済住所から選択" %><br>
       <!-- あとでコントローラで定義する?ship.all -->
     <%= form.collection_select :ship_address, Ship.all, :id, :address %><br>
