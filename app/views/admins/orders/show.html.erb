@@ -1,18 +1,16 @@
 
 
-<p>購入者</p>
-<%= @order.ship_name %>
-<p>配送先</p>
-<%= @order.ship_postcode %><%= @order.ship_address %>
-<p>支払い方法</p>
-<%= @order.pay_method %>
-<p>注文ステータス　</p>
-<%= form_for @order, url:order_path(@order.id) do |f| %>
-<%= f.select :status, Order.statuses.keys, {}  %>
-<%= f.submit "更新",class: "btn btn-primary" %>
-<% end %>
-
-
+			<p>購入者</p>
+					<%= @order.ship_name %>
+			<p>配送先</p>
+					<%= @order.ship_postcode %><%= @order.ship_address %>
+			<p>支払い方法</p>
+					<%= @order.pay_method %>
+			<p>注文ステータス　</p>
+					<%= form_for @order, url:order_path(@order.id) do |f| %>
+						<%= f.select :status, Order.statuses.keys, {}  %>
+						<%= f.submit "更新",class: "btn btn-primary" %>
+					<% end %>
   <table class="table table-hover table-inverse">
       <thead>
         <tr>
