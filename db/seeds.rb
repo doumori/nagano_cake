@@ -23,7 +23,7 @@ end
 
 if Rails.env == "development"
   (1..9).each do |i|
-    Genre.create!(name: "test#{1}", is_active: "#{1}")
+    Genre.create!(name: "test#{1}", is_active: "test#{1}")
   end
 end
 

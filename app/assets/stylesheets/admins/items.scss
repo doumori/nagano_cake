@@ -1,3 +1,49 @@
 // Place all the styles related to the Admins/Items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #6c6b6b;
+}
+a {
+  text-decoration: none;
+}
+ 
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.container{
+    width: 800px;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+.row{
+      width: 800px;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+.col-lg-8{
+        width: 800px;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+.table table-hover table-inverse{
+        width: 200px;
+  margin: 0 auto;
+  padding: 50px 0;
+}
+.table{
+   margin: 50px auto;
+   padding: 50px;
+}
+
+
+
+
