@@ -27,7 +27,10 @@ Rails.application.routes.draw do
         put 'hide' => '#hide'
     end
 
+    scope module: :customers do
         resources :customers, only: [:show, :edit, :update]
+    end
+
         resources :items, only: [:index, :show]
         resources :ships, only: [:index, :edit, :destroy, :update, :create ]
         resources :orders, only: [:new, :create, :index, :show]

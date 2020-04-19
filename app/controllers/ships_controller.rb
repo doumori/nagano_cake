@@ -6,7 +6,7 @@ class ShipsController < ApplicationController
   def ensure_correct_user
     @ship = Ship.find(params[:id])
     # ※カレントユーザーIDがbook.user_idと同じでない場合はbooks_pathへ飛ばす
-    if current_customer.id != @ship.customers_id
+    if current_customer.id != @ship.customer_id
       flash[:notice] = "ページにアクセスする権限がありません"
       redirect_to(root_path)
     end
@@ -18,21 +18,31 @@ class ShipsController < ApplicationController
   end
 
   def edit
+    @ship = Ship.find(params[:id])
   end
 
   def destroy
+    ship = Ship.find(params[:id])
+    ship.destroy
+    redirect_to ships_path
   end
 
   def update
+    @ship = Ship.find(params[:id])
+     if @ship.update(ship_params)
+      redirect_to ships_path
+    else
+      render :edit
+    end
   end
 
   def create
-    @ships = Ship.all
     @ship = Ship.new(ship_params)
     @ship.customer_id = current_customer.id
     if @ship.save
-      redirect_to :back
+      redirect_to ships_path
     else
+      @ships = Ship.all
       render :index
     end
   end
