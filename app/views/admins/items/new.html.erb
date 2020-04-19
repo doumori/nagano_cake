@@ -1,39 +1,40 @@
 <h1>商品新規登録画面</h1>
-
 <%= form_for(@item,url:admins_items_path) do |f| %>
 <% if @item.errors.any? %>
-	<h3><%= @item.errors.count %>error occurrence</h3><!--エラーメッセ-->
-	<ul>
-		<% @item.errors.full_messages.each do |message| %>
-		<li><%= message %></li>
-		<% end %>s
-	</ul>
+<h3>
+    <%= @item.errors.count %>error occurrence</h3>
+<!--エラーメッセ-->
+<ul>
+    <% @item.errors.full_messages.each do |message| %>
+    <li>
+        <%= message %>
+    </li>
+    <% end %>s
+</ul>
 <% end %>
 <p>画像</p>
-	<div class="field">
-	<%= f.label :image %>
-	<%= f.attachment_field :image %>
+<div class="field">
+    <%= f.label :image %>
+    <%= f.attachment_field :image %>
 </div>
-
 <p>商品名</p>
 <div class="field">
-	<%= f.label :name %>
-	<%= f.text_field :name %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
 </div>
 <p>商品説明文</p>
 <div class="field">
-	<%= f.label :description %>
-	<%= f.text_area :description %>
-	<p>ジャンル</p>
-		<%= f.collection_select :genre_id, @genres, :id, :name %>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+    <p>ジャンル</p>
+    <%= f.collection_select :genre_id, @genres, :id, :name %>
 </div>
-	<p>税抜き価格</p>
-	<%= f.label :price %>
-	<%= f.number_field :price %>
+<p>税抜き価格</p>
+<%= f.label :price %>
+<%= f.number_field :price %>
 <p>販売ステータス</p>
-	<%= f.select :is_sale_status,[['販売中',true],['売り切れ',false]],{include_blank: '--選択してください--'},:class=> 'item_f.select' %>
+<%= f.select :is_sale_status,[['販売中',true],['売り切れ',false]],{include_blank: '--選択してください--'},:class=> 'item_f.select' %>
 <div class="actions">
-	<%= f.submit '新規登録' %>
+    <%= f.submit '新規登録' %>
 </div>
-
 <% end %>

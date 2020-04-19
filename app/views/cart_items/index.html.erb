@@ -1,5 +1,5 @@
 <h2>ショッピングカート</h2>
-<table>
+<table class="table table-hover">
     <thead>
         <tr>
             <th>商品名</th>
@@ -9,17 +9,16 @@
         </tr>
     </thead>
     <tbody>
-        <%= form_with method: :get, model:@order_confirm, url:orders_confirm_path,local: true do |f| %>
+        <% @cart_items.each do |f| %>
         <tr>
-            <td><%= @cart_item.current_customer.name %></td>
-            <td><%= @cart_item.current_customer.name %></td>
-            <td><%= f.select :quantity, {sample1: 1, sample2: 2, sample3: 3} %></td>
-            <td>data</td>
+            <td><%= f.item.name %></td>
+            <td><%= f.item.price %></td>
+              <%= form_with model: @cart_item do |s| %>
+                <td><%= s.text_field :item_quantity, id:"quantity",placeholder: "個数表示" %><%= s.submit "変更" %></td>
+              <% end %>
+            <td><%= f.item.price * f.item_quantity %></td>
+            <td><%= link_to "削除", cart_item_path(f.id),class:"btn btn-danger", method: :delete, data: {confirm: 'カートから削除しますか？'} %><td>
         </tr>
         <% end %>
     </tbody>
 </table>
-<div>
-    <p><%= f.submit"買い物を続ける",name: 'back'%></p>
-    <p><%= f.submit"情報入力に進む" %></p>
-</div>
