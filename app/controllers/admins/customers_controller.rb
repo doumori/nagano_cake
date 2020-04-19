@@ -17,15 +17,9 @@ class Admins::CustomersController < ApplicationController
 
   def update
   	@customer = Customer.find(params[:id])
-  	if @customer.update(customer_params)
-  		redirect_to admins_customers_path, notice: "successfully updated customer!"
-  	else
-  		render admins_customers_path
-  	end
+  	@customer.update(customer_params)
+  	redirect_to admins_customers_path
   end
-
-
-
 
 
   private
