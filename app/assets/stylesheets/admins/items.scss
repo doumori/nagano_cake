@@ -40,10 +40,26 @@ a {
   padding: 50px 0;
 }
 .table{
-   margin: 50px auto;
+   margin: 100px auto;
    padding: 50px;
 }
+.image_input_btn{
+    display: block;
+    background-color: #228B22;
+    width: 180px;
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    padding-top: 2px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
 
+.image_form{
+    display: none;
+}
 
 
 
