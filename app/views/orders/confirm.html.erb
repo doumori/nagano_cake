@@ -1,16 +1,25 @@
 <body>
   <div class="container">
     <h2>登録内容の確認</h2>
-    <%= form_with model:[@cart_item,@order_new],url:book_post_comments_path(@book),local: true do |f| %>
+    <%= form_with model:@order_new, url:orders_path, method: :post,local: true do |f| %>
     <table class="table table-hover">
-      <tbody>
+    <thead>
         <tr>
-          <%= f.hidden_field :name %>
-          <th><%= f.label :name %></th>
-          <td><%= @cart_item.name %></td>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
         </tr>
-      </tbody>
-    </table>
+    </thead>
+    <tbody>
+        <% @orders.each do |f| %>
+        <tr>
+            <td><%= f.item.price %></td>
+            <td><%= (f.item.price) * (f.item_quantity).to_i %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
     <%= f.submit"戻る",name: 'back',class:'btn btn-secondary mr-3'%>
     <%= f.submit"登録",class:'btn btn-primary'%>
     <% end %>

@@ -20,7 +20,16 @@
     <%= form.radio_button :ship_address, :newship %>
       <%= form.label :ship_address_newship, "新しいお届け先" %><br>
   <% end %>
-  <%= form_with(model: @ship_new, local: true) do |f| %>
-    <%= f.label :ship_postcode_ship, "郵便番号（ハイフンなし）" %>
-    <%= f.text_field :ship_postcode %>
+  <%= form_with(model: @order_new,url:order_confirm_path, local: true) do |f| %>
+    <label for="postcode">郵便番号(ハイフンなし)</label>
+    <%= f.text_field :ship_postcode, id:"postcode" %><br/>
+<!-- 住所、宛名 -->
+    <label for="address">住所</label>
+    <%= f.text_field :ship_address, id:"address" %><br/>
+
+    <label for="name">宛名</label>
+    <%= f.text_field :ship_name, id:"name" %>
+    <!-- @item.idをitem_idとして送る -->
+    <%= f.hidden_field :customers_id, value:current_customer.id %>
+    <%= f.submit "確認画面" %>
   <% end %>

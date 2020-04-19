@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   def new
-    @order = Order.new
+    @order_new = Order.new
   end
 
   def create
@@ -10,11 +10,8 @@ class OrdersController < ApplicationController
   end
 
   def confirm
-    @order = order_item.find_by(params[:order_id])
-    @cart_item = CartItem.find(params[:cart_item_id])
-    @order = Crder.new(order_params)
-    @order.customer_id = current_customer.id
-    render 'order/thanks'
+    @orders = Order.all
+
   end
 
   def thanks
