@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   def new
-    @order_new = Order.new
+    @order = Order.new
   end
 
   def create
@@ -10,11 +10,11 @@ class OrdersController < ApplicationController
   end
 
   def confirm
+    @order = order_item.find_by(params[:order_id])
     @cart_item = CartItem.find(params[:cart_item_id])
     @order = Crder.new(order_params)
     @order.customer_id = current_customer.id
-    # バリデーションかける
-    render 'orders/thanks' if @order.invalid?
+    render 'order/thanks'
   end
 
   def thanks
@@ -22,6 +22,7 @@ class OrdersController < ApplicationController
 
   def index
   end
+
   def order_params
     params.require(:order).permit(:customer_id, :pay_method, :status, :freight, :total, :ship_name, :ship_postcode, :ship_address)
   end

@@ -22,4 +22,5 @@
   <% end %>
   <%= form_with(model: @ship_new, local: true) do |f| %>
     <%= f.label :ship_postcode_ship, "郵便番号（ハイフンなし）" %>
+    <%= f.text_field :ship_postcode %>
   <% end %>
