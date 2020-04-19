@@ -7,6 +7,7 @@
 <p>支払い方法</p>
 <%= @order.pay_method %>
 <p>注文ステータス　</p>
+<%= @order.status %>
 
 
 <%= select :pay_metod,[['販売中',true],['売り切れ',false]],{include_blank: '--選択してください--'},:class=> 'item_f.select' %>
