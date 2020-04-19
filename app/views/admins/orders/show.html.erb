@@ -10,5 +10,28 @@
 <%= @order.status %>
 
 
-<%= select :pay_metod,[['販売中',true],['売り切れ',false]],{include_blank: '--選択してください--'},:class=> 'item_f.select' %>
 
+
+	<table class="table table-hover table-inverse">
+			<thead>
+				<tr>
+					<th>商品名</th>
+					<th>単価（税込）</th>
+					<th>数量</th>
+					<th>小計</th>
+					<th>製作ステータス</th>
+					<th colspan="1"></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @ocart_itemss.each do |p| %>
+				<tr>
+					<td><%= order.updated_at %></td>
+					<td><%= order.customer %></td>
+					<th></th>
+					<td><%= order.status %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
