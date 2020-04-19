@@ -1,4 +1,7 @@
 <h2>ショッピングカート</h2>
+
+<%= link_to "カートを空にする", cart_items_destroy_all_path,class:"btn btn-danger", method: :delete, data: {confirm: 'カートを空にしますか？'} %>
+
 <table class="table table-hover">
     <thead>
         <tr>
@@ -13,12 +16,17 @@
         <tr>
             <td><%= f.item.name %></td>
             <td><%= f.item.price %></td>
-              <%= form_with model: @cart_item do |s| %>
-                <td><%= s.text_field :item_quantity, id:"quantity",placeholder: "個数表示" %><%= s.submit "変更" %></td>
-              <% end %>
-            <td><%= f.item.price * f.item_quantity %></td>
-            <td><%= link_to "削除", cart_item_path(f.id),class:"btn btn-danger", method: :delete, data: {confirm: 'カートから削除しますか？'} %><td>
+              <td><%= form_with model: f, url:cart_item_path(f),local: true, method: :put do |s| %>
+                <%= s.text_field :item_quantity, id:"quantity",placeholder: "個数表示" %>
+                    <%= s.submit "変更" %>
+              <% end %></td>
+            <td><%= (f.item.price) * (f.item_quantity).to_i %></td>
+            <td><%= link_to "削除", cart_item_path(f),class:"btn btn-danger", method: :delete, data: {confirm: 'カートから削除しますか？'} %><td>
         </tr>
         <% end %>
     </tbody>
 </table>
+<%= form_with model:@order_new,url:new_order_path,local: true, method: :get do |f| %>
+    <p><%= f.submit'情報入力に進む',class:"btn btn-info glyphicon glyphicon-share-alt" %></p>
+  <% end %>
+<%= link_to "買い物を続ける", items_path %>

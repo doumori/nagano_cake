@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
   end
 
   def confirm
-    @cart_item = CartItem.find_by(params[:cart_item_id])
+    @cart_item = CartItem.find(params[:cart_item_id])
     @order = Crder.new(order_params)
     @order.customer_id = current_customer.id
     # バリデーションかける

@@ -6,7 +6,9 @@
             <p><%= @item.description %></p>
             <p><%= @tax_item.round %>(税込)</p>
             <p><%= f.select :item_quantity, ['1', '2', '3'], {include_blank: '個数選択'},class: 'sample' %></p>
-            <p><%= f.submit"カートに入れる",name: 'cart'%>
+            <!-- @item.idをitem_idとして送る -->
+            <%= f.hidden_field :item_id, value:@item.id %>
+            <p><%= f.submit"カートに入れる"%>
         </div>
     <% end %>
 </div>
