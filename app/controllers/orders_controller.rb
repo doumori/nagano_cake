@@ -21,8 +21,19 @@ class OrdersController < ApplicationController
   def confirm
     @cart_items = current_customer.cart_items.all
     @order_new = Order.new(order_params)
-    @order = Order.new(order_params)
-    @order.customer_id = current_customer.id
+    @order_new.customer_id = current_customer.id
+      # newアクションに渡すお届け先の条件分岐
+        # 自分の配送先
+      if params[:ship_num] == "1"
+        @order_address = current_customer.address
+        # 登録済みの配送先
+      elsif params[:ship_num] == "2"
+        @order_address = Ship.find(params[:ship_id]).view_ship
+        # 新しい配送先
+      else
+        @order_address = params[:order][:ship_postcode] + params[:order][:ship_address] + params[:order][:ship_name]
+      end
+    @pay_method = params[:order][:pay_method]
   end
 
   def thanks
