@@ -19,6 +19,7 @@
             <td><%= cart_item.item.price %></td>
             <td><%= cart_item.item_quantity %></td>
             <td><%= (cart_item.item.price) * (cart_item.item_quantity) %></td>
+
             <!-- 注文合計金額 -->
             <% @sum += (cart_item.item.price) * (cart_item.item_quantity).to_i %>
         </tr>

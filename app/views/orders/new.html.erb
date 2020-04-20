@@ -8,11 +8,14 @@
       <%= f.label :pay_method, "銀行振込", {value: :銀行振込, style: "display: inline-block;"} %>
 
   <br><span>お届け先</span><br/>
+
     <%= radio_button_tag('ship_num',"1") %>
       <%= f.label :ship_num, "ご自身の住所" %><br>
       <%= current_customer.address %><br>
 
+
       <%= radio_button_tag('ship_num',"2") %>
+
       <%= f.label :ship_num, "登録済住所から選択" %><br>
       <%= select_tag 'ship_id', options_from_collection_for_select(Ship.all, :id, :view_ship, 1) %>
 

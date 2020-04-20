@@ -1,7 +1,7 @@
 <div>
     <%= form_with method: :post, model: @cart_item_new,local: true do |f| %>
         <div>
-              <%= attachment_image_tag @item, :image, :fill, 200, 400, format: 'jpeg', fallback: "cake.png", size:'250x200' %>
+             <%= attachment_image_tag @item, :image, size: '200x200',format: "jpeg",fallback: "no_image.jpg" %>
             <p><%= @item.name %></p>
             <p><%= @item.description %></p>
             <p><%= @item.price %>(税込)</p>
@@ -12,3 +12,5 @@
         </div>
     <% end %>
 </div>
+
+fallback: "cake.png"
