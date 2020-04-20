@@ -2,8 +2,6 @@
   <div class="container">
     <h2>登録内容の確認</h2>
 
-    <%= form_with model: [@order_new], url:orders_path, method: :post,local: true do |f| %>
-
     <table class="table table-hover">
     <thead>
         <tr>
@@ -15,14 +13,14 @@
     </thead>
     <tbody>
         <% @sum = 0 %>
-        <% @cart_items.each do |f| %>
+        <% @cart_items.each do |cart_item| %>
         <tr>
-            <td><%= f.item.name %></td>
-            <td><%= f.item.price %></td>
-            <td><%= f.item_quantity %></td>
-            <td><%= (f.item.price) * (f.item_quantity) %></td>
+            <td><%= cart_item.item.name %></td>
+            <td><%= cart_item.item.price %></td>
+            <td><%= cart_item.item_quantity %></td>
+            <td><%= (cart_item.item.price) * (cart_item.item_quantity) %></td>
             <!-- 注文合計金額 -->
-            <% @sum += (f.item.price) * (f.item_quantity) %>
+            <% @sum += (cart_item.item.price) * (cart_item.item_quantity) %>
         </tr>
         <% end %>
     </tbody>
@@ -40,6 +38,16 @@
             <td><%= @sum + 800 %></td>
         </tr>
 </table>
+    <%= form_with model: [@order_new], url:orders_path, method: :post, local: true do |f| %>
+
+    <%= f.hidden_field :customer_id, value:current_customer.id %>
+    <%= f.hidden_field :pay_method, value: 'クレジットカード' %>
+    <%= f.hidden_field :status, value: '入金待ち' %>
+    <%= f.hidden_field :freight, value: @freight %>
+    <%= f.hidden_field :total, value: @sum + 800 %>
+    <%= f.hidden_field :ship_name, value: params[:order][:ship_name] %>
+    <%= f.hidden_field :ship_postcode, value: params[:order][:ship_code] %>
+    <%= f.hidden_field :ship_address, value: @order_address %>
 
     <%= f.submit"戻る",name: 'back',class:'btn btn-secondary mr-3'%>
     <%= f.submit"購入を確定する",class:'btn btn-primary'%>
