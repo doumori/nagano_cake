@@ -1,2 +1,57 @@
-<h1>Customers::Customers#edit</h1>
-<p>Find me in app/views/customers/customers/edit.html.erb</p>
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+
+  <h4>登録情報編集</h4>
+  <div class="container">
+    <%= form_for(current_customer) do |f| %>
+
+
+    <div class="field">
+      <%= f.label :last_name, "名前" %>
+      (姓)<%= f.text_field :last_name %>
+      (名)<%= f.text_field :first_name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :last_name_kana, "フリガナ" %>
+      <%= f.text_field :last_name_kana %>
+      <%= f.text_field :first_name_kana %>
+    </div>
+
+    <div class="field">
+      <%= f.label :email, "メールアドレス" %>
+      <%= f.text_field :email %>
+    </div>
+
+    <div class="field">
+      <%= f.label :post_code, "郵便番号(ハイフンなし)" %>
+      <%= f.text_field :post_code %>
+    </div>
+
+    <div class="field">
+      <%= f.label :address, "住所" %>
+      <%= f.text_field :address %>
+    </div>
+
+    <div class="field">
+      <%= f.label :phone_number, "電話番号(ハイフンなし)" %>
+      <%= f.text_field :phone_number %>
+    </div>
+
+    <div style="display:inline-flex">
+      <div class="action">
+        <%= f.submit '編集内容を保存する', class: "btn btn-primary" %>
+      </div>
+      <%= link_to "退会する",  customers_confirm_path, class: "btn btn-danger" %>
+    </div>
+
+    <% end %>
+
+  </div>
+
+</body>
+</html>
