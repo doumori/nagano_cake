@@ -26,7 +26,9 @@
         <% end %>
     </tbody>
 </table>
-<%= form_with model:@order_new,url:new_order_path,local: true, method: :get do |f| %>
-    <p><%= f.submit'情報入力に進む',class:"btn btn-info glyphicon glyphicon-share-alt" %></p>
-  <% end %>
-<%= link_to "買い物を続ける", items_path %>
+
+    <span>合計金額</span>
+    <span><%= @sum %></span>
+    <p><%= link_to '情報入力に進む',new_order_path,class:"btn btn-info glyphicon glyphicon-share-alt" %></p>
+    <%= link_to "買い物を続ける", items_path %>
+
