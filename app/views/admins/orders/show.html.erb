@@ -7,7 +7,7 @@
 			<p>支払い方法</p>
 					<%= @order.pay_method %>
 			<p>注文ステータス　</p>
-					<%= form_for @order, url:order_path(@order.id) do |f| %>
+					<%= form_for @order, url:admins_order_path(@order.id) do |f| %>
 						<%= f.select :status, Order.statuses.keys, {}  %>
 						<%= f.submit "更新",class: "btn btn-primary" %>
 					<% end %>
@@ -24,12 +24,13 @@
       </thead>
 
       <tbody>
-        <% @order_items.each do |order_item| %>
+				<%= @sum=0 %>
+      	  <% @order_items.each do |order_item| %>
         <tr>
           <td><%= order_item.name %></td>
           <td><%= order_item.price %></td>
           <td><%= order_item.quantity %></td>
-          <td><%= order_item.price*order_item.quantity*1.1 %></td>
+          <td><% @sum+=(order_item.price*order_item.quantity*1.1).floor %></td>
           <td>
 	          <%= form_for order_item, url:admins_order_item_path(order_item.id) do |f| %>
 						<%= f.select :product_status, OrderItem.product_statuses.keys, {}  %>
@@ -40,4 +41,10 @@
         <% end %>
       </tbody>
   </table>
+  <h1>商品合計</h1>
+  	<%= @sum %>
+  <h1>送料</h1>
+  	<%= @freight %>
+  <h1>請求金額合計</h1>
+  	<%= @sum+@freight %>
 
