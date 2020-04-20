@@ -20,6 +20,7 @@
             <td><%= f.item.name %></td>
             <td><%= f.item.price %></td>
             <td><%= f.item_quantity %></td>
+
             <td><%= (f.item.price) * (f.item_quantity) %></td>
             <!-- 注文合計金額 -->
             <% @sum += (f.item.price) * (f.item_quantity) %>
