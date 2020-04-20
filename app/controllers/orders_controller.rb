@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @order.customer_id = current_customer.id
+    @cart_items = CartItem.where(item_id:current_customer.id)
       if  @order.save
         redirect_to orders_thanks_path
       else
@@ -19,8 +19,12 @@ class OrdersController < ApplicationController
   end
 
   def confirm
+    @freight = 800
     @cart_items = current_customer.cart_items.all
     @order_new = Order.new(order_params)
+    # 上手くいかない。空の時はバリデーションしたい。
+    # return if @order_new.valid?
+    # render :new
     @order_new.customer_id = current_customer.id
       # newアクションに渡すお届け先の条件分岐
         # 自分の配送先
@@ -31,7 +35,9 @@ class OrdersController < ApplicationController
         @order_address = Ship.find(params[:ship_id]).view_ship
         # 新しい配送先
       else
-        @order_address = params[:order][:ship_postcode] + params[:order][:ship_address] + params[:order][:ship_name]
+        @order_address = params[:order][:ship_postcode]
+        @order_address = params[:order][:ship_address]
+        @order_address = params[:order][:ship_name]
       end
     @pay_method = params[:order][:pay_method]
   end
