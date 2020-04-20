@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
   end
   def search
     @items=Item.search(params[:search])
+  end
 
   def show
     @item = Item.find(params[:id])
