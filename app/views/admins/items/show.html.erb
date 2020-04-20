@@ -11,7 +11,7 @@
 		<h3>商品説明</h3>
 		<%= @item.description %>
 		<h3>ジャンル</h3>
-	<%= @item.genre_id %>
+	<%= @item.genre.name %>
 		<h3>税価格（税抜価格）</h3>
 		<%= @item.price %>(<%= @tax.floor %>)円
 		<h3>販売ステータス</h3>
