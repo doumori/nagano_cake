@@ -1,7 +1,9 @@
 <body>
   <div class="container">
     <h2>登録内容の確認</h2>
-    <%= form_with model: [@order_new,@order], url:orders_path, method: :post,local: true do |f| %>
+
+    <%= form_with model: [@order_new], url:orders_path, method: :post,local: true do |f| %>
+
     <table class="table table-hover">
     <thead>
         <tr>
@@ -18,9 +20,10 @@
             <td><%= f.item.name %></td>
             <td><%= f.item.price %></td>
             <td><%= f.item_quantity %></td>
-            <td><%= (f.item.price).to_i * (f.item_quantity).to_i %></td>
+
+            <td><%= (f.item.price) * (f.item_quantity) %></td>
             <!-- 注文合計金額 -->
-            <% @sum += (f.item.price).to_i * (f.item_quantity).to_i %>
+            <% @sum += (f.item.price) * (f.item_quantity) %>
         </tr>
         <% end %>
     </tbody>
@@ -33,9 +36,9 @@
         </tr>
             <th>商品合計</th>
             <td><%= @sum %></td>
-        </tr>
+        <tr>
             <th>合計金額</th>
-            <td><%= @sum + 800%></td>
+            <td><%= @sum + 800 %></td>
         </tr>
 </table>
 
@@ -44,9 +47,9 @@
     <% end %>
   </div>
 <br><span>支払い方法</span><br/>
-    <%= %><br>
+    <%= @pay_method %><br>
 
 <br><span>お届け先</span><br/>
-    <%= %><br>
+    <%= @order_address %><br>
 </body>
 </html>

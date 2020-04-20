@@ -10,14 +10,20 @@ class Customers::CustomersController < ApplicationController
   def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-      redirect_to admins_customers_path, notice: "successfully updated customer!"
+      redirect_to customer_path(current_customer), notice: "successfully updated customer!"
     else
-      render "edit_admins_customer"
+      render :edit
     end
+  end
+
+  def confirm
+  end
+
+  def hide
   end
 
   private
   def customer_params
-    params.require(:cart_item).permit(:last_name, :first_name, :last_name_kana,:first_name_kana,:post_code,:address,:phone_number,:is_member_status)
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana,:first_name_kana,:post_code,:address,:phone_number,:is_member_status)
   end
 end
