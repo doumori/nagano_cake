@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
     root to: 'items#top'
-        post 'orders/confirm' => 'orders#confirm'
+        post 'order/confirm' => 'orders#confirm'
         get 'orders/thanks' => 'orders#thanks'
         delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
 
