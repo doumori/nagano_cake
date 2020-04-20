@@ -35,9 +35,9 @@ class OrdersController < ApplicationController
         @order_address = Ship.find(params[:ship_id]).view_ship
         # 新しい配送先
       else
-        @order_address = params[:order][:ship_postcode]
+        @order_postcode = params[:order][:ship_postcode]
         @order_address = params[:order][:ship_address]
-        @order_address = params[:order][:ship_name]
+        @order_name = params[:order][:ship_name]
       end
     @pay_method = params[:order][:pay_method]
   end

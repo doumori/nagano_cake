@@ -8,7 +8,7 @@
       <%= attachment_image_tag item, :image, :fill, 250, 200, format: 'jpeg', fallback: "cake.png", size:'250x200' %>
     <% end %>
   	<p><%= item.name %></p>
-    <p><%= item.price * @tax %>(税込)</p>
+    <p><%= item.price %>(税込)</p>
   </div>
 	<% end %>
 </div>

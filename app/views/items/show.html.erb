@@ -1,10 +1,10 @@
 <div>
-    <%= form_with method: :post, model:@cart_item_new,local: true do |f| %>
+    <%= form_with method: :post, model: @cart_item_new,local: true do |f| %>
         <div>
               <%= attachment_image_tag @item, :image, :fill, 200, 400, format: 'jpeg', fallback: "cake.png", size:'250x200' %>
             <p><%= @item.name %></p>
             <p><%= @item.description %></p>
-            <p><%= @tax_item.round %>(税込)</p>
+            <p><%= @item.price %>(税込)</p>
             <p><%= f.select :item_quantity, ['1', '2', '3'], {include_blank: '個数選択'},class: 'sample' %></p>
             <!-- @item.idをitem_idとして送る -->
             <%= f.hidden_field :item_id, value:@item.id %>
