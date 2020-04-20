@@ -2,7 +2,7 @@
 
 <%= link_to "カートを空にする", cart_items_destroy_all_path,class:"btn btn-danger", method: :delete, data: {confirm: 'カートを空にしますか？'} %>
 
-<table class="table table-hover">
+<table class="table table-hover"> 
     <thead>
         <tr>
             <th>商品名</th>
@@ -12,7 +12,6 @@
         </tr>
     </thead>
     <tbody>
-        <% @sum = 0 %>
         <% @cart_items.each do |f| %>
         <tr>
             <td><%= f.item.name %></td>
@@ -21,17 +20,12 @@
                 <%= s.text_field :item_quantity, id:"quantity",placeholder: "個数表示" %>
                     <%= s.submit "変更" %>
               <% end %></td>
-              <!-- 商品の小計 -->
-            <td><%= (f.item.price) * (f.item_quantity).to_i %></td>
+            <td><%= (f.item.price).to_i * (f.item_quantity).to_i %></td>
             <td><%= link_to "削除", cart_item_path(f),class:"btn btn-danger", method: :delete, data: {confirm: 'カートから削除しますか？'} %><td>
         </tr>
-        <!-- カート内の合計金額 -->
-        <% @sum += (f.item.price) * (f.item_quantity).to_i %>
         <% end %>
-    <tbody>
+    </tbody>
 </table>
-    <span>合計金額</span>
-    <span><%= @sum %></span>
 <%= form_with model:@order_new,url:new_order_path,local: true, method: :get do |f| %>
     <p><%= f.submit'情報入力に進む',class:"btn btn-info glyphicon glyphicon-share-alt" %></p>
   <% end %>

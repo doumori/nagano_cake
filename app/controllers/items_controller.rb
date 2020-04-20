@@ -1,16 +1,18 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.all
+    @items = Item.page(params[:page]).per(10).order('updated_at DESC')
     # 消費税の計算。うまくいかない
     @tax = (1.1.to_i).round
     @order_confirm = Order.new
   end
+  def search
+    @items=Item.search(params[:search])
 
   def show
     @item = Item.find(params[:id])
     @cart_item_new = CartItem.new
     # 消費税の計算。これは上手く行く
-    @tax_item = @item.price * 1.1
+
   end
 
   def top
