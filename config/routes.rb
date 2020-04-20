@@ -22,9 +22,9 @@ Rails.application.routes.draw do
           passwords: 'customers/passwords'
         }
     namespace :customers do
-        get 'confirm' => '#confirm'
-        patch 'hide' => '#hide'
-        put 'hide' => '#hide'
+        get 'confirm' => 'customers#confirm'
+        patch 'hide' => 'customers#hide'
+        put 'hide' => 'customers#hide'
     end
 
     scope module: :customers do
