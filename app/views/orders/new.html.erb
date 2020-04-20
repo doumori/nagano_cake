@@ -1,38 +1,33 @@
 <h2>注文情報入力</h2>
-  <span>支払方法</span><br/>
 
   <%= form_with(model: @order_new, url:order_confirm_path,local: true) do |f| %>
-    <!-- ラジオボタンの書き方が違うかも・・・ -->
+  <span>支払方法</span><br/>
     <%= f.radio_button :pay_method, :"クレジットカード" %>
       <%= f.label :pay_method, "クレジットカード", {value: :クレジットカード, style: "display: inline-block;"} %>
     <%= f.radio_button :pay_method, :"銀行振込" %>
       <%= f.label :pay_method, "銀行振込", {value: :銀行振込, style: "display: inline-block;"} %>
 
-    <br><span>お届け先</span><br/>
+  <br><span>お届け先</span><br/>
 
     <%= radio_button_tag('ship_num',"1") %>
+      <%= f.label :ship_num, "ご自身の住所" %><br>
+      <%= current_customer.address %><br>
 
-       <%= f.label :ship_num, "ご自身の住所" %><br>
-    <%= current_customer.address %><br>
 
+      <%= radio_button_tag('ship_num',"2") %>
 
-    <%= radio_button_tag('ship_num',"2") %>
       <%= f.label :ship_num, "登録済住所から選択" %><br>
-    <%= select_tag 'ship_id', options_from_collection_for_select(@ships, :id, :view_ship, 1) %>
+      <%= select_tag 'ship_id', options_from_collection_for_select(Ship.all, :id, :view_ship, 1) %>
 
-
-    <%= radio_button_tag('ship_num',"3") %>
+      <%= radio_button_tag('ship_num',"3") %>
       <%= f.label :ship_num, "新しいお届け先" %><br>
-
-    <label for="postcode">郵便番号(ハイフンなし)</label>
-    <%= f.text_field :ship_postcode, id:"postcode" %><br/>
-    <!-- 住所、宛名 -->
-    <label for="address">住所</label>
-    <%= f.text_field :ship_address, id:"address" %><br/>
-
-    <label for="name">宛名</label>
-    <%= f.text_field :ship_name, id:"name" %>
-    <!-- current_customers.idをcustomers_idとして送る -->
-    <%= f.hidden_field :customers_id, value:current_customer.id %>
-    <%= f.submit "確認画面" %>
+      <label for="postcode">郵便番号(ハイフンなし)</label>
+      <%= f.text_field :ship_postcode, id:"postcode" %><br/>
+      <label for="address">住所</label>
+      <%= f.text_field :ship_address, id:"address" %><br/>
+      <label for="name">宛名</label>
+      <%= f.text_field :ship_name, id:"name" %>
+      <!-- current_customers.idをcustomers_idとして送る -->
+      <%= f.hidden_field :customers_id, value:current_customer.id %>
+      <%= f.submit "確認画面" %>
   <% end %>
