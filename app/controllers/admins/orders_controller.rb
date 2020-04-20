@@ -7,10 +7,9 @@ class Admins::OrdersController < ApplicationController
     @order_items = OrderItem.all
     @order = Order.find(params[:id])
     @item = Item.find(params[:id])
+    @order_item = OrderItem.find(params[:id])
 
-    @freight=800
   end
-
 
   def update
   	@order = Order.find(params[:id])
@@ -27,3 +26,4 @@ class Admins::OrdersController < ApplicationController
   end
 
 end
+
