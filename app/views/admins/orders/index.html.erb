@@ -13,7 +13,7 @@
 				<% @orders.each do |order| %>
 				<tr>
 
-					<td><%= link_to order.updated_at,admins_order_path(order.id) %></td>
+					<td><%= link_to order.updated_at.strftime("%Y-%m-%d %H:%M"),admins_order_path(order.id) %></td>
 					<td><%= order.customer.last_name+order.customer.first_name %></td>
 					<td><%= order.order_items.count %></td>
 					<td><%= order.status %></td>

@@ -19,7 +19,7 @@
 						<%= link_to (customer.last_name+customer.first_name), admins_customer_path(customer.id) %>
 					</td>
 					<td><%= customer.email %></td>
-					<td><%= customer.is_member_status  == false ? "有効会員" : "退会済み"%></td>
+					<td><%= customer.is_member_status  == false ? "有効会員" : "退会済み"%></td><!--三項演算子(条件演算子）を使ってif文を記述-->
 				</tr>
 				<% end %>
 			</tbody>

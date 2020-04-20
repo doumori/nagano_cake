@@ -13,11 +13,11 @@ class Admins::OrdersController < ApplicationController
   def update
   	@order = Order.find(params[:id])
     @order.update(order_params)
-    redirect_to admins_orders_path
+    redirect_to admins_order_path(@order.id)
 
     @order_item = OrderItem.find(params[:id])
     @order_item.update(order_item_params)
-    redirect_to admins_order_path(@order.id)
+    redirect_to admins_order_path(@order_item.order.id)
 
   end
   private
