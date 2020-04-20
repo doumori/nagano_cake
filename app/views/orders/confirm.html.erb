@@ -1,0 +1,52 @@
+<body>
+  <div class="container">
+    <h2>登録内容の確認</h2>
+    <%= form_with model: [@order_new,@order], url:orders_path, method: :post,local: true do |f| %>
+    <table class="table table-hover">
+    <thead>
+        <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @sum = 0 %>
+        <% @cart_items.each do |f| %>
+        <tr>
+            <td><%= f.item.name %></td>
+            <td><%= f.item.price %></td>
+            <td><%= f.item_quantity %></td>
+            <td><%= (f.item.price) * (f.item_quantity).to_i %></td>
+            <!-- 注文合計金額 -->
+            <% @sum += (f.item.price) * (f.item_quantity).to_i %>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<table class="table table-hover">
+        <tr>
+            <th>送料</th>
+            <td>800</td>
+        </tr>
+            <th>商品合計</th>
+            <td><%= @sum %></td>
+        </tr>
+            <th>合計金額</th>
+            <td><%= @sum + 800%></td>
+        </tr>
+</table>
+
+    <%= f.submit"戻る",name: 'back',class:'btn btn-secondary mr-3'%>
+    <%= f.submit"購入を確定する",class:'btn btn-primary'%>
+    <% end %>
+  </div>
+<br><span>支払い方法</span><br/>
+    <%= %><br>
+
+<br><span>お届け先</span><br/>
+    <%= %><br>
+</body>
+</html>
