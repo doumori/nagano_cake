@@ -2,6 +2,7 @@ class CartItemsController < ApplicationController
   def index
     @cart_items = current_customer.cart_items.all
     @order_new = Order.new
+    @total_price = CartItem.all.sum(:price)
   end
 
   def create

@@ -26,6 +26,7 @@
         <% end %>
     </tbody>
 </table>
+    <%= carrent_customer.@total_price %>
 <%= form_with model:@order_new,url:new_order_path,local: true, method: :get do |f| %>
     <p><%= f.submit'情報入力に進む',class:"btn btn-info glyphicon glyphicon-share-alt" %></p>
   <% end %>

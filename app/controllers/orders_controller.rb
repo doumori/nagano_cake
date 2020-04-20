@@ -6,12 +6,6 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-      # # 確認画面
-      # if params[:back].present?
-      #   render 'customers/new'
-      #   # renderを複数回使う時はreturunで抜ける
-      #   return
-      # end
       if  @order.save
         redirect_to orders_thanks_path
       else
