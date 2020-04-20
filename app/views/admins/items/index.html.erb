@@ -18,8 +18,8 @@
 						<%= link_to item.name, admins_item_path(item.id) %>
 						</td>
 						<td><%= item.price %></td>
-						<td><%= item.genre_id %></td>
-						<td><%= item.is_sale_status %></td>
+						<td><%= %></td>
+						<td><%= item.is_sale_status  == false ? "販売停止中" : "販売中"%></td>
 					</tr>
 					<% end %>
 				</tbody>
