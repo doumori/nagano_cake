@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+
   def index
     @items = Item.all
     @items = Item.page(params[:page]).per(10).order('updated_at DESC')
