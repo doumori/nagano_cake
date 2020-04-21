@@ -3,35 +3,24 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  color: #6c6b6b;
+.items{
+  width:100%;
 }
-a {
-  text-decoration: none;
-}
- 
-
-.clearfix::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
 .flex_test-box{
-  margin:50px;
-  padding:50px;
+  display: flex;
+  flex-wrap: wrap;
 }
-
 .flex_test-item{
-  margin:50px;
-  padding:50px;
+  width: 20%;
+   padding-left: 0px 20px;
 }
-.item_image
-{
-  margin:50px;
-  padding:50px;
+.flex_item_image{
+  padding-left: 0px 40px;
+}
+.items_show{
+  padding-top: 30px;
+
+}
+.item_show_text{
+   padding-top: 30px;
 }
