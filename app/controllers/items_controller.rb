@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
 
   def index
+<<<<<<< HEAD
        # 消費税の計算。うまくいかない
      @items_all=Item.all
     # 消費税の計算。うまくいかない
@@ -18,10 +19,10 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @cart_item_new = CartItem.new
+
     @genres=Genre.all
 
     # 消費税の計算。これは上手く行く
-
   end
 
   def top

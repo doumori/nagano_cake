@@ -31,8 +31,12 @@
             <td><%= (cart_item.item.price) * (cart_item.item_quantity) %></td>
 
             <!-- 注文合計金額 -->
+<<<<<<< HEAD
             <% @sum += (cart_item.item.price) * (cart_item.item_quantity) %>
 >>>>>>> 4ddcf4032848ef2c7e700007b9720666212ef990
+=======
+            <% @sum += (cart_item.item.price) * (cart_item.item_quantity).to_i %>
+>>>>>>> 2e29a9deb2d8b36fb19b145665567d45beb2dd01
         </tr>
         <% end %>
     </tbody>
@@ -41,34 +45,36 @@
 <table class="table table-hover">
         <tr>
             <th>送料</th>
-            <td>800</td>
+            <td><%= @freight %>
+            </td>
         </tr>
             <th>商品合計</th>
             <td><%= @sum %></td>
         <tr>
             <th>合計金額</th>
-            <td><%= @sum + 800 %></td>
+            <td><%= @sum + @freight %></td>
         </tr>
 </table>
-    <%= form_with model: [@order_new], url:orders_path, method: :post, local: true do |f| %>
+    <%= form_with model: @order_new, url:orders_path, method: :post, local: true do |f| %>
 
-    <%= f.hidden_field :customer_id, value:current_customer.id %>
-    <%= f.hidden_field :pay_method, value: 'クレジットカード' %>
-    <%= f.hidden_field :status, value: '入金待ち' %>
-    <%= f.hidden_field :freight, value: @freight %>
-    <%= f.hidden_field :total, value: @sum + 800 %>
-    <%= f.hidden_field :ship_name, value: params[:order][:ship_name] %>
-    <%= f.hidden_field :ship_postcode, value: params[:order][:ship_code] %>
-    <%= f.hidden_field :ship_address, value: @order_address %>
-
-    <%= f.submit"戻る",name: 'back',class:'btn btn-secondary mr-3'%>
-    <%= f.submit"購入を確定する",class:'btn btn-primary'%>
+        <%= f.hidden_field :customer_id, value:current_customer.id %>
+        <%= f.hidden_field :pay_method, value: @pay_method %>
+        <%= f.hidden_field :status, value: '入金待ち' %>
+        <%= f.hidden_field :freight, value: @freight %>
+        <%= f.hidden_field :total, value: @sum + @freight %>
+        <%= f.hidden_field :ship_name, value: @order_name  %>
+        <%= f.hidden_field :ship_postcode, value: @order_postcode %>
+        <%= f.hidden_field :ship_address, value: @order_address %>
+        <%= f.submit "戻る",name: 'back',class:'btn btn-secondary mr-3'%>
+        <%= f.submit "購入を確定する", class:'btn btn-primary'%>
     <% end %>
   </div>
 <br><span>支払い方法</span><br/>
     <%= @pay_method %><br>
 
 <br><span>お届け先</span><br/>
+    <%= @order_postcode %><br>
     <%= @order_address %><br>
+    <%= @order_name %><br>
 </body>
 </html>
