@@ -1,63 +1,56 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title></title>
-</head>
-<body>
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-10">
+<div class="container">
+  <div class="row">
+    <div class="col-xs-10">
 
-        <h4>マイページ</h4>
+      <h4>マイページ</h4>
+      <tr>
+        <td>
+          <%= link_to "編集する", edit_customer_path(current_customer), class: "btn btn-primary" %>
+        </td>
+        <td>
+          <%= link_to "パスワードを変更する", edit_password_path(current_customer), class: "btn btn-primary" %>
+        </td>
+      </tr>
+
+      <table class="table">
         <tr>
-          <td>
-            <%= link_to "編集する", edit_customer_path(current_customer), class: "btn btn-primary" %>
-          </td>
-          <td>
-            <%= link_to "パスワードを変更する", edit_password_path(current_customer), class: "btn btn-primary" %>
-          </td>
+          <th><h4>氏名</h4></th>
+          <th><%= current_customer.last_name %> <%= current_customer.first_name %></th>
         </tr>
-
-        <table class="table">
-          <tr>
-            <th><h4>氏名</h4></th>
-            <th><%= current_customer.last_name %> <%= current_customer.first_name %></th>
-          </tr>
-          <tr>
-            <th><h4>カナ</h4></th>
-            <th><%= current_customer.last_name_kana %> <%= current_customer.first_name_kana %></th>
-          </tr>
-          <tr>
-            <th><h4>郵便番号</h4></th>
-            <th><%= current_customer.post_code %></th>
-          </tr>
-          <tr>
-            <th><h4>住所</h4></th>
-            <th><%= current_customer.address %></th>
-          </tr>
-          <tr>
-            <th><h4>電話番号</h4></th>
-            <th><%= current_customer.phone_number %></th>
-          </tr>
-          <tr>
-            <th><h4>メールアドレス</h4></th>
-            <th><%= current_customer.email %></th>
-          </tr>
-        </table>
-
         <tr>
-          <th><h4>配送先</h4></th>
-          <th><%= link_to "一覧を見る", ships_path, class: "btn btn-primary" %></th>
+          <th><h4>カナ</h4></th>
+          <th><%= current_customer.last_name_kana %> <%= current_customer.first_name_kana %></th>
         </tr>
-
         <tr>
-          <th><h4>注文履歴</h4></th>
-          <th><%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %></th>
+          <th><h4>郵便番号</h4></th>
+          <th><%= current_customer.post_code %></th>
         </tr>
-
+        <tr>
+          <th><h4>住所</h4></th>
+          <th><%= current_customer.address %></th>
+        </tr>
+        <tr>
+          <th><h4>電話番号</h4></th>
+          <th><%= current_customer.phone_number %></th>
+        </tr>
+        <tr>
+          <th><h4>メールアドレス</h4></th>
+          <th><%= current_customer.email %></th>
+        </tr>
+      </table>
+      <div>
+        <tr>
+          <td><h4>配送先</h4></td>
+          <td><%= link_to "一覧を見る", ships_path, class: "btn btn-primary" %></td>
+        </tr>
       </div>
+      <div>
+        <tr>
+          <td><h4>注文履歴</h4></td>
+          <td><%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %></td>
+        </tr>
+      </div>
+
     </div>
   </div>
-
-</body>
-</html>
+</div>
