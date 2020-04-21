@@ -1,10 +1,7 @@
 class ItemsController < ApplicationController
 
   def index
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> master
+
        # 消費税の計算。うまくいかない
      @items_all=Item.all
     # 消費税の計算。うまくいかない
@@ -13,28 +10,17 @@ class ItemsController < ApplicationController
     @genres=Genre.all
         if params[:genre_id]
       @genre = Genre.find(params[:genre_id])
-<<<<<<< HEAD
       @items = @genre.items.page(params[:page]).per(8).order('updated_at DESC')
     else
       @items = Item.page(params[:page]).per(8).order('updated_at DESC')
-=======
-      @items = @genre.items.page(params[:page]).per(10).order('updated_at DESC')
-    else
-      @items = Item.page(params[:page]).per(10).order('updated_at DESC')
->>>>>>> master
+
     end
   end
 
   def show
     @item = Item.find(params[:id])
     @cart_item_new = CartItem.new
-<<<<<<< HEAD
     @genres=Genre.all
-=======
-
-    @genres=Genre.all
-
->>>>>>> master
     # 消費税の計算。これは上手く行く
   end
 
