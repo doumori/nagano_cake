@@ -10,6 +10,9 @@
 						<%= f.select :status, Order.statuses.keys, {}  %>
 						<%= f.submit "更新",class: "btn btn-primary" %>
 					<% end %>
+          <div class="container">
+   <div class="row">
+<div class="col-xs-9">
   <table class="table table-hover table-inverse">
       <thead>
         <tr>
@@ -29,7 +32,7 @@
           <td><%= order_item.name %></td>
           <td><%= order_item.price %></td>
           <td><%= order_item.quantity %></td>
-          <td><% @sum+=(order_item.price*order_item.quantity*1.1).floor %></td>
+          <td><%= @sum+=(order_item.price*order_item.quantity*1.1).floor %></td>
           <td>
 	          <%= form_for order_item, url:admins_order_item_path(order_item.id) do |f| %>
 						<%= f.select :product_status, OrderItem.product_statuses.keys, {}  %>
@@ -40,13 +43,18 @@
         <% end %>
       </tbody>
   </table>
-  <h1>商品合計</h1>
-  	<%= @sum %>
-  <h1>送料</h1>
-
-  <%= @freight %>
-  <h1>請求金額合計</h1>
-  <%= @sum+@freight %>
+</div>
+<div class="col-xs-3">
+<div class="money">
+  <h3><strong>商品合計</strong>
+  	<%= @sum %>円</h3>
+  <h3><strong>送料</strong><%= @freight %>円</h3>
+  <h3><strong>請求金額合計</strong>
+  <%= @sum+@freight %>円</h3>
+</div>
+</div>
+</div>  
+</div>
 
 
 

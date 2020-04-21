@@ -15,16 +15,6 @@
         <% @sum = 0 %>
         <% @cart_items.each do |cart_item| %>
         <tr>
-<<<<<<< HEAD
-            <td><%= f.item.name %></td>
-            <td><%= f.item.price %></td>
-            <td><%= f.item_quantity %></td>
-
-            <td><%= (f.item.price) * (f.item_quantity) %></td>
-            <!-- 注文合計金額 -->
-            <% @sum += (f.item.price) * (f.item_quantity) %>
-
-=======
             <td><%= cart_item.item.name %></td>
             <td><%= cart_item.item.price %></td>
             <td><%= cart_item.item_quantity %></td>
@@ -32,7 +22,6 @@
 
             <!-- 注文合計金額 -->
             <% @sum += (cart_item.item.price) * (cart_item.item_quantity) %>
->>>>>>> 4ddcf4032848ef2c7e700007b9720666212ef990
         </tr>
         <% end %>
     </tbody>
