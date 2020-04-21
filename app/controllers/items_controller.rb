@@ -9,9 +9,9 @@ class ItemsController < ApplicationController
     @genres=Genre.all
         if params[:genre_id]
       @genre = Genre.find(params[:genre_id])
-      @items = @genre.items.page(params[:page]).per(10).order('updated_at DESC')
+      @items = @genre.items.page(params[:page]).per(8).order('updated_at DESC')
     else
-      @items = Item.page(params[:page]).per(10).order('updated_at DESC')
+      @items = Item.page(params[:page]).per(8).order('updated_at DESC')
     end
   end
 
@@ -19,7 +19,6 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @cart_item_new = CartItem.new
     @genres=Genre.all
-
     # 消費税の計算。これは上手く行く
   end
 

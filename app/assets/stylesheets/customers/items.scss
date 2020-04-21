@@ -11,16 +11,52 @@
   flex-wrap: wrap;
 }
 .flex_test-item{
-  width: 10%;
+  width: 15%;
    margin-left: 0px;
 }
 .flex_item-image{
-  padding-left: 0px 0px;
+  padding-left: 20px;
 }
 .items_show{
-  padding-top: 30px;
+  padding-top: 150px;
 
 }
 .item_show_text{
-   padding-top: 30px;
+   padding-top: 200px;
+}
+.p-top {
+  min-width: 960px;
+  &__title {
+    text-align: center;
+    font-size: 16px;
+  }
+
+  &__introduce {
+    margin: 0 auto;
+    th {
+        padding: 0 15px;
+    }
+    td {
+      padding: 0 15px;
+    }
+  }
+  &__paginate {
+    text-align: center;
+    margin:0 auto;
+  }
+}
+.pagination>li>a {          
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {     
+  background: #93c9ff;     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {        
+  border-radius: 15px;    /*角を丸くする*/
 }

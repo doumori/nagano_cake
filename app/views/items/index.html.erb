@@ -1,8 +1,8 @@
 <h4>商品一覧</h4>
 （全<%=@items_all.count%>件）
 <div class="items">
-<div class="container">
-  <div class="row">
+
+
     <div class="col-xs-2">
       <%= render 'genres', genre: @genres %>
     </div>
@@ -19,10 +19,8 @@
                     <p><%= item.price %>(税込)</p>
               </div>
       	    <% end %>
-          </div>
-      </div>
     </div>
   </div>
 
 
-      <%= paginate @items %>
+    <div class='p-top__paginate'><%= paginate @items %></div>
