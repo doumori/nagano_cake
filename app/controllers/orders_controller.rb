@@ -34,7 +34,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find_by(customer_id: current_customer.id)
-    @order_item = OrderItem.find_by(order_id: @order.id)
+    @order_item = OrderItem.find(params[:id])
   end
 
   def confirm

@@ -7,7 +7,7 @@
 					<%= @order.pay_method %>
 			<p>注文ステータス　</p>
 					<%= form_for @order, url:admins_order_path(@order.id) do |f| %>
-						<%= f.select :status, Order.statuses.keys, {}  %>
+						<%= f.select :status, Order.statuses.keys, {}%>
 						<%= f.submit "更新",class: "btn btn-primary" %>
 					<% end %>
   <table class="table table-hover table-inverse">
