@@ -31,7 +31,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><%= @order_item.name %> </td>
+        <td><%= @order_item.item.name %> </td>
         <td><%= @order_item.price %> </td>
         <td><%= @order_item.quantity %> </td>
         <td><%= (@order_item.price) * (@order_item.quantity).to_i %> </td>

@@ -14,9 +14,9 @@
       <tbody>
         <% @orders.each do |order| %>
         <tr>
-          <td><%= link_to order.updated_at.strftime("%Y-%m-%d %H:%M"),admins_order_path(order.id) %></td>
-          <td><%= order.ship_postcode %></td>
-          <td><%= order.ship_name %></td>
+          <td><%= link_to order.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
+          <td><%= (order.ship_postcode) + (order.ship_address) + (order.ship_name).to_s %></td>
+          <td><%= order.order_items.name %></td>
           <td><%= order.total %></td>
           <td><%= order.status %></td>
           <td><%= link_to "表示する",order_path(order) %></td>

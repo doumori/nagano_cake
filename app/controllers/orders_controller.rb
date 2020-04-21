@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
           @order_item_new = OrderItem.new
             @order_item_new.order_id = @order.id
             @order_item_new.item_id = f.item.id
-            @order_item_new.product_status = 0
+            @order_item_new.product_status = '製作待ち'
             @order_item_new.price = f.item.price
             @order_item_new.quantity = f.item_quantity
             @order_item_new.name = f.item.name
@@ -34,7 +34,8 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find_by(customer_id: current_customer.id)
-    @order_item = OrderItem.find(params[:id])
+    @order_item = OrderItem.find_by(order_id: @order.id)
+    # @order_item = OrderItem.find(params[:id])
   end
 
   def confirm
