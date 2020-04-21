@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2020_04_16_054957) do
     t.string "post_code"
     t.string "address"
     t.string "phone_number"
-    t.boolean "is_member_status"
+    t.boolean "is_member_status", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2020_04_16_054957) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
-    t.boolean "is_active"
+    t.boolean "is_active", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 2020_04_16_054957) do
     t.string "name"
     t.integer "price"
     t.string "image_id"
-    t.boolean "is_sale_status"
+    t.boolean "is_sale_status", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 2020_04_16_054957) do
   create_table "order_items", force: :cascade do |t|
     t.integer "item_id"
     t.integer "order_id"
-    t.integer "product_status"
+    t.integer "product_status", default: 0, null: false
     t.integer "price"
     t.integer "quantity"
     t.string "name"
@@ -83,8 +83,8 @@ ActiveRecord::Schema.define(version: 2020_04_16_054957) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "customer_id"
-    t.integer "pay_method"
-    t.integer "status"
+    t.integer "pay_method", default: 0, null: false
+    t.integer "status", default: 0, null: false
     t.integer "freight"
     t.integer "total"
     t.string "ship_name"

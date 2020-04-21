@@ -1,4 +1,5 @@
 class CartItemsController < ApplicationController
+
   def index
     @cart_items = current_customer.cart_items.all
     @order_new = Order.new
@@ -27,8 +28,9 @@ class CartItemsController < ApplicationController
 
   def destroy_all
     @cart_item_destroy_all = current_customer.cart_items.all
-    @cart_item_destroy_all.destroy_all
-    redirect_to request.referer
+    if @cart_item_destroy_all.destroy_all
+      redirect_to items_path
+    end
   end
 
   private

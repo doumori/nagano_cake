@@ -1,4 +1,4 @@
-class ApplicationController < ActionController::Base
+class Customer::ApplicationController < ApplicationController
 	# before_actionはすべてのコントローラ実行する際に最初に行われる
 	# デバイスのコントローラー用
 	before_action :configure_permitted_parameters, if: :devise_controller?
