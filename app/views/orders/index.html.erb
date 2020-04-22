@@ -18,6 +18,7 @@
           <td><%= (order.ship_postcode) + (order.ship_address) + (order.ship_name) %></td>
           <td><%= @order_item_name %></td>
           <td><%= order.total %> 円</td>
+
           <td><%= order.status %></td>
           <td><%= link_to "表示する",order_path(order) %></td>
         </tr>
