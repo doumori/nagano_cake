@@ -16,6 +16,30 @@
  @import "bootstrap-sprockets";  /*ここを追加*/
  @import "bootstrap";
 
+/*customerのtopページのメインビジュアル*/
+.main-visual{
+  width: 100%;
+  height: 650px;
+  background-image: url(cake2.jpg);
+  background-size: cover;
+}
+
+p.mainvi-vi {
+  font-size: 64px;
+  color: #FAFAFA;
+  margin-bottom: 10px;
+  padding-top: 200px;
+  text-align: center;
+}
+
+p.mainvi-p {
+  font-size: 20px;
+  color: #FAFAFA;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
 .flex_test-box {
     padding:  10px;             /* 余白指定 */
     display: flex;              /* フレックスボックスにする */
@@ -26,4 +50,19 @@
     margin:  30px;              /* 外側の余白 */
     border-radius:  5px;        /* 角丸指定 */
     width: 15%;                 /* 幅指定 */
+}
+
+.profile {
+  width: 100%;
+  background-color: #ECEFF1;
+  padding-bottom: 90px;
+}
+
+.left-content {
+    width: 50%;
+    float: left;
+}
+
+.prof-vi{
+  text-align: left;
 }

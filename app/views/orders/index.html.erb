@@ -1,4 +1,5 @@
-<h1>注文一覧画面</h1>
+
+  <h1>注文一覧画面</h1>
 
   <table class="table table-hover table-inverse">
     <thead>
@@ -17,7 +18,9 @@
       <tr>
         <td><%= order.updated_at.strftime("%Y/%m/%d") %></td>
         <td><%= (order.ship_postcode) + (order.ship_address) + (order.ship_name) %></td>
-        <td><%= @order_name %></td>
+        <td><% order.order_items.each do |order_item| %>
+            <%= order_item.name %><br>
+            <% end %></td>
         <td><%= order.total %> 円</td>
         <td><%= order.status %></td>
         <td><%= link_to "表示する",order_path(order) %></td>
