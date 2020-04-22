@@ -49,7 +49,8 @@
         <%= f.hidden_field :ship_name, value: @order_name  %>
         <%= f.hidden_field :ship_postcode, value: @order_postcode %>
         <%= f.hidden_field :ship_address, value: @order_address %>
-        <%= f.submit "戻る",name: 'back',class:'btn btn-secondary mr-3'%>
+        <%= f.submit "カートに戻る",name: 'back',class:'btn btn-info mr-3'%>
+        <%= f.submit "情報入力に戻る",name: 'info',class:'btn btn-success glyphicon glyphicon-user'%>
         <%= f.submit "購入を確定する", class:'btn btn-primary'%>
     <% end %>
   </div>

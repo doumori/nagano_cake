@@ -14,6 +14,14 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @cart_items = CartItem.where(customer_id: current_customer.id)
+    # カートへ戻る
+      if params[:back].present?
+            render 'cart_items/index'
+          return
+      elsif params[:info].present?
+            render 'new'
+          return
+      end
       if  @order.save
         @cart_items.each do |f|
           @order_item_new = OrderItem.new
@@ -34,8 +42,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_item = Order.find_by(params[:order_id])
-    # @order_item_name = @order_item.name
+    @order_item = @order.order_items
   end
 
   def confirm

@@ -10,6 +10,7 @@
         </tr>
     </thead>
     <tbody>
+        <% @sum = 0 %>
         <% @cart_items.each do |f| %>
         <tr>
             <td>
@@ -31,6 +32,7 @@
                 <%= link_to "削除", cart_item_path(f),class:"btn btn-danger", method: :delete, data: {confirm: 'カートから削除しますか？'} %>
             <td>
         </tr>
+        <% @sum += (f.item.price) * (f.item_quantity).to_i %>
         <% end %>
     </tbody>
 </table>
