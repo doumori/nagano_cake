@@ -30,14 +30,13 @@
 <table class="table table-hover">
         <tr>
             <th>送料</th>
-            <td><%= @freight %>
-            </td>
+            <td><%= @freight %> 円</td>
         </tr>
             <th>商品合計</th>
-            <td><%= @sum %></td>
+            <td><%= @sum %> 円</td>
         <tr>
             <th>合計金額</th>
-            <td><%= @sum + @freight %></td>
+            <td><%= @sum + @freight %> 円</td>
         </tr>
 </table>
     <%= form_with model: @order_new, url:orders_path, method: :post, local: true do |f| %>

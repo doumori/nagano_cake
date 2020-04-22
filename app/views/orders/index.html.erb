@@ -14,10 +14,10 @@
       <tbody>
         <% @orders.each do |order| %>
         <tr>
-          <td><%= link_to order.updated_at.strftime("%Y-%m-%d %H:%M"),admins_order_path(order.id) %></td>
-          <td><%= order.ship_postcode %></td>
-          <td><%= order.ship_name %></td>
-          <td><%= order.total %></td>
+          <td><%= order.updated_at.strftime("%Y/%m/%d") %></td>
+          <td><%= (order.ship_postcode) + (order.ship_address) + (order.ship_name) %></td>
+          <td><%= @order_item_name %></td>
+          <td><%= order.total %> 円</td>
           <td><%= order.status %></td>
           <td><%= link_to "表示する",order_path(order) %></td>
         </tr>
