@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
     # 消費税の計算。これは上手く行く
   end
   def top
-    @push_items = Item.last(5)
+    @push_items = Item.last(2)
   end
   private
   def item_params

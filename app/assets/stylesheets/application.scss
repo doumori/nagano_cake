@@ -16,6 +16,20 @@
  @import "bootstrap-sprockets";  /*ここを追加*/
  @import "bootstrap";
 
+
+.flex_test-box {
+    padding:  10px;             /* 余白指定 */
+    display: flex;              /* フレックスボックスにする */
+}
+
+.flex_test-item {
+    padding: 10px;
+    margin:  30px;              /* 外側の余白 */
+    border-radius:  5px;        /* 角丸指定 */
+    width: 15%;                 /* 幅指定 */
+}
+
+
 /*customerのtopページのメインビジュアル*/
 .main-visual{
   width: 100%;
@@ -39,22 +53,95 @@ p.mainvi-p {
   position: relative;
   z-index: 10;
 }
-
-.flex_test-box {
-    padding:  10px;             /* 余白指定 */
-    display: flex;              /* フレックスボックスにする */
-}
-
-.flex_test-item {
-    padding: 10px;
-    margin:  30px;              /* 外側の余白 */
-    border-radius:  5px;        /* 角丸指定 */
-    width: 15%;                 /* 幅指定 */
-}
-
-.profile {
+.main{
   width: 100%;
   background-color: #ECEFF1;
+  color: #000000;
+
+}
+.main-container{
+  width: 920px;
+  margin:auto auto;
+  text-align: center;
+  padding: 0px 0 90px 0;
+}
+
+.heading{
+  padding-top: 90px;
+  text-align: center;
+}
+
+.heading-p{
+  text-align: center;
+  padding: 10px 100px 10px 10px;
+}
+
+.ander {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 3px;
+    margin: 8px auto 0 auto;
+    background-color: #EC715F;
+}
+
+/*お勧めのケーキ*/
+
+p.sample1 {
+width:500px; height:500px;
+border:none;
+background-image:url(cake4.jpg);
+background-size:cover;
+float: left;
+margin:0px 10px 0px 0px;
+padding: 11px;
+}
+
+p.sample2 {
+width:500px; height:500px;
+border:none;
+background-color: white;
+border-radius: 60%;
+background-size:cover;
+float: left;
+margin:0px 100px 0px 0px;
+padding: 11px;
+}
+
+p.sample3 {
+width:500px; height:500px;
+border:none;
+background-color: white;
+border-radius: 50%;
+background-size:cover;
+float: left;
+margin:0px 10px 0px 0px;
+padding: 11px;
+}
+
+p.sample4 {
+width:500px; height:500px;
+border:none;
+background-image:url(cake5.jpg);
+background-size:cover;
+float: left;
+margin:10px 10px 0px 0px;
+padding: 11px;
+
+}
+
+.sample:nth-child(2n) {
+    margin-right: 0;
+}
+.sample:nth-child(-n+2) {
+    margin-top: 0;
+}
+
+
+/*お召し上がりいただくために*/
+.profile {
+  width: 100%;
+  background-color: #ECEF;
   padding-bottom: 90px;
 }
 
@@ -66,3 +153,34 @@ p.mainvi-p {
 .prof-vi{
   text-align: left;
 }
+
+
+h3.feature-title{
+  margin-bottom: 5px;
+  font-size: 20px;
+}
+
+
+/*コンタクト*/
+.contact {
+  width: 100%;
+  margin-bottom: 90px;
+  text-align: center;
+
+}
+.contact-left{
+  width: 50%;
+  float: left;
+}
+.contact-right{
+  width:50%;
+  float: left;
+}
+
+.social i {
+  display: inline-block;
+  margin-left: 20px;
+  margin-top: 5px;
+  font-size: 60px;
+}
+
