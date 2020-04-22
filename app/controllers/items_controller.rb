@@ -25,7 +25,7 @@ class ItemsController < ApplicationController
   end
 
   def top
-    @push_items = Item.last(5)
+    @push_items = Item.last(2)
   end
 
   private
