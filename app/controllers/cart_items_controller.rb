@@ -7,8 +7,8 @@ class CartItemsController < ApplicationController
 
   def create
     # @item = Item.find(params[:item_id])
-    @cart_item = current_customer.cart_items.new(cart_item_params)
-    # @cart_item.item_id = @item.id
+    @cart_item = CartItem.new(cart_item_params)
+    @cart_item.customer_id = current_customer.id
     @cart_item.save
     redirect_to cart_items_path
   end
