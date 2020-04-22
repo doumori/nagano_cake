@@ -2,8 +2,8 @@
     <%=@items.count%>件）
     <div class="flex_test-box">
         <div class="col-xs-2">
+          <%= render 'genres', genre: @genres %>
             <% @items.each do |item| %>
-            <%= render 'genres', genre: @genres %>
             <div class="flex_test-item">
                 <%= link_to item_path(item) do %>
                 <div class="item_image">
