@@ -1,52 +1,112 @@
 
-			<p>購入者</p>
-					<%= @order.ship_name %>
-			<p>配送先</p>
-					<%= @order.ship_postcode %><%= @order.ship_address %>
-			<p>支払い方法</p>
-					<%= @order.pay_method %>
-			<p>注文ステータス　</p>
+			<h3><strong>購入者</strong>
+					<%= @order.ship_name %></h3>
+			<h3><strong>配送先</strong>
+					<%= @order.ship_postcode %><%= @order.ship_address %></h3>
+			<h3><strong>支払い方法</strong>
+					<%= @order.pay_method %></h3>
+			<h3><strong>注文ステータス</strong>
 					<%= form_for @order, url:admins_order_path(@order.id) do |f| %>
-						<%= f.select :status, Order.statuses.keys, {}  %>
+
+						<%= f.select :status, Order.statuses.keys, {}%>
+
 						<%= f.submit "更新",class: "btn btn-primary" %>
 					<% end %>
-  <table class="table table-hover table-inverse">
-      <thead>
-        <tr>
-          <th>商品名</th>
-          <th>単価（税込）</th>
-          <th>数量</th>
-          <th>小計</th>
-          <th>製作ステータス</th>
-          <th colspan="1"></th>
-        </tr>
-      </thead>
+            <div class="container">
+               <div class="row">
+            <div class="col-xs-8">
+              <table class="table table-hover table-inverse">
+                  <thead>
+                    <tr>
+                      <th>商品名</th>
+                      <th>単価（税込）</th>
+                      <th>数量</th>
+                      <th>小計</th>
+                      <th>製作ステータス</th>
+                      <th colspan="1"></th>
+                    </tr>
+                  </thead>
 
-      <tbody>
-				<%= @sum=0 %>
-      	  <% @order_items.each do |order_item| %>
-        <tr>
-          <td><%= order_item.name %></td>
-          <td><%= order_item.price %></td>
-          <td><%= order_item.quantity %></td>
-          <td><% @sum+=(order_item.price*order_item.quantity*1.1).floor %></td>
-          <td>
-	          <%= form_for order_item, url:admins_order_item_path(order_item.id) do |f| %>
-						<%= f.select :product_status, OrderItem.product_statuses.keys, {}  %>
-						<%= f.submit "更新",class: "btn btn-primary" %>
-						<% end %>
-					</td>
-        </tr>
-        <% end %>
-      </tbody>
-  </table>
-  <h1>商品合計</h1>
-  	<%= @sum %>
-  <h1>送料</h1>
+                  <tbody>
+            				<% @sum=0 %>
+                  	  <% @order_items.each do |order_item| %>
+                    <tr>
+                      <td><%= order_item.name %></td>
+                      <td><%= order_item.price %></td>
+                      <td><%= order_item.quantity %></td>
+                      <td><%= @sum+=(order_item.price*order_item.quantity*1.1).floor %></td>
+                      <td>
+            	          <%= form_for order_item, url:admins_order_item_path(order_item.id) do |f| %>
+            						<%= f.select :product_status, OrderItem.product_statuses.keys, {}  %>
+            						<%= f.submit "更新",class: "btn btn-primary" %>
+            						<% end %>
+            					</td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-xs-4">
+            <div class="money">
+              <h3><strong>商品合計</strong>
+              	<%= @sum %>円</h3>
+              <h3><strong>送料</strong><%= @freight %>円</h3>
+              <h3><strong>請求金額合計</strong>
+              <%= @sum+@freight %>円</h3>
+            </div>
+            </div>
+            </div>  
+            </div>
 
-  <%= @freight %>
-  <h1>請求金額合計</h1>
-  <%= @sum+@freight %>
-
+  <div class="row">
+    <div class="col-xs-9">
+      <div class="order-item-index-history">
+        <table class="table table-hover table-inverse">
+            <thead>
+              <tr>
+                <th>商品名</th>
+                <th>単価（税込）</th>
+                <th>数量</th>
+                <th>小計</th>
+                <th>製作ステータス</th>
+                <th colspan="1"></th>
+              </tr>
+            </thead>
+            <tbody>
+            	<% @order_items.each do |order_item| %>
+              <tr>
+                <td><%= order_item.name %></td>
+                <td><%= order_item.price %></td>
+                <td><%= order_item.quantity %></td>
+                <td><%= (order_item.price).to_i * (order_item.quantity).to_i %></td>
+                <td>
+      	          <%= form_for order_item, url:admins_order_item_path(order_item.id) do |f| %>
+      						<%= f.select :product_status, OrderItem.product_statuses.keys, {}  %>
+      						<%= f.submit "更新",class: "btn btn-primary" %>
+      						<% end %>
+      					</td>
+              </tr>
+              <% end %>
+            </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-xs-3">
+      <div class="order-item-index-history-total">
+        <table class="table table-borderless">
+          <tr>
+            <th>商品合計</th><td><%= @sum %></td>
+          </tr>
+          <tr>
+            <th>送料</th><td><%= @freight %></td>
+          </tr>
+          <tr>
+            <th>請求金額合計</th><td><%=  @freight %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 
 

@@ -16,12 +16,16 @@
       <%= f.label :ship_num, "ご自身の住所" %><br>
       <%= current_customer.address %><br>
 
+
       <!-- shipテーブルに登録している住所 -->
+
       <%= radio_button_tag('ship_num',"2") %>
       <%= f.label :ship_num, "登録済住所から選択" %><br>
       <%= select_tag 'ship_id', options_from_collection_for_select(Ship.all, :id, :view_ship_full, 1) %>
 
+
       <!-- Shipの新規登録 -->
+
       <%= radio_button_tag('ship_num',"3") %>
       <%= f.label :ship_num, "新しいお届け先" %><br>
       <label for="postcode">郵便番号(ハイフンなし)</label>
@@ -34,3 +38,4 @@
       <%= f.hidden_field :customers_id, value:current_customer.id %>
       <%= f.submit "確認画面" %>
   <% end %>
+

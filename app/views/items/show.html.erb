@@ -1,14 +1,30 @@
-<div>
-    <%= form_with method: :post, model: @cart_item_new,local: true do |f| %>
-        <div>
-             <%= attachment_image_tag @item, :image, size: '200x200',format: "jpeg",fallback: "cake.png" %>
-            <p><%= @item.name %></p>
-            <p><%= @item.description %></p>
-            <p><%= @item.price %>(税込)</p>
-            <p><%= f.select :item_quantity, ['1', '2', '3'], {include_blank: '個数選択'},class: 'sample' %></p>
-            <!-- @item.idをitem_idとして送る -->
-            <%= f.hidden_field :item_id, value:@item.id %>
-            <p><%= f.submit"カートに入れる"%>
+
+<div class="items">
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-3">
+             <%= render 'genres', genre: @genres %>
         </div>
-    <% end %>
-</div>
+            <div class="col-xs-4">
+                <div class="items_show">
+                    <%= form_with method: :post, model:@cart_item_new,local: true do |f| %>
+                        <div calss="item_show_image" >
+                            <%= attachment_image_tag @item, :image, size: '300x250',format: "jpeg",fallback: "no_image.jpg" %>
+                        </div>
+                </div>
+            </div>
+                 <div class="col-xs-5" >
+                    <div class="item_show_text" >
+                        <h3><%= @item.name %></h3>
+                        <p><%= @item.description %></p>
+                        <h3>¥<%= @item.price %>(税込)</h3>
+                        <p><%= f.select :item_quantity, ['1', '2', '3'], {include_blank: '個数選択'},class: 'sample' %></p>
+                        <!-- @item.idをitem_idとして送る -->
+                        <%= f.hidden_field :item_id, value:@item.id %>
+                        <p><%= f.submit"カートに入れる" ,class:"btn btn-primary btn-lg pull-right" %></p>
+                     </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+  </div>
