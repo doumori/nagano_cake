@@ -1,47 +1,50 @@
-<h4>登録情報編集</h4>
 <div class="container">
-  <%= form_for(current_customer) do |f| %>
-
-
-  <div class="field">
-    <%= f.label :last_name, "名前" %>
-    (姓)<%= f.text_field :last_name %>
-    (名)<%= f.text_field :first_name %>
+  <div class="row">
+    <h3 class="col-xs-offset-2 col-xs-3">登録情報編集</h3>
   </div>
+  <div class="container">
+    <%= form_for(current_customer) do |f| %>
 
-  <div class="field">
-    <%= f.label :last_name_kana, "フリガナ" %>
-    <%= f.text_field :last_name_kana %>
-    <%= f.text_field :first_name_kana %>
+    <div class="field row">
+      <%= f.label :last_name, "名前" %>
+      (姓)<%= f.text_field :last_name %>
+      (名)<%= f.text_field :first_name %>
+    </div>
+
+    <div class="field row">
+      <%= f.label :last_name_kana, "フリガナ" %>
+      <%= f.text_field :last_name_kana %>
+      <%= f.text_field :first_name_kana %>
+    </div>
+
+    <div class="field row">
+      <%= f.label :email, "メールアドレス" %>
+      <%= f.text_field :email %>
+    </div>
+
+    <div class="field row">
+      <%= f.label :post_code, "郵便番号(ハイフンなし)" %>
+      <%= f.text_field :post_code %>
+    </div>
+
+    <div class="field row">
+      <%= f.label :address, "住所" %>
+      <%= f.text_field :address %>
+    </div>
+
+    <div class="field row">
+      <%= f.label :phone_number, "電話番号(ハイフンなし)" %>
+      <%= f.text_field :phone_number %>
+    </div>
+
+    <div class="action row">
+      <tr>
+        <td><%= f.submit '編集内容を保存する', class: "btn btn-primary" %></td>
+        <td><%= link_to "退会する",  customers_confirm_path, class: "btn btn-danger" %></td>
+      </tr>
+    </div>
+
+    <% end %>
+
   </div>
-
-  <div class="field">
-    <%= f.label :email, "メールアドレス" %>
-    <%= f.text_field :email %>
-  </div>
-
-  <div class="field">
-    <%= f.label :post_code, "郵便番号(ハイフンなし)" %>
-    <%= f.text_field :post_code %>
-  </div>
-
-  <div class="field">
-    <%= f.label :address, "住所" %>
-    <%= f.text_field :address %>
-  </div>
-
-  <div class="field">
-    <%= f.label :phone_number, "電話番号(ハイフンなし)" %>
-    <%= f.text_field :phone_number %>
-  </div>
-
-  <div class="action">
-    <tr>
-      <td><%= f.submit '編集内容を保存する', class: "btn btn-primary" %></td>
-      <td><%= link_to "退会する",  customers_confirm_path, class: "btn btn-danger" %></td>
-    </tr>
-  </div>
-
-  <% end %>
-
 </div>

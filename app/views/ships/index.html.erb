@@ -1,54 +1,58 @@
-<h4>配送先登録/一覧</h4>
+<div class="container">
+  <div class="row">
+    <h3 class="col-xs-offset-2 col-xs-4">配送先登録/一覧</h3>
+  </div>
 
-<%= form_for(@ship) do |f| %>
+  <%= form_for(@ship) do |f| %>
 
-
-<div class="field row">
-  <tr>
-    <td><%= f.label :code, "郵便番号(ハイフンなし)", class: "col-xs-offset-3 col-sm-3" %></td>
-    <td><p><%= f.text_field :code, class: "col-xs-3" %></p></td>
-  </tr>
-</div>
-
-<div class="field row">
-  <%= f.label :address, "住所", class: "col-xs-offset-3 col-xs-3" %>
-  <p><%= f.text_field :address, class: "col-xs-4" %></p>
-</div>
-
-<div class="field row">
-  <%= f.label :name, "宛先", class: "col-xs-offset-3 col-xs-3" %>
-  <p><%= f.text_field :name, class: "col-xs-3" %></p>
-</div>
-
-<div class="action row">
-  <%= f.submit '登録する', class: "btn btn-success col-xs-offset-10 col-xs-2" %>
-</div>
-<% end %>
-
-
-<table class="table">
-  <thead>
+  <div class="field row">
     <tr>
-      <th>郵便番号</th>
-      <th>住所</th>
-      <th>宛名</th>
-      <th></th>
+      <td><%= f.label :code, "郵便番号(ハイフンなし)", class: "col-xs-3" %></td>
+      <td><p><%= f.text_field :code, class: "col-xs-3" %></p></td>
     </tr>
-  </thead>
+  </div>
 
-  <tbody>
-    <% current_customer.ships.each do |ship| %>
-    <tr>
-      <td><%= ship.code %></td>
-      <td><%= ship.address %></td>
-      <td><%= ship.name %></td>
-      <td>
-        <%= link_to "編集する", edit_ship_path(ship), class: "btn btn-primary" %>
+  <div class="field row">
+    <%= f.label :address, "住所", class: "col-xs-3" %>
+    <p><%= f.text_field :address, class: "col-xs-7" %></p>
+  </div>
 
-        <%= link_to "消去する", ship_path(ship), method: :delete, data: {confirm: "本当に消しますか?"}, class: "btn btn-danger" %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
+  <div class="field row">
+    <%= f.label :name, "宛先", class: "col-xs-3" %>
+    <p><%= f.text_field :name, class: "col-xs-3" %></p>
+  </div>
 
-</table>
+  <div class="action row">
+    <%= f.submit '登録する', class: "btn btn-success col-xs-offset-8 col-xs-2" %>
+  </div>
+  <% end %>
+
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>郵便番号</th>
+          <th>住所</th>
+          <th>宛名</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% current_customer.ships.each do |ship| %>
+        <tr>
+          <td><%= ship.code %></td>
+          <td><%= ship.address %></td>
+          <td><%= ship.name %></td>
+          <td>
+            <%= link_to "編集する", edit_ship_path(ship), class: "btn btn-primary" %>
+
+            <%= link_to "消去する", ship_path(ship), method: :delete, data: {confirm: "本当に消しますか?"}, class: "btn btn-danger" %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+
+    </table>
+  </div>
+</div>
