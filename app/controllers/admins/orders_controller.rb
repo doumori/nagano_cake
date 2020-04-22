@@ -5,7 +5,7 @@ class Admins::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_items = OrderItem.all
+    @order_items = @order.order_items
     @freight=800
   end
 

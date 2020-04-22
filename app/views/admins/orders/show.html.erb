@@ -3,7 +3,7 @@
   <div class="row">
     <table class="table table-borderless">
       <tr>
-        <th>購入者</th><td><%= @order.ship_name %>></td>
+        <th>購入者</th><td><%= @order.ship_name %></td>
       </tr>
       <tr>
         <th>配送先</th><td><%= @order.ship_postcode %><%= @order.ship_address %></td>
@@ -37,13 +37,12 @@
               </tr>
             </thead>
             <tbody>
-      				<% @sum=0 %>
-            	  <% @order_items.each do |order_item| %>
+            	<% @order_items.each do |order_item| %>
               <tr>
                 <td><%= order_item.name %></td>
                 <td><%= order_item.price %></td>
                 <td><%= order_item.quantity %></td>
-                <td><% @sum+=(order_item.price*order_item.quantity*1.1).floor %></td>
+                <td><%= (order_item.price).to_i * (order_item.quantity).to_i %></td>
                 <td>
       	          <%= form_for order_item, url:admins_order_item_path(order_item.id) do |f| %>
       						<%= f.select :product_status, OrderItem.product_statuses.keys, {}  %>
@@ -66,13 +65,12 @@
             <th>送料</th><td><%= @freight %></td>
           </tr>
           <tr>
-            <th>請求金額合計</th><td><%= @sum+@freight %></td>
+            <th>請求金額合計</th><td><%=  @freight %></td>
           </tr>
         </table>
       </div>
     </div>
   </div>
 </div>
-
 
 
