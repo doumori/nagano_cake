@@ -17,10 +17,7 @@ class OrdersController < ApplicationController
     # カートへ戻る
       if params[:back].present?
             render 'cart_items/index'
-          return
-      elsif params[:info].present?
-            render 'new'
-          return
+        return
       end
       if  @order.save
         @cart_items.each do |f|
@@ -53,7 +50,9 @@ class OrdersController < ApplicationController
     @pay_method = params[:order][:pay_method]
       # 自分の配送先
       if params[:ship_num] == "1"
+        @order_postcode = current_customer.post_code
         @order_address = current_customer.address
+        @order_name = (current_customer.last_name) + (current_customer.first_name)
       # 登録済みの配送先
       elsif params[:ship_num] == "2"
         @order_postcode = Ship.find(params[:ship_id]).view_ship_code
