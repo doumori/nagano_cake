@@ -7,11 +7,9 @@
 					<%= @order.pay_method %></h3>
 			<h3><strong>注文ステータス</strong>
 					<%= form_for @order, url:admins_order_path(@order.id) do |f| %>
-<<<<<<< HEAD
-						<%= f.select :status, Order.statuses.keys, {}  %></h3>
-=======
+
 						<%= f.select :status, Order.statuses.keys, {}%>
->>>>>>> master
+
 						<%= f.submit "更新",class: "btn btn-primary" %>
 					<% end %>
             <div class="container">
