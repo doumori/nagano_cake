@@ -85,9 +85,35 @@ p.mainvi-p {
     background-color: #EC715F;
 }
 
+
+/*topの5つの写真*/
+[class^="topimg-flex-5"] {
+  margin: 0px 0px 10px 0px;
+  display: -webkit-flex;
+  display: flex;
+  border: 0px solid #ddd;
+  margin: 0 auto;
+  overflow: hidden;
+}
+[class^="topimg-flex-5"] img{
+  width: 100%;
+  cursor: pointer;
+  transition-duration: 0.5s;
+}
+[class^="topimg-flex-5"] img:hover{
+  transform: scale(1.4) rotate(9deg);
+  transition-duration: 0.8s;
+}
+.topimg-flex-1 img { width: calc( 100% / 1 ); }
+.topimg-flex-2 img { width: calc( 100% / 2 ); }
+.topimg-flex-3 img { width: calc( 100% / 3 ); }
+.topimg-flex-4 img { width: calc( 100% / 4 ); }
+.topimg-flex-5 img { width: calc( 100% / 5 ); }
+/*topの5つの写真*/
+
 /*お勧めのケーキ*/
 
-p.sample1 {
+div.sample1 {
 width:500px; height:500px;
 border:none;
 background-image:url(cake4.jpg);
@@ -96,8 +122,8 @@ float: left;
 margin:0px 10px 0px 0px;
 padding: 11px;
 }
-
-p.sample2 {
+.sample2 {
+position: relative;/*相対配置*/
 width:500px; height:500px;
 border:none;
 background-color: white;
@@ -107,8 +133,24 @@ float: left;
 margin:0px 100px 0px 0px;
 padding: 11px;
 }
+.sample2 p {
+  position: absolute;/*絶対配置*/
+  font-size: 1em;
+  top: 15%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+p.sample2text2 {
+  font-size: 1em;
+  top: 50%;
+  left: 50%;
+  word-break: break-all;
+}
 
-p.sample3 {
+div.sample3 {
+position: relative;/*相対配置*/
 width:500px; height:500px;
 border:none;
 background-color: white;
@@ -118,8 +160,23 @@ float: left;
 margin:0px 10px 0px 0px;
 padding: 11px;
 }
+.sample3 p {
+  position: absolute;/*絶対配置*/
+  font-size: 1em;
+  top: 15%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+p.sample3text2 {
+  font-size: 1em;
+  top: 50%;
+  left: 50%;
+  word-break: break-all;
+}
 
-p.sample4 {
+div.sample4 {
 width:500px; height:500px;
 border:none;
 background-image:url(cake5.jpg);
