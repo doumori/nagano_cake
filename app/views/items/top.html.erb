@@ -1,68 +1,146 @@
+
+<div class="container">
+
   <div class="main-visual">
-      <p class="mainvi-vi">ようこそ、NaganoCakeへ！</p>
-      <p class="mainvi-p">このサイトは、ケーキ販売のECサイトになります。
-        会員でない方も商品の閲覧はできますが、
-        購入には会員登録が必要になります。</p>
+    <p class="mainvi-vi">ようこそ、NaganoCakeへ！</p>
+    <p class="mainvi-p">このサイトは、ケーキ販売のECサイトになります。
+      会員でない方も商品の閲覧はできますが、
+      購入には会員登録が必要になります。
+    </p>
   </div>
 
-<h1>おすすめ商品</h1>
-<table>
-    <thead>
-        <tr>
-            <th>name</th>
-            <th>price</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @push_items.each do |f| %>
-        <tr>
-            <td>
-                <%= f.name %>
-            </td>
-            <td>¥
-                <%= f.price %>
-            </td>
-            <% end %>
-        </tr>
-    </tbody>
-</table>
-<%= link_to "もっと見る",items_path %>
+  <!--
+  <table>
+      <thead>
+          <tr>
+              <th>name</th>
+              <th>price</th>
+          </tr>
+      </thead>
+      <tbody>
+          <% @push_items.each do |f| %>
+          <tr>
+              <td>
+                  <%= f.name %>
+                  <div class="ander"></div>
+              </td>
+              <td>¥
+                  <%= f.price %>
+              </td>
+              <% end %>
+          </tr>
+      </tbody>
+  </table>
+  -->
 
+  <div class="topimg-flex-5">
+      <%= attachment_image_tag Item.find(5), :image, size: '300x180',format: "jpeg",fallback: "no_image.jpg" %>
+      <%= attachment_image_tag Item.find(1), :image, size: '300x180',format: "jpeg",fallback: "no_image.jpg" %>
+      <%= attachment_image_tag Item.find(7), :image, size: '300x180',format: "jpeg",fallback: "no_image.jpg" %>
+      <%= attachment_image_tag Item.find(8), :image, size: '300x180',format: "jpeg",fallback: "no_image.jpg" %>
+      <%= attachment_image_tag Item.find(10), :image, size: '300x180',format: "jpeg",fallback: "no_image.jpg" %>
+  </div>
 
-<!-- ここからプロフィール -->
-    <div class="profile">
-        <div id="profile"></div>
+  <div class="row">
+    <div class="col col-xs-4 col-xs-offset-6">
+      <span style="font-size:1.4em;"><%= link_to "もっと見る",items_path %></span>
+    </div>
+  </div>
+
+    <!-- ここからメイン -->
+    <div class="main">
         <div class="container">
-            <h2 class="heading">Profile</h2>
-            <div class="ander"></div>
-            <p class="heading-p">It is a long established fact that a reader will be distracted by the readable<br>
-                content of a page when looking at its layout.<br>
-            The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters</p>
-
-            <div class="prof-group">
-                    <div class="left-content">
-                        <div class="my-icon"></div>
+            <div id="portfolio"></div>
+                <h2 class="heading">おすすめの商品</h2>
+                    <div class="ander"></div>
+                        <p class="heading-p">It is a long established fact that a reader will be distracted by the readable<br>
+                        content of a page when looking at its layout.
+                        <br>The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters</p>
+                        <div class="production-group clearfix">
+                            <div class="sample sample1"></div>
+                            <div class="sample sample2">
+                                <p class="sample sample2text1">
+                                    <%= Item.find(5).name %>¥<%= Item.find(5).price %>
+                                </p>
+                                <p class="sample sample2text2">
+                                    <%= Item.find(5).description %>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="sample sample3">
+                            <p class="sample sample3text1">
+                                <%= Item.find(6).name %>¥<%= Item.find(6).price %>
+                            </p>
+                            <p class="sample sample3text2">
+                                <%= Item.find(6).description %>
+                            </p>
+                        </div>
+                        <div class="sample sample4"></div>
+                        <div class="sample sample5"></div>
+                        <div class="sample sample6"></div>
                     </div>
-                <div class="prof-vi">
-                <h3 class="feature-title">MyName</h3>
-                <p class="heading-p">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur</p>
+                </div>
+            </div>
+    <!-- ここまでメイン -->
 
-                <h3 class="feature-title">MySkills</h3>
-                <p class="heading-p">HTML/CSS,JavaScript,JQuery,PhotoShop</p>
+
+
+    <!-- ここからプロフィール -->
+    <div class="profile">
+        <div class="container">
+            <h2 class="heading">おいしくお召し上がりいただくために</h2>
+            <div class="ander"></div>
+            <p class="heading-p">ご注文いただき誠にありがとうございます。<br>最高級の食材を贅沢に使った洋菓子を、<br>よりおいしくお召し上がりいただくために、こだわりチルド便にて宅配いたします。
+                <div class="prof-vi">
+                <h3 class="heading">冷蔵庫に5～6時間以上置くと食べ頃になります</h3>
+                <p class="heading-p">お急ぎの場合は、ケーキ箱を開封せず涼しい室温に２時間ほど置くと食べごろになります。<br>１日冷蔵庫に置くと味が馴染んで一層おいしくお召し上がりいただけます。<br>解凍後は７℃以下の冷蔵庫で保存の上、２日以内にお召し上がりください。</p>
             </div>
 
             </div>
         </div>
+
+        <!-- ここからコンタクト -->
+    <div class="contact">
+        <div id="contact"></div>
+        <div class="contact-group">
+
+
+            <div class="headcontainer">
+            <h2 class="heading">Contact</h2>
+            <div class="ander"></div>
+            <p class="heading-p">It is a long established fact that a reader will be distracted by the readable<br>
+            content of a page when looking at its layout. The point of using Lorem Ipsum is that it has<br>
+            a more-or-less normal distribution of letters</p>
+            </div>
+            </div>
+
+        <div class="container clearfix">
+            <div class="contact-left">
+            <h3 class="feature-title">Mail</h3>
+            <a class="feature-title" href="mailto:user@dammy.com">xxx@xxx.com</a>
+            <h3 class="feature-title">Tell</h3>
+            <a class="feature-title" href="tel:">000-0000-0000</a>
+            </div>
+
+        <div class="contact-right">
+            <h2 class="feature-title">SNS</h2>
+            <div class="social">
+            <a href="#">
+            <i class="fab fa-facebook-square"></i></a>
+            <a href="#">
+            <i class="fab fa-twitter"></i></a>
+            <a href="#">
+            <i class="fab fa-instagram-square"></i></a>
+            </div>
+        </div>
     </div>
-    <!-- ここまでプロフィール -->
-おいしくお召し上がりいただくために
-ご注文いただき誠にありがとうございます。
-最高級の食材を贅沢に使った洋菓子を、
-よりおいしくお召し上がりいただくために、
-こだわりチルド便にて宅配いたします。
-冷蔵庫に5～6時間以上置くと
-食べ頃になります
-お急ぎの場合は、
-ケーキ箱を開封せず涼しい室温に２時間ほど置くと食べごろになります。
-１日冷蔵庫に置くと味が馴染んで一層おいしくお召し上がりいただけます。
-解凍後は７℃以下の冷蔵庫で保存の上、２日以内にお召し上がりください。
+
+        </div>
+        </div>
+        </div>
+    </div>
+
+</div>
+    <!-- ここまでコンタクト -->
+
+
