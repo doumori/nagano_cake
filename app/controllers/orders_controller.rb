@@ -6,9 +6,6 @@ class OrdersController < ApplicationController
     @by_address = current_customer.address
     @ships = current_customer.ships
     # カートが空の時は注文できない
-    # @my_cart = current_customer.cart_items
-    # render 'orders/new' if @my_cart.invalid?
-    # if @my_cart.empty?
       if @order_new.invalid?
         redirect_to request.referer
       end
