@@ -1,56 +1,85 @@
+  
+<div class="container">
   <div class="main-visual">
-      <p class="mainvi-vi">ようこそ、NaganoCakeへ！</p>
-      <p class="mainvi-p">このサイトは、ケーキ販売のECサイトになります。
-        会員でない方も商品の閲覧はできますが、
-        購入には会員登録が必要になります。</p>
+    <p class="mainvi-vi">ようこそ、NaganoCakeへ！</p>
+    <p class="mainvi-p">このサイトは、ケーキ販売のECサイトになります。
+      会員でない方も商品の閲覧はできますが、
+      購入には会員登録が必要になります。
+    </p>
   </div>
 
-<table>
-    <thead>
-        <tr>
-            <th>name</th>
-            <th>price</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @push_items.each do |f| %>
-        <tr>
-            <td>
-                <%= f.name %>
-                <div class="ander"></div>
-            </td>
-            <td>¥
-                <%= f.price %>
-            </td>
-            <% end %>
-        </tr>
-    </tbody>
-</table>
-<%= link_to "もっと見る",items_path %>
+  <!--
+  <table>
+      <thead>
+          <tr>
+              <th>name</th>
+              <th>price</th>
+          </tr>
+      </thead>
+      <tbody>
+          <% @push_items.each do |f| %>
+          <tr>
+              <td>
+                  <%= f.name %>
+                  <div class="ander"></div>
+              </td>
+              <td>¥
+                  <%= f.price %>
+              </td>
+              <% end %>
+          </tr>
+      </tbody>
+  </table>
+  -->
+
+  <div class="topimg-flex-5">
+      <%= attachment_image_tag Item.find(5), :image, size: '300x180',format: "jpeg",fallback: "no_image.jpg" %>
+      <%= attachment_image_tag Item.find(1), :image, size: '300x180',format: "jpeg",fallback: "no_image.jpg" %>
+      <%= attachment_image_tag Item.find(7), :image, size: '300x180',format: "jpeg",fallback: "no_image.jpg" %>
+      <%= attachment_image_tag Item.find(8), :image, size: '300x180',format: "jpeg",fallback: "no_image.jpg" %>
+      <%= attachment_image_tag Item.find(10), :image, size: '300x180',format: "jpeg",fallback: "no_image.jpg" %>
+  </div>
+
+  <div class="row">
+    <div class="col col-xs-4 col-xs-offset-6">
+      <span style="font-size:1.4em;"><%= link_to "もっと見る",items_path %></span>
+    </div>
+  </div>
 
     <!-- ここからメイン -->
     <div class="main">
         <div class="container">
             <div id="portfolio"></div>
-            <h2 class="heading">おすすめの商品</h2>
-            <div class="ander"></div>
-            <p class="heading-p">It is a long established fact that a reader will be distracted by the readable<br>
-                content of a page when looking at its layout.
-                <br>The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters</p>
-        <div class="production-group clearfix">
-                <p class="sample sample1"></p>
-                <p class="sample sample2">
-                        <%= Item.find(5).name %>
-                        ¥<%= Item.find(5).price %></p>
+                <h2 class="heading">おすすめの商品</h2>
+                    <div class="ander"></div>
+                        <p class="heading-p">It is a long established fact that a reader will be distracted by the readable<br>
+                        content of a page when looking at its layout.
+                        <br>The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters</p>
+                        <div class="production-group clearfix">
+                            <div class="sample sample1"></div>
+                            <div class="sample sample2">
+                                <p class="sample sample2text1">
+                                    <%= Item.find(5).name %>¥<%= Item.find(5).price %>
+                                </p>
+                                <p class="sample sample2text2">
+                                    <%= Item.find(5).description %>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="sample sample3">
+                            <p class="sample sample3text1">
+                                <%= Item.find(6).name %>¥<%= Item.find(6).price %>
+                            </p>
+                            <p class="sample sample3text2">
+                                <%= Item.find(6).description %>
+                            </p>
+                        </div>
+                        <div class="sample sample4"></div>
+                        <div class="sample sample5"></div>
+                        <div class="sample sample6"></div>
                     </div>
-                </p>
-                <p class="sample sample3"></p>
-                <p class="sample sample4"></p>
-                <p class="sample sample5"></p>
-                <p class="sample sample6"></p>
+                </div>
             </div>
-        </div>
-    </div>
     <!-- ここまでメイン -->
 
 
@@ -109,6 +138,8 @@
         </div>
         </div>
     </div>
+
+</div>
     <!-- ここまでコンタクト -->
 
 
