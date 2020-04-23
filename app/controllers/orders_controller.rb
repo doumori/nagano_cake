@@ -14,12 +14,17 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @cart_items = CartItem.where(customer_id: current_customer.id)
+    # カートへ戻る
+      if params[:back].present?
+            render 'cart_items/index'
+        return
+      end
       if  @order.save
         @cart_items.each do |f|
           @order_item_new = OrderItem.new
             @order_item_new.order_id = @order.id
             @order_item_new.item_id = f.item.id
-            @order_item_new.product_status = '製作待ち'
+            @order_item_new.product_status = "製作待ち"
             @order_item_new.price = f.item.price
             @order_item_new.quantity = f.item_quantity
             @order_item_new.name = f.item.name
@@ -33,9 +38,8 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find_by(customer_id: current_customer.id)
-    @order_item = OrderItem.find_by(order_id: @order.id)
-    # @order_item = OrderItem.find(params[:id])
+    @order = Order.find(params[:id])
+    @order_item = @order.order_items
   end
 
   def confirm
@@ -46,7 +50,9 @@ class OrdersController < ApplicationController
     @pay_method = params[:order][:pay_method]
       # 自分の配送先
       if params[:ship_num] == "1"
+        @order_postcode = current_customer.post_code
         @order_address = current_customer.address
+        @order_name = (current_customer.last_name) + (current_customer.first_name)
       # 登録済みの配送先
       elsif params[:ship_num] == "2"
         @order_postcode = Ship.find(params[:ship_id]).view_ship_code

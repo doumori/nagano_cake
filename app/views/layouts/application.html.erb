@@ -17,32 +17,31 @@
 
     <% if admin_signed_in? %>
 
-    <header class="navbar navbar-fixed-top">
-      <div class="container">
-          <nav class="nav navbar-nav navbar-left">
-              <span>LOGO</span>
-          </nav>
-          <nav>
-              <ul class="nav navbar-nav navbar-right">
-                  <li><%= link_to ' 商品一覧', admins_items_path %></li>
+      <header class="navbar navbar-fixed-top">
+        <div class="container">
+            <nav class="nav navbar-nav navbar-left">
+                <span>LOGO</span>
+            </nav>
+            <nav>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><%= link_to ' 商品一覧', admins_items_path %></li>
 
-                  <li><%= link_to ' 会員一覧', admins_customers_path %></li>
+                    <li><%= link_to ' 会員一覧', admins_customers_path %></li>
 
-                  <li><%= link_to ' 注文履歴一覧', admins_orders_path, class: 'glyphicon glyphicon-user users' %></li>
+                    <li><%= link_to ' 注文履歴一覧', admins_orders_path, class: 'glyphicon glyphicon-user users' %></li>
 
-                  <li><%= link_to ' ジャンル', admins_genres_path %></li>
-              </ul>
-          </nav>
-          <nav class="nav navbar-nav navbar-search">
-              
-                <form class="form-box">
-                  <input class="form-input" type="search" placeholder="search">
-                  <button class="form-button glyphicon glyphicon-search"></button>
-                </form>
-              
-          </nav>
-      </div>
-    </header>
+                    <li><%= link_to ' ジャンル', admins_genres_path %></li>
+                </ul>
+            </nav>
+            <nav class="nav navbar-nav navbar-search">
+                  <form class="form-box">
+                    <input class="form-input" type="search" placeholder="search">
+                    <button class="form-button glyphicon glyphicon-search"></button>
+                  </form>
+            </nav>
+        </div>
+      </header>
+
     <% elsif customer_signed_in? %>
 
     <header class="navbar navbar-fixed-top">

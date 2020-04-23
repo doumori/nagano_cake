@@ -1,3 +1,25 @@
 // Place all the styles related to the Customers/Ships controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+thead tr {
+  border: 1px solid;
+}
+
+thead th {
+  border: 1px solid;
+  background-color: #EEEEEE;
+}
+
+tbody td {
+  border: 1px solid;
+}
+
+tbody td:nth-child(4) {
+  text-align: center;
+}
+
+h3 {
+  background-color: #EEEEEE;
+  text-align: center;
+}
