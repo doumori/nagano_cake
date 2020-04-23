@@ -10,3 +10,8 @@ ja:
       item:
         name: 名前
         price: 値段
+      order:
+        ship_name: 宛名
+        ship_postcode: 郵便番号
+        ship_address: 住所
+
