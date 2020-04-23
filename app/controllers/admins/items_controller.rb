@@ -1,6 +1,6 @@
 class Admins::ItemsController < ApplicationController
   before_action :authenticate_admin!
-  # before_action :set_genres, only: [:index, :new, :edit, :create,:update]
+  before_action :set_genres, only: [:index, :new, :edit, :create, :update]
 
   def index
     @items=Item.all
@@ -26,7 +26,7 @@ class Admins::ItemsController < ApplicationController
   end
 
   def new
-    @item =Item.new
+    @item = Item.new
   end
 
   def show
@@ -37,11 +37,12 @@ class Admins::ItemsController < ApplicationController
   def edit
       @item=Item.find(params[:id])
   end
+
   private
     def item_params
     params.require(:item).permit(:name,:description,:image,:price,:is_sale_status,:genre_id)
   end
   def set_genres
-    @genres=Genre.all
+    @genres = Genre.all
   end
 end
