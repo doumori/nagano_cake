@@ -9,4 +9,10 @@ class Item < ApplicationRecord
       return Item.all unless search
       Item.where(['content LIKE ?', "%#{search}%"])
    end
+
+  validates :genre_id, presence: true
+  validates :description, presence: true
+  validates :name, presence: true
+  validates :price, presence: true
+  validates :image_id, presence: true
 end

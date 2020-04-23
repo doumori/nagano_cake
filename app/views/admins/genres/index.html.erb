@@ -1,5 +1,13 @@
 <div class="container">
 	<h2>ジャンル追加・一覧画面</h2>
+	    <% if @newgenre.errors.any? %>
+      <div class="alert alert-danger">
+          <h2><%= @newgenre.errors.count %>つ空白があります</h2>
+          <% @newgenre.errors.full_messages.each do |message| %>
+          <%= message %><br>
+          <% end %>
+      </div>
+    <% end %>
 		<%= form_for @newgenre, url:admins_genres_path do |f| %>
 			<div class="field row">
 				<%= f.label :ジャンル %>
