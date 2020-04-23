@@ -1,12 +1,15 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_customer!
 
   def new
     @order_new = Order.new
     @by_address = current_customer.address
     @ships = current_customer.ships
     # カートが空の時は注文できない
-    @my_cart = current_customer.cart_items
-      if @my_cart.empty?
+    # @my_cart = current_customer.cart_items
+    # render 'orders/new' if @my_cart.invalid?
+    # if @my_cart.empty?
+      if @order_new.invalid?
         redirect_to request.referer
       end
   end
@@ -33,7 +36,7 @@ class OrdersController < ApplicationController
         current_customer.cart_items.destroy_all
         redirect_to orders_thanks_path
       else
-        render 'customers/new'
+        redirect_to new_order_path
       end
   end
 
@@ -63,6 +66,7 @@ class OrdersController < ApplicationController
         @order_postcode = params[:order][:ship_postcode]
         @order_address = params[:order][:ship_address]
         @order_name = params[:order][:ship_name]
+        render 'orders/new' if @order_new.invalid?
       end
   end
 

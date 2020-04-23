@@ -1,6 +1,6 @@
 class ShipsController < ApplicationController
-  # カレントユーザーだけしかedit,update,destroyアクションは使えない。
-  before_action :ensure_correct_user, {only: [:edit, :update, :destroy]}
+  before_action :authenticate_customer!
+
 
   # ※カレントユーザー以外は直接リンクを入力しても編集ページにいけないようにする
   def ensure_correct_user

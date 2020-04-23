@@ -6,3 +6,6 @@
   </h1>
   </div>
 </div>
+<%= link_to " logout", destroy_admin_session_path,class:"glyphicon glyphicon-log-out", method: :delete %>
+
+<%= admin_signed_in? %>
