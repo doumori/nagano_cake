@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    attributes:
+      ship:
+        address: 住所
+        name: 宛名
+        code: 郵便番号
+      genre:
+        name: 名前
+      item:
+        name: 名前
+        price: 値段

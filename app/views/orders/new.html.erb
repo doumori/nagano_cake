@@ -1,6 +1,16 @@
 <h2>注文情報入力</h2>
 
   <%= form_with(model: @order_new, url:order_confirm_path,local: true) do |f| %>
+  <!-- 空白で投稿された場合エラーメッセージを表示させる -->
+    <% if @order_new.errors.any? %>
+      <div class="alert alert-danger">
+          <h2><%= @order_new.errors.count %>errors prohibited this obj from being saved:</h2>
+          <% @order_new.errors.full_messages.each do |message| %>
+          <%= message %>
+          <% end %>
+      </div>
+    <% end %>
+
     <span>支払方法</span><br/>
 
       <%= f.radio_button :pay_method, :"クレジットカード" %>

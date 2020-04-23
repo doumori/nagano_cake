@@ -75,5 +75,5 @@ gem "refile-mini_magick"
 gem 'hirb'
 gem 'hirb-unicode'
 gem 'kaminari'
-
+gem 'rails-i18n'
 
