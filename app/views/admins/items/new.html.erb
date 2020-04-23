@@ -4,7 +4,7 @@
 		<%= form_for(@item,url:admins_items_path) do |f| %>
 			<div class="col-xs-6">
 				<% if @item.errors.any? %>
-					<h3><%= @item.errors.count %>error occurrence</h3><!--エラーメッセ-->
+					<h3><%= @item.errors.count %>つ空白があります</h3><!--エラーメッセ-->
 					<ul>
 						<% @item.errors.full_messages.each do |message| %>
 							<li><%= message %></li>
