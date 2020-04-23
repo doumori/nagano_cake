@@ -3,11 +3,10 @@
 
 （全<%=@items_all.count%>件） (<%=@items.count%>件）
 <div class="items">
-   
-        <div class="col-xs-2">
-          <%= render 'genres', genre: @genres %>
-        </div>
-        <div class="col-xs-10">
+    <div class="col-xs-2">
+        <%= render 'genres', genre: @genres %>
+           </div>
+             <div class="col-xs-10">
               <div class="flex_test-box">
             <% @items.each do |item| %>
             <div class="flex_test-item">
