@@ -11,7 +11,7 @@
   flex-wrap: wrap;
 }
 .flex_test-item{
-  width: 15%;
+  width: 20%;
    margin-left: 0px;
 }
 .flex_item-image{
@@ -19,7 +19,6 @@
 }
 .items_show{
   padding-top: 150px;
-
 }
 .item_show_text{
    padding-top: 200px;
@@ -30,7 +29,6 @@
     text-align: center;
     font-size: 16px;
   }
-
   &__introduce {
     margin: 0 auto;
     th {
@@ -45,18 +43,17 @@
     margin:0 auto;
   }
 }
-.pagination>li>a {          
+.pagination>li>a {
   border: none;     /*枠線をなくす*/
   color: #696969;   /*文字の色を変える*/
 }
-
 /* 表示しているページ番号のデザイン */
-.pagination>.active>a {     
-  background: #93c9ff;     /*背景の色を変える*/
+.pagination>.active>a {
+
+  background: #93C9FF;     /*背景の色を変える*/
   border-radius: 15px;     /*角を丸くする*/
 }
-
 /*ホバー時のデザイン*/
-.pagination>li>a:hover {        
+.pagination>li>a:hover {
   border-radius: 15px;    /*角を丸くする*/
 }
