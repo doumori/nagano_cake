@@ -76,4 +76,4 @@ gem 'hirb'
 gem 'hirb-unicode'
 gem 'kaminari'
 gem 'rails-i18n'
-
+gem 'rspec-rails'
