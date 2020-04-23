@@ -85,7 +85,6 @@ p.mainvi-p {
     background-color: #EC715F;
 }
 
-
 /*topの5つの写真*/
 [class^="topimg-flex-5"] {
   margin: 0px 0px 10px 0px;
@@ -115,6 +114,11 @@ p.mainvi-p {
 /*お勧めのケーキ*/
 
 div.sample1 {
+}
+
+
+p.sample1 {
+
 width:500px; height:500px;
 border:none;
 background-image:url(cake4.jpg);
@@ -123,6 +127,7 @@ float: left;
 margin:0px 10px 0px 0px;
 padding: 11px;
 }
+
 .sample2 {
 position: relative;/*相対配置*/
 width:500px; height:500px;
@@ -134,6 +139,7 @@ float: left;
 margin:0px 100px 0px 0px;
 padding: 11px;
 }
+
 .sample2 p {
   position: absolute;/*絶対配置*/
   font-size: 1em;
@@ -185,6 +191,24 @@ background-size:cover;
 float: left;
 margin:10px 10px 0px 0px;
 padding: 11px;
+}
+
+.sample:nth-child(2n) {
+    margin-right: 0;
+}
+.sample:nth-child(-n+2) {
+    margin-top: 0;
+}
+
+
+p.sample4 {
+width:500px; height:500px;
+border:none;
+background-image:url(cake5.jpg);
+background-size:cover;
+float: left;
+margin:10px 10px 0px 0px;
+padding: 11px;
 
 }
 
@@ -194,6 +218,7 @@ padding: 11px;
 .sample:nth-child(-n+2) {
     margin-top: 0;
 }
+
 
 
 /*お召し上がりいただくために*/

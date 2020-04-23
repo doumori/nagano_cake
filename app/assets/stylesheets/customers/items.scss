@@ -11,7 +11,7 @@
   flex-wrap: wrap;
 }
 .flex_test-item{
-  width: 15%;
+  width: 20%;
    margin-left: 0px;
 }
 .flex_item-image{
@@ -49,6 +49,7 @@
 }
 /* 表示しているページ番号のデザイン */
 .pagination>.active>a {
+
   background: #93C9FF;     /*背景の色を変える*/
   border-radius: 15px;     /*角を丸くする*/
 }

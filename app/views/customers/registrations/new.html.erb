@@ -14,6 +14,16 @@
     <%= f.text_field :first_name, id:"first_name", placeholder: "花子"%>
   </div>
 
+    <div class="field">
+    <label for="last_name_kana">苗字（カナ）</label><br/>
+    <%= f.text_field :last_name_kana, id:"last_name_kana", autofocus: true, placeholder: "ヤマダ" %>
+  </div>
+
+  <div class="field">
+    <label for="first_name_kana">名前（カナ）</label><br/>
+    <%= f.text_field :first_name_kana, id:"first_name_kana", placeholder: "ハナコ"%>
+  ^div>
+
   <div class="field">
     <label for="email">メールアドレス</label><br/>
     <%= f.email_field :email, id:"email", autocomplete: "email", placeholder: "hoge@example.com" %>
