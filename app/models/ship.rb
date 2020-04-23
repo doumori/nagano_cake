@@ -16,4 +16,9 @@ class Ship < ApplicationRecord
   def view_ship_full
     self.code. + self.address. + self.name.to_s
   end
+
+  validates :customer_id, presence: true
+  validates :address, presence: true
+  validates :name, presence: true
+  validates :code, presence: true
 end
