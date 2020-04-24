@@ -3,26 +3,32 @@ class OrdersController < ApplicationController
 
   def new
     @order_new = Order.new
-    @by_address = current_customer.address
-    @ships = current_customer.ships
+    # @by_address = current_customer.address
+    # @ships = current_customer.ships
     # カートが空の時は注文できない
-      if @order_new.invalid?
+    @my_cart = current_customer.cart_items
+    if @my_cart.empty?
         redirect_to request.referer
       end
   end
 
   def create
-    @order = Order.new(order_params)
+    @order_new = Order.new(order_params)
     @cart_items = CartItem.where(customer_id: current_customer.id)
     # カートへ戻る
       if params[:back].present?
             render 'cart_items/index'
         return
+    # 情報入力へ戻る
+      elsif params[:info].present?
+            render 'orders/new'
+        return
       end
-      if  @order.save
+
+      if  @order_new.save
         @cart_items.each do |f|
           @order_item_new = OrderItem.new
-            @order_item_new.order_id = @order.id
+            @order_item_new.order_id = @order_new.id
             @order_item_new.item_id = f.item.id
             @order_item_new.product_status = "製作待ち"
             @order_item_new.price = f.item.price
