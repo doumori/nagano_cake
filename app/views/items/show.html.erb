@@ -18,10 +18,14 @@
                         <h3><%= @item.name %></h3>
                         <p><%= @item.description %></p>
                         <h3>¥<%= @item.price %>(税込)</h3>
+                            <% if @item.is_sale_status ==true %>
                         <p><%= f.select :item_quantity, ['1', '2', '3'], {include_blank: '個数選択'},class: 'sample' %></p>
                         <!-- @item.idをitem_idとして送る -->
                         <%= f.hidden_field :item_id, value:@item.id %>
                         <p><%= f.submit"カートに入れる" ,class:"btn btn-primary btn-lg pull-right" %></p>
+                            <% else %>
+                            <%= link_to "売り切れです。" ,items_path %>
+                            <% end %>
                      </div>
                 </div>
             <% end %>

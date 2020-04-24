@@ -7,9 +7,11 @@
 
       <tbody>
         <% @genres.each do |genre| %>
+        <% if genre.is_active==false %>
         <tr>
           <td><%= link_to genre.name, items_path(genre_id: genre.id) %></td>
         </tr>
+        <% end %>
         <% end %>
       </tbody>
     </table>

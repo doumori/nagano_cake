@@ -1,5 +1,5 @@
 
-<h4>商品一覧www</h4>
+<h4>商品一覧</h4>
 
 （全<%=@items_all.count%>件） (<%=@items.count%>件）
 <div class="items">
@@ -16,7 +16,12 @@
                 </div>
                 <p> <%= item.name %></p>
                 <p><%= item.price %>(税込)</p>
-                  <% end %>
+                 <% end %>
+                <% if item.is_sale_status==false %>
+                    売り切れ
+                    <% else %>
+                    販売中
+                <% end %>
             </div>
             <% end %>
         </div>
