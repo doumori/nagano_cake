@@ -4,9 +4,9 @@
   <!-- 空白で投稿された場合エラーメッセージを表示させる -->
     <% if @order_new.errors.any? %>
       <div class="alert alert-danger">
-          <h2><%= @order_new.errors.count %>件の空白があります</h2>
+          <h2><%= @order_new.errors.count %>errors prohibited this obj from being saved:</h2>
           <% @order_new.errors.full_messages.each do |message| %>
-          <%= message %><br>
+          <%= message %>
           <% end %>
       </div>
     <% end %>

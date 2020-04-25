@@ -1,6 +1,7 @@
 class Admins::ItemsController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_genres, only: [:index, :new, :edit, :create, :update]
+  before_action :set_genres, only: [:index, :new, :edit, :create,:update]
+
 
   def index
     @items=Item.all
@@ -16,12 +17,14 @@ class Admins::ItemsController < ApplicationController
   end
 
   def create
+
     item = Item.new(item_params)
     if item.save
       redirect_to admins_items_path
     else
       @items = Item.all
       render :index
+
     end
   end
 
