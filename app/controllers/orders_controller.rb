@@ -35,11 +35,6 @@ class OrdersController < ApplicationController
           @order_item_new.save
         end
           @ship_new = Ship.new(customer_id: current_customer.id, code: params[:order][:ship_postcode],address: params[:order][:ship_address],name: params[:order][:ship_name])
-          # @ship_new = Ship.new(ship_params)
-          #  @ship_new.customer_id = current_customer.id
-          #  @ship_new.code = params[:order][:ship_postcode]
-          #  @ship_new.address = params[:order][:ship_address]
-          #  @ship_new.name = params[:order][:ship_name]
           @ship_new.save!
         current_customer.cart_items.destroy_all
         redirect_to orders_thanks_path
