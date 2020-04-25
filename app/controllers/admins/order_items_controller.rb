@@ -6,14 +6,10 @@ class Admins::OrderItemsController < ApplicationController
     @order_item.update(order_item_params)
 
     @order_item.order.order_items.each_with_index do |o_i, index|
-      p "製作完了"
-      p index
-      p o_i.product_status
+
     unless o_i.product_status=="製作完了"
-      p "まだ製作中の製品あり"
       break
        end
-       #o_iが一週なら
        if index == @order_item.order.order_items.size - 1
         @order_item.order.update(status: "発送準備中")
       end
