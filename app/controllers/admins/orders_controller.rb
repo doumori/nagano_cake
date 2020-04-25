@@ -20,5 +20,7 @@ class Admins::OrdersController < ApplicationController
   def order_params
   	params.require(:order).permit(:customer_id, :pay_method, :status, :freight, :total, :ship_name, :ship_postcode, :ship_address)
   end
-
+  def order_item_params
+    params.require(:order_item).permit(:sat)
+  end
 end
