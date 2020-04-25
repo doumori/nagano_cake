@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <h3 class="col-xs-offset-2 col-xs-3">配送先編集</h3>
+    <h3 class="col-xs-offset-2">配送先編集</h3>
   </div>
   <%= form_for(@ship) do |f| %>
 
@@ -17,10 +17,8 @@
   <% end %>
 
   <div class="field row">
-    <tr>
       <td><%= f.label :code, "郵便番号(ハイフンなし)", class: "col-xs-3" %></td>
       <td><p><%= f.text_field :code, class: "col-xs-3" %></p></td>
-    </tr>
   </div>
 
   <div class="field row">
