@@ -35,4 +35,5 @@ Rails.application.routes.draw do
         resources :ships, only: [:index, :edit, :destroy, :update, :create ]
         resources :orders, only: [:new, :create, :index, :show]
         resources :cart_items, only: [:index,:create,:destroy,:update]
+        resources :likes, only: [:create, :destroy]
 end
