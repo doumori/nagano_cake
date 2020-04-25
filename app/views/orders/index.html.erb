@@ -1,30 +1,38 @@
-
-  <h1>注文一覧画面</h1>
-
-  <table class="table table-hover table-inverse">
+<h1>注文一覧画面</h1>
+<table class="table table-hover table-inverse">
     <thead>
-      <tr>
-        <th>注文日</th>
-        <th>配送先</th>
-        <th>注文商品</th>
-        <th>支払金額</th>
-        <th>ステータス</th>
-        <th>注文詳細</th>
-      </tr>
+        <tr>
+            <th>注文日</th>
+            <th>配送先</th>
+            <th>注文商品</th>
+            <th>支払金額</th>
+            <th>ステータス</th>
+            <th>注文詳細</th>
+        </tr>
     </thead>
-
     <tbody>
-      <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.updated_at.strftime("%Y/%m/%d") %></td>
-        <td><%= (order.ship_postcode) + (order.ship_address) + (order.ship_name) %></td>
-        <td><% order.order_items.each do |order_item| %>
-            <%= order_item.name %><br>
-            <% end %></td>
-        <td><%= order.total %> 円</td>
-        <td><%= order.status %></td>
-        <td><%= link_to "表示する",order_path(order) %></td>
-      </tr>
-      <% end %>
+        <% @orders.each do |order| %>
+        <tr>
+            <td>
+                <%= order.updated_at.strftime("%Y/%m/%d") %>
+            </td>
+            <td>
+                <%= (order.ship_postcode) + (order.ship_address) + (order.ship_name) %>
+            </td>
+            <td>
+                <% order.order_items.each do |order_item| %>
+                <%= order_item.name %><br>
+                <% end %>
+            </td>
+            <td>
+                <%= order.total %> 円</td>
+            <td>
+                <%= order.status %>
+            </td>
+            <td>
+                <%= link_to "表示する",order_path(order) %>
+            </td>
+        </tr>
+        <% end %>
     </tbody>
-  </table>
+</table>

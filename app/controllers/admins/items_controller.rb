@@ -27,6 +27,7 @@ class Admins::ItemsController < ApplicationController
 
   def new
     @item =Item.new
+    @genres = Genre.all
   end
 
   def show
@@ -42,6 +43,6 @@ class Admins::ItemsController < ApplicationController
     params.require(:item).permit(:name,:description,:image,:price,:is_sale_status,:genre_id)
   end
   def set_genres
-    @genres=Genre.all
+    @genres = Genre.all
   end
 end

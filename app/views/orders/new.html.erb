@@ -12,7 +12,7 @@
     <% end %>
 
     <span>支払方法</span><br/>
-
+<%= customer_signed_in? %>
       <%= f.radio_button :pay_method, :"クレジットカード" %>
       <%= f.label :pay_method, "クレジットカード", {value: :クレジットカード, style: "display: inline-block;"} %>
 
@@ -31,8 +31,7 @@
       <!-- shipテーブルに登録している住所 -->
       <%= radio_button_tag('ship_num',"2") %>
       <%= f.label :ship_num, "登録済住所から選択" %><br>
-      <%= select_tag 'ship_id', options_from_collection_for_select(Ship.all, :id, :view_ship_full, 1) %>
-
+      <%= select_tag 'ship_id', options_from_collection_for_select(@ship, :id, :view_ship_full, 1) %>
 
       <!-- Shipの新規登録 -->
       <%= radio_button_tag('ship_num',"3") %>
@@ -45,6 +44,7 @@
       <%= f.text_field :ship_name, id:"name" %>
       <!-- current_customers.idをcustomers_idとして送る -->
       <%= f.hidden_field :customers_id, value:current_customer.id %>
+
       <%= f.submit "確認画面" %>
   <% end %>
 

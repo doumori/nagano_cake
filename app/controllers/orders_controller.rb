@@ -3,9 +3,7 @@ class OrdersController < ApplicationController
 
   def new
     @order_new = Order.new
-    # @by_address = current_customer.address
-    # @ships = current_customer.ships
-    # カートが空の時は注文できない
+    @ship = Ship.where(customer_id: current_customer.id)
     @my_cart = current_customer.cart_items
     if @my_cart.empty?
         redirect_to request.referer
@@ -21,10 +19,10 @@ class OrdersController < ApplicationController
         return
     # 情報入力へ戻る
       elsif params[:info].present?
+              @ship = Ship.where(customer_id: current_customer.id)
             render 'orders/new'
         return
       end
-
       if  @order_new.save
         @cart_items.each do |f|
           @order_item_new = OrderItem.new
@@ -36,6 +34,12 @@ class OrdersController < ApplicationController
             @order_item_new.name = f.item.name
           @order_item_new.save
         end
+          @ship_new = Ship.new
+           # @ship_new.customer_id = current_customer
+           # @ship_new.code = @order_new.ship_postcode
+           # @ship_new.address = @order_new.ship_postcode
+           # @ship_new.name = @order_new.ship_name
+          @ship_new.save
         current_customer.cart_items.destroy_all
         redirect_to orders_thanks_path
       else
@@ -49,6 +53,14 @@ class OrdersController < ApplicationController
   end
 
   def confirm
+  # shipテーブルに登録したい
+    @ship_new = Ship.new(ship_params)
+         # @ship_new.customer_id = current_customer
+         # @ship_new.code = @order_new.ship_postcode
+         # @ship_new.address = @order_new.ship_postcode
+         # @ship_new.name = @order_new.ship_name
+    @ship_new.save
+
     @freight = 800
     @cart_items = current_customer.cart_items.all
     @order_new = Order.new(order_params)
@@ -87,5 +99,9 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:customer_id, :pay_method, :status, :freight, :total, :ship_name, :ship_postcode, :ship_address)
+  end
+
+  def ship_params
+    params.require(:order).permit(:customer_id, :address, :status, :name, :code)
   end
 end
