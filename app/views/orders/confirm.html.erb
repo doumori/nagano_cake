@@ -54,19 +54,16 @@
             <%= f.hidden_field :ship_postcode, value: @order_postcode %>
             <%= f.hidden_field :ship_address, value: @order_address %>
 
-          <!-- shipテーブルに登録したい -->
-        
-            <%= hidden_field_tag :customer_id, current_customer, {@ship.customer_id: current_customer} %>
-
-          <%= hidden_field_tag :@ship_new.customer_id, current_customer %>
-          <%= hidden_field_tag :@ship_new.code, @order_postcode %>
-          <%= hidden_field_tag :@ship_new.address, @order_address %>
-          <%= hidden_field_tag :@ship_new.name, @order_name %>
+            <!-- shipテーブルに登録 -->
+            <%= hidden_field_tag :code, @order_postcode %>
+            <%= hidden_field_tag :address, @order_address %>
+            <%= hidden_field_tag :name, @order_name %>
 
             <%= f.submit "カートに戻る",name: 'back',class:'btn btn-info mr-3'%>
             <%= f.submit "情報入力に戻る",name: 'info',class:'btn btn-success glyphicon glyphicon-user'%>
             <%= f.submit "購入を確定する", class:'btn btn-primary'%>
         <% end %>
+
     </div>
     <br><span>支払い方法</span><br />
     <%= @pay_method %><br>
