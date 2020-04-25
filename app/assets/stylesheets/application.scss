@@ -241,3 +241,37 @@ h3.feature-title{
   font-size: 60px;
 }
 
+.navbar-left span {
+  font-size: 30px;
+  border: 2px solid;
+  line-height: 130px;
+}
+
+
+.navbar-right li {
+  margin: 40px 10px 10px 20px;
+}
+
+.form-box{
+  display: flex;
+  border: 2px solid lightgrey;
+  width: 200px;
+  position: absolute; top: 90px;
+  position: absolute; right: 170px;
+}
+
+.form-input{
+  border: none;
+  width: 100%;
+}
+
+.form-button{
+  background-color: white;
+  border: none;
+}
+
+.navbar-right a {
+  color: black;
+}
+
+
