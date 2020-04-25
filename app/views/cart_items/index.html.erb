@@ -2,75 +2,87 @@
   <h2>ショッピングカート</h2>
     <div class="row">
       <div class="col pull-right">
+        <div class="cart-item-all-destroy">
         <%= link_to "カートを空にする", cart_items_destroy_all_path,class:"btn btn-danger", method: :delete, data: {confirm: 'カートを空にしますか？'} %>
+        </div>
       </div>
     </div>
     <div class="row">
-
       <!-- ここからエラーメッセージ -->
-  <% if @order_new.errors.any? %>
-  <div class="error-massage">
-      <h3><i class="fas fa-kiwi-bird"></i>
-        <%= @order_new.errors.count %>件のエラーがあります<i class="fas fa-kiwi-bird"></i></h3>
-      <% @order_new.errors.full_messages.each do |message| %>
-      <tr><li><%= message %></li></tr>
-      <% end %>
-  </div>
-    <% end %>
-<!-- ここまでエラーメッセージ -->
-
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>画像</th>
-            <th>商品名</th>
-            <th>単価(税込)</th>
-            <th>数量</th>
-            <th>小計</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @sum = 0 %>
-        <% @cart_items.each do |f| %>
-        <tr>
-            <td>
-            </td>
-            <td>
-                <%= f.item.name %>
-            </td>
-            <td>
-                <%= f.item.price %> 円
-            </td>
-            <td>
-                <%= form_with model: f, url:cart_item_path(f),local: true, method: :put do |s| %>
-                <%= s.text_field :item_quantity, id:"quantity",placeholder: "個数表示" %>
-                <%= s.submit "変更" %>
-                <% end %>
-            </td>
-            <td>
-                <%= (f.item.price) * (f.item_quantity).to_i %>
-            </td>
-            <td>
-                <%= link_to "削除", cart_item_path(f),class:"btn btn-danger", method: :delete, data: {confirm: 'カートから削除しますか？'} %>
-            </td>
-        </tr>
-        <% @sum += (f.item.price) * (f.item_quantity).to_i %>
+        <% if @order_new.errors.any? %>
+          <div class="error-massage">
+            <h3><i class="fas fa-kiwi-bird"></i>
+              <%= @order_new.errors.count %>件のエラーがあります<i class="fas fa-kiwi-bird"></i>
+            </h3>
+            <% @order_new.errors.full_messages.each do |message| %>
+              <tr><li><%= message %></li></tr>
+            <% end %>
+          </div>
         <% end %>
-    </tbody>
-</table>
-         <div class="row">
-      <div class="col-xs-4">
-        <%= link_to "買い物を続ける", items_path, class:"btn btn-primary glyphicon glyphicon-shopping-cart" %>
-      </div>
-      <div class="col-xs-4 pull-right">
-          <span>合計金額</span>
-          <span><%= @sum %></span>
-      </div>
+      <!-- ここまでエラーメッセージ -->
     </div>
     <div class="row">
-      <div class="col col-xs-4 col-xs-offset-4"><span style="font-size:1.6em;">
+      <div class="col">
+        <table class ="table table-bordered" >
+          <thead class="thead thead-light">
+            <tr>
+              <th>画像</th>
+              <th>商品名</th>
+              <th>単価(税込)</th>
+              <th>数量</th>
+              <th>小計</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @sum = 0 %>
+            <% @cart_items.each do |f| %>
+              <tr>
+                <td>
+                  <%= attachment_image_tag f.item, :image, size: '90x65',format: "jpeg",fallback: "no_image.jpg" %>
+                </td>
+                <td><%= f.item.name %></td>
+                <td><%= f.item.price %> 円</td>
+                <td>
+                  <%= form_with model: f, url:cart_item_path(f),local: true, method: :put do |s| %>
+                  <%= s.text_field :item_quantity, id:"quantity",placeholder: "個数表示" %>
+                  <%= s.submit "変更" %>
+                  <% end %>
+                </td>
+                <td><%= (f.item.price) * (f.item_quantity).to_i %></td>
+                <td>
+                  <%= link_to "削除", cart_item_path(f),class:"btn btn-danger", method: :delete, data: {confirm: 'カートから削除しますか？'} %>
+                </td>
+              </tr>
+              <% @sum += (f.item.price) * (f.item_quantity).to_i %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-3"><span style="font-size:1.6em;">
+        <%= link_to "買い物を続ける", items_path, class:"btn btn-primary glyphicon glyphicon-shopping-cart" %>
+        </span>
+      </div>
+      <div class="col-xs-5 col-xs-offset-4"><span style="font-size:1.8em;">
+        <table class ="table table-bordered" >
+          <thead class="thead thead-light"><tr>
+            <th>合計金額</th><td>¥<%= @sum %>-</td>
+          </tr></thead>
+        </table>
+      </div></span>
+    </div>
+    <div class="row">
+      <div class="col text-center"><span style="font-size:1.6em;">
         <a href="orders/new" class="btn-square-shadow glyphicon glyphicon-share-alt">情報入力に進む</a></span>
       </div>
     </div>
 </div>
+
+
+
+
+
+
