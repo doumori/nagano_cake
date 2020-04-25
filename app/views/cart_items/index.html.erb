@@ -2,7 +2,9 @@
   <h2>ショッピングカート</h2>
     <div class="row">
       <div class="col pull-right">
+        <div class="cart-item-all-destroy">
         <%= link_to "カートを空にする", cart_items_destroy_all_path,class:"btn btn-danger", method: :delete, data: {confirm: 'カートを空にしますか？'} %>
+        </div>
       </div>
     </div>
     <div class="row">
@@ -20,9 +22,9 @@
       <!-- ここまでエラーメッセージ -->
     </div>
     <div class="row">
-      <div class="col-xs-12">
-        <table >
-          <thead>
+      <div class="col">
+        <table class ="table table-bordered" >
+          <thead class="thead thead-light">
             <tr>
               <th>画像</th>
               <th>商品名</th>
@@ -37,7 +39,7 @@
             <% @cart_items.each do |f| %>
               <tr>
                 <td>
-                  <%= attachment_image_tag f.item, :image, size: '180x150',format: "jpeg",fallback: "no_image.jpg" %>
+                  <%= attachment_image_tag f.item, :image, size: '90x65',format: "jpeg",fallback: "no_image.jpg" %>
                 </td>
                 <td><%= f.item.name %></td>
                 <td><%= f.item.price %> 円</td>
@@ -59,26 +61,16 @@
       </div>
     </div>
 
-
-
-
-
-
-
-
-
-
-
     <div class="row">
       <div class="col-xs-3"><span style="font-size:1.6em;">
         <%= link_to "買い物を続ける", items_path, class:"btn btn-primary glyphicon glyphicon-shopping-cart" %>
         </span>
       </div>
-      <div class="col-xs-3 col-xs-offset-6"><span style="font-size:1.8em;">
-        <table class ="cart-items-index" >
-          <tr>
+      <div class="col-xs-5 col-xs-offset-4"><span style="font-size:1.8em;">
+        <table class ="table table-bordered" >
+          <thead class="thead thead-light"><tr>
             <th>合計金額</th><td>¥<%= @sum %>-</td>
-          </tr>
+          </tr></thead>
         </table>
       </div></span>
     </div>
@@ -88,7 +80,6 @@
       </div>
     </div>
 </div>
-
 
 
 
