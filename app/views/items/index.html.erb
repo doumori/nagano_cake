@@ -2,31 +2,32 @@
 <h4>商品一覧</h4>
 
 （全<%=@items_all.count%>件） (<%=@items.count%>件）
-<div class="items">
-    <div class="col-xs-2">
-        <%= render 'genres', genre: @genres %>
-           </div>
-             <div class="col-xs-10">
-              <div class="flex_test-box">
-            <% @items.each do |item| %>
-            <div class="flex_test-item">
-                <%= link_to item_path(item) do %>
-                <div class="item_image">
-                    <%= attachment_image_tag item, :image, size: '200x200',format: "jpeg",fallback: "cake.png" %>
-                </div>
-                <p> <%= item.name %></p>
-                <p><%= item.price %>(税込)</p>
-                 <% end %>
-                <% if item.is_sale_status==false %>
-                    売り切れ
-                    <% else %>
-                    販売中
+
+    <div class="items">
+        <div class="col-xs-2">
+          <%= render 'genres', genre: @genres %>
+        </div>
+        <div class="col-xs-10">
+            <div class="flex_test-box">
+                <% @items.each do |item| %>
+                    <div class="flex_test-item">
+                        <%= link_to item_path(item) do %>
+                            <div class="item_image">
+                                <%= attachment_image_tag item, :image, size: '200x200',format: "jpeg",fallback: "cake.png" %>
+                            </div>
+                            <p> <%= item.name %></p>
+                            <p><%= item.price %>(税込)</p>
+                        <% end %>
+                        <% if item.is_sale_status == false %>
+                            <span class="text-danger">売り切れ</span>
+                        <% else %>
+                            <span class="text-success">販売中</span>
+                        <% end %>
+                    </div>
                 <% end %>
             </div>
-            <% end %>
         </div>
     </div>
-</div>
     <div class='p-top__paginate'>
         <%= paginate @items %>
     </div>

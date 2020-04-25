@@ -9,6 +9,7 @@ class Admins::OrderItemsController < ApplicationController
         break
       end
       if index == @order_item.order.order_items.size - 1
+
         @order_item.order.update(status: "発送準備中")
       end
     end
