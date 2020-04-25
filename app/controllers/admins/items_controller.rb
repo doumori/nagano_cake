@@ -1,6 +1,6 @@
 class Admins::ItemsController < ApplicationController
   before_action :authenticate_admin!
-  # before_action :set_genres, only: [:index, :new, :edit, :create,:update]
+  before_action :set_genres, only: [:index, :new, :edit, :create,:update]
 
   def index
     @items=Item.all
