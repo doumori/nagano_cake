@@ -49,8 +49,8 @@
                   <td><%= @sum+=(order_item.price*order_item.quantity*1.1).floor %></td>
                   <td>
         	          <%= form_for order_item, url:admins_order_item_path(order_item.id) do |f| %>
-        						<%= f.select :product_status, OrderItem.product_statuses.keys, {}  %>
-        						<%= f.submit "更新",class: "btn btn-primary" %>
+          						<%= f.select :product_status, OrderItem.product_statuses.keys, {}  %>
+          						<%= f.submit "更新",class: "btn btn-primary" %>
         						<% end %>
         					</td>
                 </tr>

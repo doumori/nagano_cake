@@ -3,9 +3,7 @@ class OrdersController < ApplicationController
 
   def new
     @order_new = Order.new
-    # @by_address = current_customer.address
-    # @ships = current_customer.ships
-    # カートが空の時は注文できない
+    @ship = Ship.where(customer_id: current_customer.id)
     @my_cart = current_customer.cart_items
     if @my_cart.empty?
         redirect_to request.referer
@@ -21,10 +19,10 @@ class OrdersController < ApplicationController
         return
     # 情報入力へ戻る
       elsif params[:info].present?
+              @ship = Ship.where(customer_id: current_customer.id)
             render 'orders/new'
         return
       end
-
       if  @order_new.save
         @cart_items.each do |f|
           @order_item_new = OrderItem.new
@@ -36,6 +34,8 @@ class OrdersController < ApplicationController
             @order_item_new.name = f.item.name
           @order_item_new.save
         end
+          @ship_new = Ship.new(customer_id: current_customer.id, code: params[:order][:ship_postcode],address: params[:order][:ship_address],name: params[:order][:ship_name])
+          @ship_new.save!
         current_customer.cart_items.destroy_all
         redirect_to orders_thanks_path
       else
@@ -82,7 +82,7 @@ class OrdersController < ApplicationController
 
   private
   def order_item_params
-    params.require(:order).permit(:item_id, :order_id, :product_status, :price, :quantity, :name)
+    params.require(:order_item).permit(:item_id, :order_id, :product_status, :price, :quantity, :name)
   end
 
   def order_params

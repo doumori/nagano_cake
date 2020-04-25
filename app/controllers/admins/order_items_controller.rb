@@ -4,9 +4,7 @@ class Admins::OrderItemsController < ApplicationController
   def update
     @order_item=OrderItem.find(params[:id])
     @order_item.update(order_item_params)
-
     @order_item.order.order_items.each_with_index do |o_i, index|
-
     unless o_i.product_status=="製作完了"
       break
        end
