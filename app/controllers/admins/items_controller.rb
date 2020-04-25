@@ -29,12 +29,8 @@ class Admins::ItemsController < ApplicationController
   end
 
   def new
-<<<<<<< HEAD
     @item =Item.new
     @genres = Genre.all
-=======
-    @item = Item.new
->>>>>>> master
   end
 
   def show
