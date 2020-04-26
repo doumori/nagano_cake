@@ -11,79 +11,109 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
      <script type="text/javascript">function disp(){window.alert('アラートの表示');}</script>
   </head>
 
   <body>
-  <div class="row">
+
     <% if admin_signed_in? %>
+
       <header class="navbar navbar-fixed-top">
-        <div class="container">
-          <nav class="nav navbar-nav navbar-left">
-            <span>LOGO</span>
-          </nav>
-          <nav>
-            <ul class="nav navbar-nav navbar-right">
-              <li><%= link_to 'トップ', admins_path %></li>
-              <li><%= link_to ' 商品一覧', admins_items_path %></li>
-              <li><%= link_to ' 会員一覧', admins_customers_path %></li>
-              <li><%= link_to ' 注文履歴一覧', admins_orders_path, class: 'glyphicon glyphicon-user users' %></li>
-              <li><%= link_to ' ジャンル', admins_genres_path %></li>
-              <li><a rel="nofollow" data-method="delete" href="/admins/sign_out">ログアウト</a></li>
-            </ul>
-          </nav>
-          <nav class="nav navbar-nav navbar-search">
-            <form class="form-box">
-              <input class="form-input" type="search" placeholder="search">
-              <button class="form-button glyphicon glyphicon-search"></button>
-            </form>
-          </nav>
+        <div class="container" id="nav-drawer">
+          <input id="nav-input" type="checkbox" class="nav-unshown">
+          <label id="nav-open" for="nav-input"><span></span></label>
+          <label class="nav-unshown" id="nav-close" for="nav-input"></label>
+          <div id="nav-content">
+            <nav class="nav navbar-nav navbar-left">
+                <span>LOGO</span>
+            </nav>
+            <nav>
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li><%= link_to ' 商品一覧', admins_items_path %></li>
+
+                    <li><%= link_to ' 会員一覧', admins_customers_path %></li>
+
+                    <li><%= link_to ' 注文履歴一覧', admins_orders_path, class: 'glyphicon glyphicon-user users' %></li>
+
+                    <li><%= link_to ' ジャンル', admins_genres_path %></li>
+
+                    <li><a rel="nofollow" data-method="delete" href="/admins/sign_out">ログアウト</a></li>
+                </ul>
+            </nav>
+            <nav class="nav navbar-nav navbar-search">
+                  <form class="form-box">
+                    <input class="form-input" type="search" placeholder="search">
+                    <button class="form-button glyphicon glyphicon-search"></button>
+                  </form>
+            </nav>
+          </div>
         </div>
       </header>
+
     <% elsif customer_signed_in? %>
-      <header class="navbar navbar-fixed-top">
-        <div class="container">
+
+    <header class="navbar navbar-fixed-top">
+      <div class="container" id="nav-drawer">
+        <input id="nav-input" type="checkbox" class="nav-unshown">
+        <label id="nav-open" for="nav-input"><span></span></label>
+        <label class="nav-unshown" id="nav-close" for="nav-input"></label>
+        <div id="nav-content">
           <nav class="nav navbar-nav navbar-left">
             <span>LOGO</span>
           </nav>
+
           <nav>
               <ul class="nav navbar-nav navbar-right">
-                <li>ようこそ、<%= current_customer.email %>さん！</li>
-                <li><%= link_to 'マイページ', customer_path(current_customer), class: "btn btn-default" %></li>
-                <li><%= link_to ' 商品一覧', items_path, class: "btn btn-default" %></li>
-                <li><%= link_to 'カート', cart_items_path, class: "btn btn-default" %></li>
-                <li><a rel="nofollow" data-method="delete" href="/customers/sign_out", class="btn btn-default">ログアウト</a></li>
+
+                  <li class="nav_name">ようこそ、<%= current_customer.last_name %><%= current_customer.first_name %>さん！</li>
+
+                  <li><%= link_to 'マイページ', customer_path(current_customer), class: "btn btn-default" %></li>
+
+                  <li><%= link_to ' 商品一覧', items_path, class: "btn btn-default" %></li>
+
+                  <li><%= link_to 'カート', cart_items_path, class: "btn btn-default" %></li>
+
+                  <li><a rel="nofollow" data-method="delete" href="/customers/sign_out", class="btn btn-default">ログアウト</a></li>
               </ul>
           </nav>
         </div>
-      </header>
+      </div>
+    </header>
+
     <% else %>
-      <header class="navbar navbar-fixed-top">
-        <div class="container">
+
+    <header class="navbar navbar-fixed-top">
+      <div class="container" id="nav-drawer">
+        <input id="nav-input" type="checkbox" class="nav-unshown">
+        <label id="nav-open" for="nav-input"><span></span></label>
+        <label class="nav-unshown" id="nav-close" for="nav-input"></label>
+        <div id="nav-content">
           <nav class="nav navbar-nav navbar-left">
-            <span>LOGO</span>
+              <span>LOGO</span>
           </nav>
           <nav>
               <ul class="nav navbar-nav navbar-right">
                   <li><%= link_to ' 商品一覧', items_path, class: "btn btn-default" %></li>
+
                   <li><a href="/customers/sign_up", class="btn btn-default">新規登録</a></li>
+
                   <li><a href="/customers/sign_in", class="btn btn-default">ログイン</a></li>
               </ul>
           </nav>
         </div>
-      </header>
-    <% end %>
-  </div>
-
-    <br><br><br><br>
-    <main>
-      <div class="container">
-      <%= yield %>
       </div>
-    </main>
+    </header>
 
+    <% end %>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <%= yield %>
   </body>
 
 </html>

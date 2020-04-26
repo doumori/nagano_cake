@@ -26,7 +26,7 @@ Rails.application.routes.draw do
         patch 'hide' => 'customers#hide'
         put 'hide' => 'customers#hide'
     end
-    
+
     scope module: :customers do
         resources :customers, only: [:show, :edit, :update]
     end
