@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   def index
-    @items_all = Item.all
+     @items_all = Item.all
     @order_confirm = Order.new
     @genres=Genre.all
         if params[:genre_id]
@@ -9,12 +9,11 @@ class ItemsController < ApplicationController
     else
       @items = Item.page(params[:page]).per(8).order('updated_at DESC')
     end
-    @rank_items = OrderItem.find(OrderItem.group(:item_id).order('count(quantity) desc').limit(3).pluck(:id))
   end
   def show
     @item = Item.find(params[:id])
     @cart_item_new = CartItem.new
-    @genres = Genre.all
+    @genres=Genre.all
   end
   def top
     @push_items = Item.last(2)
