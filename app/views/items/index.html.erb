@@ -24,7 +24,6 @@
       </div>
     </div>
   </div>
-
     <div class="items">
       <div class="col-xs-2">
         <%= render 'genres', genre: @genres %>
@@ -38,31 +37,21 @@
                             <div class="item_image">
                                 <%= attachment_image_tag item, :image, size: '200x200',format: "jpeg",fallback: "cake.png" %>
                             </div>
-                            <p> <%= item.name %></p>
-                            <p><%= item.price %>(税込)</p>
+                               <p><%= item.name %></p>
+                               <p><%= item.price %>(税込)</p>
                         <% end %>
-                        <% if item.is_sale_status == false %>
+                          <% if item.is_sale_status == false %>
                             <span class="text-danger">売り切れ</span>
-                        <% else %>
+                          <% else %>
                             <span class="text-success">販売中</span>
-                        <% end %>
-
+                          <% end %>
                     </div>
-                      <p><%= item.name %></p>
-                      <p><%= item.price %>(税込)</p>
-                  <% end %>
-                  <% if item.is_sale_status == false %>
-                    <span class="text-danger">売り切れ</span>
-                  <% else %>
-                    <span class="text-success">販売中</span>
                   <% end %>
                 </div>
-              <% end %>
+              </div>
             </div>
-          </div>
+        </div>
+        <div class='p-top__paginate'>
+            <%= paginate @items %>
         </div>
     </div>
-    <div class='p-top__paginate'>
-        <%= paginate @items %>
-    </div>
-</div>

@@ -9,6 +9,15 @@ class CartItemsController < ApplicationController
   def create
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.customer_id = current_customer.id
+    if current_customer.cart_items.where(item_id: @cart_item.item_id).exists?
+      @cart_item=current_customer.cart_items.find_by(item_id:@cart_item.item_id)
+      @cart_item.item_quantity += params[:cart_item][:item_quantity].to_i
+      @cart_item.save(cart_item_params)
+      redirect_to cart_items_path
+    else
+      @cart_item.save(cart_item_params)
+      redirect_to cart_items_path
+    end
     @cart_item.save
     redirect_to cart_items_path
   end
