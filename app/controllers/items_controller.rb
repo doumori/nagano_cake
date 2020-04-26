@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   def index
+
      @items_all = Item.all
     # 消費税の計算。うまくいかない
     @tax = (1.1.to_i).round

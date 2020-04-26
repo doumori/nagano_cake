@@ -39,12 +39,12 @@
                     <li><a rel="nofollow" data-method="delete" href="/admins/sign_out">ログアウト</a></li>
                 </ul>
             </nav>
-<dl class="searchbox">
-  <%= search_form_for @search, url: admins_items_path do |f| %>
-    <dt><%= f.text_field :name_cont ,placeholder: '検索するテキストを入力...' %></dt>
-    <dd><%= f.submit ("検索") , class: 'search-btn'%></dd>
-  <% end %>
-</dl>
+          <dl class="searchbox">
+            <%= search_form_for @search, url: admins_items_path do |f| %>
+              <dt><%= f.text_field :name_cont ,placeholder: '検索するテキストを入力...' %></dt>
+              <dd><%= f.submit ("検索") , class: 'search-btn'%></dd>
+            <% end %>
+          </dl>
         </div>
       </header>
 
@@ -71,11 +71,11 @@
               </ul>
           </nav>
           <dl class="searchbox">
-  <%= search_form_for @search, url: items_path do |f| %>
-    <dt><%= f.text_field :name_cont ,placeholder: '検索するテキストを入力...' %></dt>
-    <dd><%= f.submit ("検索") , class: 'search-btn'%></dd>
-  <% end %>
-</dl>
+            <%= search_form_for @search, url: items_path do |f| %>
+              <dt><%= f.text_field :name_cont ,placeholder: '検索するテキストを入力...' %></dt>
+              <dd><%= f.submit ("検索") , class: 'search-btn'%></dd>
+            <% end %>
+          </dl>
       </div>
     </header>
 
@@ -101,6 +101,9 @@
 
     <% end %>
         <br>
+    <br>
+    <br>
+    <br>
     <br>
     <br>
     <br>
