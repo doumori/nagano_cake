@@ -1,64 +1,77 @@
 <body>
-  <div class="container">
-    <h2>登録内容の確認</h2>
-<%= customer_signed_in? %><%= admin_signed_in? %>
-    <table class="table table-hover">
-    <thead>
-        <tr>
-            <th>商品名</th>
-            <th>単価(税込)</th>
-            <th>数量</th>
-            <th>小計</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @sum = 0 %>
-        <% @cart_items.each do |cart_item| %>
-        <tr>
-            <td><%= cart_item.item.name %></td>
-            <td><%= cart_item.item.price %></td>
-            <td><%= cart_item.item_quantity %></td>
-            <td><%= (cart_item.item.price) * (cart_item.item_quantity) %></td>
-            <!-- 注文合計金額 -->
-            <% @sum += (cart_item.item.price) * (cart_item.item_quantity).to_i %>
-        </tr>
-        <% end %>
-    </tbody>
-</table>
-
-<table class="table table-hover">
-        <tr>
-            <th>送料</th>
-            <td><%= @freight %> 円</td>
-        </tr>
+    <div class="container">
+        <h2>登録内容の確認</h2>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>商品名</th>
+                    <th>単価(税込)</th>
+                    <th>数量</th>
+                    <th>小計</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @sum = 0 %>
+                <% @cart_items.each do |cart_item| %>
+                <tr>
+                    <td>
+                        <%= cart_item.item.name %>
+                    </td>
+                    <td>
+                        <%= cart_item.item.price %>
+                    </td>
+                    <td>
+                        <%= cart_item.item_quantity %>
+                    </td>
+                    <td>
+                        <%= (cart_item.item.price) * (cart_item.item_quantity) %>
+                    </td>
+                    <!-- 注文合計金額 -->
+                    <% @sum += (cart_item.item.price) * (cart_item.item_quantity).to_i %>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+        <table class="table table-hover">
+            <tr>
+                <th>送料</th>
+                <td><%= @freight %> 円</td>
+            </tr>
             <th>商品合計</th>
             <td><%= @sum %> 円</td>
-        <tr>
-            <th>合計金額</th>
-            <td><%= @sum + @freight %> 円</td>
-        </tr>
-</table>
-    <%= form_with model: @order_new, url:orders_path, method: :post, local: true do |f| %>
+            <tr>
+                <th>合計金額</th>
+                <td><%= @sum + @freight %> 円</td>
+            </tr>
+        </table>
+        <%= form_with model: @order_new, url:orders_path, method: :post, local: true do |f| %>
+            <%= f.hidden_field :customer_id, value:current_customer.id %>
+            <%= f.hidden_field :pay_method, value: @pay_method %>
+            <%= f.hidden_field :status, value: '入金待ち' %>
+            <%= f.hidden_field :freight, value: @freight %>
+            <%= f.hidden_field :total, value: @sum + @freight %>
+            <%= f.hidden_field :ship_name, value: @order_name  %>
+            <%= f.hidden_field :ship_postcode, value: @order_postcode %>
+            <%= f.hidden_field :ship_address, value: @order_address %>
 
-        <%= f.hidden_field :customer_id, value:current_customer.id %>
-        <%= f.hidden_field :pay_method, value: @pay_method %>
-        <%= f.hidden_field :status, value: '入金待ち' %>
-        <%= f.hidden_field :freight, value: @freight %>
-        <%= f.hidden_field :total, value: @sum + @freight %>
-        <%= f.hidden_field :ship_name, value: @order_name  %>
-        <%= f.hidden_field :ship_postcode, value: @order_postcode %>
-        <%= f.hidden_field :ship_address, value: @order_address %>
-        <%= f.submit "カートに戻る",name: 'back',class:'btn btn-info mr-3'%>
-        <%= f.submit "情報入力に戻る",name: 'info',class:'btn btn-success glyphicon glyphicon-user'%>
-        <%= f.submit "購入を確定する", class:'btn btn-primary'%>
-    <% end %>
-  </div>
-<br><span>支払い方法</span><br/>
+            <!-- shipテーブルに登録 -->
+            <%= hidden_field_tag :code, @order_postcode %>
+            <%= hidden_field_tag :address, @order_address %>
+            <%= hidden_field_tag :name, @order_name %>
+
+            <%= f.submit "カートに戻る",name: 'back',class:'btn btn-info mr-3'%>
+            <%= f.submit "情報入力に戻る",name: 'info',class:'btn btn-success glyphicon glyphicon-user'%>
+            <%= f.submit "購入を確定する", class:'btn btn-primary'%>
+        <% end %>
+
+    </div>
+    <br><span>支払い方法</span><br />
     <%= @pay_method %><br>
-
-<br><span>お届け先</span><br/>
-    〒<%= @order_postcode %><br>
+    <br><span>お届け先</span><br />
+    〒
+    <%= @order_postcode %><br>
     <%= @order_address %><br>
     <%= @order_name %> 様<br>
 </body>
+
 </html>

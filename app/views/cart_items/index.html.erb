@@ -23,41 +23,43 @@
     </div>
     <div class="row">
       <div class="col">
-        <table class ="table table-bordered" >
-          <thead class="thead thead-light">
-            <tr>
-              <th>画像</th>
-              <th>商品名</th>
-              <th>単価(税込)</th>
-              <th>数量</th>
-              <th>小計</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @sum = 0 %>
-            <% @cart_items.each do |f| %>
+        <div class="table-responsive">
+          <table class ="table table-bordered" >
+            <thead class="thead thead-light text-nowrap">
               <tr>
-                <td>
-                  <%= attachment_image_tag f.item, :image, size: '90x65',format: "jpeg",fallback: "no_image.jpg" %>
-                </td>
-                <td><%= f.item.name %></td>
-                <td><%= f.item.price %> 円</td>
-                <td>
-                  <%= form_with model: f, url:cart_item_path(f),local: true, method: :put do |s| %>
-                  <%= s.text_field :item_quantity, id:"quantity",placeholder: "個数表示" %>
-                  <%= s.submit "変更" %>
-                  <% end %>
-                </td>
-                <td><%= (f.item.price) * (f.item_quantity).to_i %></td>
-                <td>
-                  <%= link_to "削除", cart_item_path(f),class:"btn btn-danger", method: :delete, data: {confirm: 'カートから削除しますか？'} %>
-                </td>
+                <th>画像</th>
+                <th>商品名</th>
+                <th>単価(税込)</th>
+                <th>数量</th>
+                <th>小計</th>
+                <th></th>
               </tr>
-              <% @sum += (f.item.price) * (f.item_quantity).to_i %>
-            <% end %>
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              <% @sum = 0 %>
+              <% @cart_items.each do |f| %>
+                <tr>
+                  <td><div class="text-center">
+                    <%= attachment_image_tag f.item, :image, size: '90x65',format: "jpeg",fallback: "no_image.jpg", class:"img-responsive"%></div>
+                  </td>
+                  <td><%= f.item.name %></td>
+                  <td><%= f.item.price %> 円</td>
+                  <td>
+                    <%= form_with model: f, url:cart_item_path(f),local: true, method: :put do |s| %>
+                    <%= s.text_field :item_quantity, id:"quantity",placeholder: "個数表示" %>
+                    <%= s.submit "変更" %>
+                    <% end %>
+                  </td>
+                  <td><%= (f.item.price) * (f.item_quantity).to_i %></td>
+                  <td>
+                    <%= link_to "削除", cart_item_path(f),class:"btn btn-danger", method: :delete, data: {confirm: 'カートから削除しますか？'} %>
+                  </td>
+                </tr>
+                <% @sum += (f.item.price) * (f.item_quantity).to_i %>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
 
@@ -80,9 +82,3 @@
       </div>
     </div>
 </div>
-
-
-
-
-
-

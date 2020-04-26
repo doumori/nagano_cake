@@ -25,7 +25,9 @@
 						<th>商品説明文</th><td><%= f.text_area :description %></td>
 					</tr>
 					<tr>
-						<th>ジャンル</th><td><%= f.collection_select :genre_id, @genres, :id, :name %></td>
+						<th>ジャンル</th><td>
+							プロパティ名, オブジェクトの配列, value属性の項目, テキストの項目 [, オプション])
+							<%= f.collection_select :genre_id, @genres, :id, :name %></td>
 					</tr>
 					<tr>
 						<th>税抜き価格</th><td><%= f.number_field :price %></td>
