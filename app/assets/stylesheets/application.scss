@@ -17,17 +17,10 @@
  @import "bootstrap";
 
 
-.flex_test-box {
-    padding:  10px;             /* 余白指定 */
-    display: flex;              /* フレックスボックスにする */
-}
 
-.flex_test-item {
-    padding: 10px;
-    margin:  30px;              /* 外側の余白 */
-    border-radius:  5px;        /* 角丸指定 */
-    width: 15%;                 /* 幅指定 */
-}
+
+
+
 
 
 /*customerのtopページのメインビジュアル*/
@@ -240,4 +233,38 @@ h3.feature-title{
   margin-top: 5px;
   font-size: 60px;
 }
+
+.navbar-left span {
+  font-size: 30px;
+  border: 2px solid;
+  line-height: 130px;
+}
+
+
+.navbar-right li {
+  margin: 40px 10px 10px 20px;
+}
+
+.form-box{
+  display: flex;
+  border: 2px solid lightgrey;
+  width: 200px;
+  position: absolute; top: 90px;
+  position: absolute; right: 170px;
+}
+
+.form-input{
+  border: none;
+  width: 100%;
+}
+
+.form-button{
+  background-color: white;
+  border: none;
+}
+
+.navbar-right a {
+  color: black;
+}
+
 

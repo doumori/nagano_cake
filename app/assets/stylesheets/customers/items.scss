@@ -3,19 +3,32 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+
+.ranking{
+    width:100%;
+}
+
+
+
 .items{
   width:100%;
 }
 .flex_test-box{
   display: flex;
   flex-wrap: wrap;
+    padding:  5px;             /* 余白指定 */
+    display: flex;              /* フレックスボックスにする */
 }
-.flex_test-item{
-  width: 20%;
-   margin-left: 0px;
+
+.flex_test-item {
+    padding: 5px;
+    margin:  5px;              /* 外側の余白 */
+    border-radius:  5px;        /* 角丸指定 */
+    width: 200px;                 /* 幅指定 */
 }
+
 .flex_item-image{
-  padding-left: 20px;
+  padding-left: 10px;
 }
 .items_show{
   padding-top: 150px;
