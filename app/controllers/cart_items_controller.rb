@@ -10,15 +10,13 @@ class CartItemsController < ApplicationController
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.customer_id = current_customer.id
     if current_customer.cart_items.where(item_id: @cart_item.item_id).exists?
-      @cart_item=current_customer.cart_items.find_by(item_id:@cart_item.item_id)
-      @cart_item.item_quantity += params[:cart_item][:item_quantity].to_i
-      @cart_item.save(cart_item_params)
-      redirect_to cart_items_path
+      # 個数を合算する
+      @cart_item = current_customer.cart_items.find_by(item_id: @cart_item.item_id)
+      # （カラムを指定　現在のアイテムの量　＋　送られてきたパラメータの値）
+      @cart_item.update(item_quantity: @cart_item.item_quantity + params[:cart_item][:item_quantity].to_i)
     else
-      @cart_item.save(cart_item_params)
-      redirect_to cart_items_path
+      @cart_item.save
     end
-    @cart_item.save
     redirect_to cart_items_path
   end
 
