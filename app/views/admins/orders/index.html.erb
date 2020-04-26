@@ -14,7 +14,13 @@
 			<tr>
 				<td><%= link_to order.updated_at.strftime("%Y-%m-%d %H:%M"),admins_order_path(order.id) %></td>
 				<td><%= order.customer.last_name+order.customer.first_name %></td>
-				<td><%= order.order_items.count %></td>
+				<td>
+					<% @sum=0 %>
+					<% order.order_items.each do |o| %>
+					<% @sum+= o.quantity %>
+					<% end %>
+					<%= @sum %>
+				</td>
 				<td><%= order.status %></td>
 			</tr>
 			<% end %>
