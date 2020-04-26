@@ -9,7 +9,14 @@ class CartItemsController < ApplicationController
   def create
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.customer_id = current_customer.id
-    @cart_item.save
+    if current_customer.cart_items.where(item_id: @cart_item.item_id).exists?
+      # 個数を合算する
+      @cart_item = current_customer.cart_items.find_by(item_id: @cart_item.item_id)
+      # （カラムを指定　現在のアイテムの量　＋　送られてきたパラメータの値）
+      @cart_item.update(item_quantity: @cart_item.item_quantity + params[:cart_item][:item_quantity].to_i)
+    else
+      @cart_item.save
+    end
     redirect_to cart_items_path
   end
 
