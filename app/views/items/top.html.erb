@@ -32,7 +32,7 @@
   </table>
   -->
 
-<% if Item.nil? %>
+
   <div class="topimg-flex-5">
       <%= attachment_image_tag Item.find(5), :image, size: '300x180',format: "jpeg",fallback: "no_image.jpg" %>
       <%= attachment_image_tag Item.find(1), :image, size: '300x180',format: "jpeg",fallback: "no_image.jpg" %>
@@ -81,7 +81,7 @@
       <div class="sample sample6"></div>
     </div>
   </div>
-  <% end %>
+
   <div class="profile">
     <div class="container">
       <h2 class="heading">おいしくお召し上がりいただくために</h2>
