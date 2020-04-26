@@ -20,16 +20,20 @@
     <% if admin_signed_in? %>
 
       <header class="navbar navbar-fixed-top">
+
         <div class="container" id="nav-drawer">
           <input id="nav-input" type="checkbox" class="nav-unshown">
           <label id="nav-open" for="nav-input"><span></span></label>
           <label class="nav-unshown" id="nav-close" for="nav-input"></label>
           <div id="nav-content">
+
             <nav class="nav navbar-nav navbar-left">
                 <span>LOGO</span>
             </nav>
             <nav>
                 <ul class="nav navbar-nav navbar-right">
+                    <li><%= link_to 'トップ', admins_path %></li>
+
 
                     <li><%= link_to ' 商品一覧', admins_items_path %></li>
 
@@ -42,13 +46,14 @@
                     <li><a rel="nofollow" data-method="delete" href="/admins/sign_out">ログアウト</a></li>
                 </ul>
             </nav>
-            <nav class="nav navbar-nav navbar-search">
-                  <form class="form-box">
-                    <input class="form-input" type="search" placeholder="search">
-                    <button class="form-button glyphicon glyphicon-search"></button>
-                  </form>
-            </nav>
+          <dl class="searchbox">
+            <%= search_form_for @search, url: admins_items_path do |f| %>
+              <dt><%= f.text_field :name_cont ,placeholder: '検索するテキストを入力...' %></dt>
+              <dd><%= f.submit ("検索") , class: 'search-btn'%></dd>
+            <% end %>
+          </dl>
           </div>
+
         </div>
       </header>
 
@@ -78,7 +83,12 @@
                   <li><a rel="nofollow" data-method="delete" href="/customers/sign_out", class="btn btn-default">ログアウト</a></li>
               </ul>
           </nav>
-        </div>
+          <dl class="searchbox">
+            <%= search_form_for @search, url: items_path do |f| %>
+              <dt><%= f.text_field :name_cont ,placeholder: '検索するテキストを入力...' %></dt>
+              <dd><%= f.submit ("検索") , class: 'search-btn'%></dd>
+            <% end %>
+          </dl>
       </div>
     </header>
 
@@ -102,6 +112,7 @@
                   <li><a href="/customers/sign_in", class="btn btn-default">ログイン</a></li>
               </ul>
           </nav>
+
         </div>
       </div>
     </header>
