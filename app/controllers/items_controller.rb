@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   def index
+
      @items_all = Item.all
     @order_confirm = Order.new
     @genres=Genre.all
