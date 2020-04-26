@@ -8,6 +8,7 @@ class ItemsController < ApplicationController
       @items = @genre.items.page(params[:page]).per(8).order('updated_at DESC')
     else
       @items = Item.page(params[:page]).per(8).order('updated_at DESC')
+      @rank_items = OrderItem.find(OrderItem.group(:item_id).order('count(quantity) desc').limit(3).pluck(:id))
     end
   end
   def show
