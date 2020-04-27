@@ -18,10 +18,11 @@
     <div class="col-xs-9 col-xs-offset-3 text-center">
       <div class="table-responsive">
         <div class="flex_rank-box">
-          <% @rank_items.each do |rank_item| %>
+          <% @rank_items.each.with_index(1) do |rank_item, i| %>
             <div class="flex_rank_items">
               <%= link_to item_path(rank_item.item) do %>
                   <%= attachment_image_tag rank_item.item, :image, size: '200x200',format: "jpeg",fallback: "cake.png",class:"img-responsive" %>
+                  <h3>第 <%= i %> 位</h3>
                   <p><%= rank_item.name %></p>
                   <p><%= rank_item.price %>円(税込)</p>
               <% end %>
