@@ -17,17 +17,7 @@
  @import "bootstrap";
 
 
-.flex_test-box {
-    padding:  10px;             /* 余白指定 */
-    display: flex;              /* フレックスボックスにする */
-}
 
-.flex_test-item {
-    padding: 10px;
-    margin:  30px;              /* 外側の余白 */
-    border-radius:  5px;        /* 角丸指定 */
-    width: 15%;                 /* 幅指定 */
-}
 
 
 /*customerのtopページのメインビジュアル*/
@@ -67,13 +57,11 @@ p.mainvi-p {
 }
 
 .heading{
-  padding-top: 90px;
-  text-align: center;
+  padding-top: 10px;
 }
 
 .heading-p{
-  text-align: center;
-  padding: 10px 100px 10px 10px;
+  padding: 10px 10px 10px 10px;
 }
 
 .ander {
@@ -113,14 +101,24 @@ p.mainvi-p {
 
 /*お勧めのケーキ*/
 
+.topsample12{
+  width:1000px;
+  margin: 0px auto;
+}
+
+.topsample34{
+  width:1000px;
+  margin: 0px auto;
+}
+
 div.sample1 {
 width:500px; height:500px;
 border:none;
 background-image:url(cake4.jpg);
 background-size:cover;
 float: left;
-margin:0px 10px 0px 0px;
-padding: 11px;
+margin:0px 0px 0px 0px;
+padding: 0px;
 }
 .sample2 {
 position: relative;/*相対配置*/
@@ -130,8 +128,8 @@ background-color: white;
 border-radius: 60%;
 background-size:cover;
 float: left;
-margin:0px 100px 0px 0px;
-padding: 11px;
+margin:0px 0px 0px 0px;
+padding: 0px;
 }
 .sample2 p {
   position: absolute;/*絶対配置*/
@@ -157,8 +155,8 @@ background-color: white;
 border-radius: 50%;
 background-size:cover;
 float: left;
-margin:0px 10px 0px 0px;
-padding: 11px;
+margin:0px 0px 0px 0px;
+padding: 0px;
 }
 .sample3 p {
   position: absolute;/*絶対配置*/
@@ -182,8 +180,8 @@ border:none;
 background-image:url(cake5.jpg);
 background-size:cover;
 float: left;
-margin:10px 10px 0px 0px;
-padding: 11px;
+margin:0px 0px 0px 0px;
+padding: 0px;
 
 }
 
@@ -223,7 +221,6 @@ h3.feature-title{
   width: 100%;
   margin-bottom: 90px;
   text-align: center;
-
 }
 .contact-left{
   width: 50%;
