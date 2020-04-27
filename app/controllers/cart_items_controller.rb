@@ -29,7 +29,6 @@ class CartItemsController < ApplicationController
   def update
     @cart_item = CartItem.find(params[:id])
     @cart_item.update(cart_item_params)
-    CartItem.find(params[:id]).update(cart_item_params)
     redirect_to request.referer
   end
 
