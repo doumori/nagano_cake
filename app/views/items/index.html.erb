@@ -1,9 +1,6 @@
 
 <div class="container">
-  <h4>商品一覧</h4>
-
-（全<%=@items_all.count%>件） (<%=@items.count%>件）
-
+<br>
   <div class="row">
     <div class="col-xs-7 col-xs-offset-2 text-center"><h2>人気商品ランキング<br>ベスト３</h2></div>
   </div>
@@ -24,6 +21,9 @@
       </div>
     </div>
   </div>
+
+  <h4>商品一覧</h4>
+  (全<%=@items_all.count%>件） (<%=@items.count%>件)
     <div class="items">
       <div class="col-xs-2">
         <%= render 'genres', genre: @genres %>
