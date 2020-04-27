@@ -1,29 +1,7 @@
 
 <div class="container">
-  <h4>商品一覧</h4>
-
-（全<%=@items_all.count%>件） (<%=@items.count%>件）
-
-  <div class="row">
-    <div class="col-xs-7 col-xs-offset-2 text-center"><h2>人気商品ランキング<br>ベスト３</h2></div>
-  </div>
-  <div class="row">
-    <div class="col-xs-10 col-xs-offset-2 text-center">
-      <div class="table-responsive">
-        <div class="flex_test-box">
-          <% @rank_items.each do |rank_item| %>
-            <div class="flex_test-item">
-              <%= link_to item_path(rank_item.item) do %>
-                  <%= attachment_image_tag rank_item.item, :image, size: '200x200',format: "jpeg",fallback: "cake.png",class:"img-responsive" %>
-                  <p><%= rank_item.name %></p>
-                  <p><%= rank_item.price %>(税込)</p>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
+  <h2>商品一覧</h2>
+  (全<%=@items_all.count%>件） (<%=@items.count%>件)
     <div class="items">
       <div class="col-xs-2">
         <%= render 'genres', genre: @genres %>
