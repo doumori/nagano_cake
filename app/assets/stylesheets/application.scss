@@ -242,7 +242,8 @@ h3.feature-title{
 }
 
 header {
-  background-color: white;
+  background-color: #89c7de;
+  padding-bottom: 10px;
 }
 
 .navbar {
@@ -262,35 +263,21 @@ header {
 
 .navbar-right li {
   margin: 10px;
+  margin-top: -10px;
 }
 
 .nav_name {
   padding: 10px;
 }
 
-.form-box{
-  display: flex;
-  border: 2px solid lightgrey;
-  width: 200px;
-  position: absolute; top: 70px;
-  position: absolute; right: 100px;
-}
-
-.form-input{
-  border: none;
-  width: 100%;
-}
-
-.form-button{
-  background-color: white;
-  border: none;
+.searchbox{
+  position: absolute; top: 65px;
+  position: absolute; right: 110px;
 }
 
 .navbar-right a {
   color: black;
 }
-
-
 
 
 /*チェックボックス等は非表示に*/
@@ -309,7 +296,7 @@ header {
     width: 30px;
     height: 22px;
     vertical-align: middle;
-    margin: 50px 50px 0 50px;
+    margin: 30px 50px 0 50px;
   }
 
   /*ハンバーガーアイコンをCSSだけで表現*/
@@ -373,3 +360,11 @@ header {
   }
 }
 
+footer{
+    width: 100%;
+    background-color: #89c7de;
+    color: #fff;
+    text-align: center;
+    height: 60px;
+    padding-top: 10px;
+}
