@@ -12,6 +12,13 @@ class ItemsController < ApplicationController
     end
       @rank_items = OrderItem.find(OrderItem.group(:item_id).order('count(quantity) desc').limit(3).pluck(:id))
   end
+  def self.search(search)
+    if search # Controllerから渡されたパラメータが!= nilの場合は、titleカラムを部分一致検索
+      Project.where(['name LIKE ?', "%#{search}%"])
+    else
+      Project.all #全て表示。
+    end
+  end
   def show
     @item = Item.find(params[:id])
     @cart_item_new = CartItem.new

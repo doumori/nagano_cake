@@ -35,6 +35,6 @@ class ApplicationController < ActionController::Base
 def set_search
   #@search = Article.search(params[:q])
   @search = Item.ransack(params[:q]) #ransackメソッド推奨
-  @search_items = @search.result.page(params[:page])
+  @search_items = @search.result.page(params[:page]).per(10)
 end
 end

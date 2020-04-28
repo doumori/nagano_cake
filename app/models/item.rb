@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   validates :is_sale_status, inclusion: {in: [true, false]}
 
    def self.search(search)
-      return Item.all unless search
+      return Item. unless search
       Item.where(['content LIKE ?', "%#{search}%"])
    end
 
