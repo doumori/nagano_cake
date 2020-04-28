@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
     @ship = Ship.where(customer_id: current_customer.id)
     @my_cart = current_customer.cart_items
     if @my_cart.empty?
-        redirect_to request.referer
+        redirect_to request.referer, notice:'カートが空の状態では注文出来ません'
       end
   end
 

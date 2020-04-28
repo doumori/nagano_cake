@@ -1,4 +1,11 @@
 <div class="container">
+   <div class="notifications">
+      <div class="row">
+      <% if notice %>
+        　 <div class="success">
+              <%= notice %>
+           </div>
+     <% end %>
   <h2>ショッピングカート</h2>
     <div class="row">
       <div class="col pull-right">
@@ -7,7 +14,7 @@
         </div>
       </div>
     </div>
-    <div class="row">
+      <div class="row">
       <!-- ここからエラーメッセージ -->
         <% if @order_new.errors.any? %>
           <div class="error-massage">
@@ -76,7 +83,7 @@
         </table>
       </div></span>
     </div>
-    <div class="row">
+      <div class="row">
       <div class="col text-center"><span style="font-size:1.6em;">
         <a href="orders/new" class="btn-square-shadow glyphicon glyphicon-share-alt">情報入力に進む</a></span>
       </div>

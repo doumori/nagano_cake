@@ -18,6 +18,7 @@ class ItemsController < ApplicationController
     @genres=Genre.all
   end
   def top
+    @rank_items = OrderItem.find(OrderItem.group(:item_id).order('count(quantity) desc').limit(3).pluck(:id))
     @push_items = Item.last(2)
   end
   private
