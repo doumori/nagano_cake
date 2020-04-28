@@ -52,7 +52,6 @@
             <%= f.hidden_field :ship_name, value: @order_name  %>
             <%= f.hidden_field :ship_postcode, value: @order_postcode %>
             <%= f.hidden_field :ship_address, value: @order_address %>
-
             <!-- shipテーブルに登録 -->
             <%= hidden_field_tag :code, @order_postcode %>
             <%= hidden_field_tag :address, @order_address %>
