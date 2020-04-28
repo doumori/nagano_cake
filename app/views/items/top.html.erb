@@ -23,7 +23,7 @@
               <%= link_to item_path(rank_item.item) do %>
                   <%= attachment_image_tag rank_item.item, :image, size: '200x200',format: "jpeg",fallback: "cake.png",class:"img-responsive" %>
                   <p><%= rank_item.name %></p>
-                  <p><%= rank_item.price %>円(税込)</p>
+                  <p><%= rank_item.price.to_s(:delimited) %>円(税込)</p>
               <% end %>
             </div>
           <% end %>
@@ -62,7 +62,7 @@
             <div class="sample sample1"></div>
             <div class="sample sample2">
               <p class="sample sample2text1 text-center">
-                  <%= Item.find(5).name %><br>¥<%= Item.find(5).price %>
+                  <%= Item.find(5).name %><br>¥<%= Item.find(5).price.to_s(:delimited) %>
               </p>
               <p class="sample sample2text2">
                   <%= Item.find(5).description %>
@@ -73,7 +73,7 @@
           <div class="topsample34 img-responsive">
             <div class="sample sample3">
                 <p class="sample sample3text1">
-                    <%= Item.find(6).name %>¥<%= Item.find(6).price %>
+                    <%= Item.find(6).name %>¥<%= Item.find(6).price.to_s(:delimited) %>
                 </p>
                 <p class="sample sample3text2">
                     <%= Item.find(6).description %>

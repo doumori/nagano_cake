@@ -12,7 +12,6 @@
     <% end %>
 
     <span>支払方法</span><br/>
-<%= customer_signed_in? %>
       <%= f.radio_button :pay_method, :"クレジットカード" %>
       <%= f.label :pay_method, "クレジットカード", {value: :クレジットカード, style: "display: inline-block;"} %>
 
