@@ -12,7 +12,6 @@ class ItemsController < ApplicationController
     end
       @rank_items = OrderItem.find(OrderItem.group(:item_id).order('count(quantity) desc').limit(3).pluck(:id))
   end
-
   def show
     @item = Item.find(params[:id])
     @cart_item_new = CartItem.new
