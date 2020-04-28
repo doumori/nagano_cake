@@ -1,5 +1,30 @@
 require 'rails_helper'
 
+  describe 'adminログイン' do
+    let(:admin) { create(:admin) }
+    before do
+      visit new_admin_session_path
+    end
+    context 'ログイン画面に遷移' do
+      let(:test_admin) { admin }
+      it 'ログインに成功する' do
+        fill_in 'admin[name]', with: test_admin.name
+        fill_in 'admin[password]', with: test_admin.password
+        click_button 'Log in'
+
+        expect(page).to have_content 'successfully'
+      end
+
+      it 'ログインに失敗する' do
+        fill_in 'admin[name]', with: ''
+        fill_in 'admin[password]', with: ''
+        click_button 'Log in'
+
+        expect(current_path).to eq(new_admin_session_path)
+      end
+    end
+  end
+
 # Specs in this file have access to a helper object that includes
 # the Admins::AdminsHelper. For example:
 #
