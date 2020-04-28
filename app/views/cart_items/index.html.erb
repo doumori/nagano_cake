@@ -50,19 +50,19 @@
                     <%= attachment_image_tag f.item, :image, size: '90x65',format: "jpeg",fallback: "no_image.jpg", class:"img-responsive"%></div>
                   </td>
                   <td><%= f.item.name %></td>
-                  <td><%= f.item.price %> 円</td>
+                  <td><%= f.item.price.to_s(:delimited) %> 円</td>
                   <td>
                     <%= form_with model: f, url:cart_item_path(f),local: true, method: :put do |s| %>
                     <%= s.text_field :item_quantity, id:"quantity",placeholder: "個数表示" %>
                     <%= s.submit "変更" %>
                     <% end %>
                   </td>
-                  <td><%= (f.item.price) * (f.item_quantity).to_i %></td>
+                  <td><%= ((f.item.price) * (f.item_quantity).to_i).to_s(:delimited) %></td>
                   <td>
                     <%= link_to "削除", cart_item_path(f),class:"btn btn-danger", method: :delete, data: {confirm: 'カートから削除しますか？'} %>
                   </td>
                 </tr>
-                <% @sum += (f.item.price) * (f.item_quantity).to_i %>
+                <% @sum += ((f.item.price) * (f.item_quantity).to_i) %>
               <% end %>
             </tbody>
           </table>
@@ -78,7 +78,7 @@
       <div class="col-xs-5 col-xs-offset-4"><span style="font-size:1.8em;">
         <table class ="table table-bordered" >
           <thead class="thead thead-light"><tr>
-            <th>合計金額</th><td>¥<%= @sum %>-</td>
+            <th>合計金額</th><td>¥<%= @sum.to_s(:delimited) %>-</td>
           </tr></thead>
         </table>
       </div></span>

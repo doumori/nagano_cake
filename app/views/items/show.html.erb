@@ -17,7 +17,7 @@
                     <div class="item_show_text" >
                         <h3><%= @item.name %></h3>
                         <p><%= @item.description %></p>
-                        <h3>¥<%= @item.price %>(税込)</h3>
+                        <h3>¥<%= @item.price.to_s(:delimited) %>(税込)</h3>
 
                         <!-- @item.idをitem_idとして送る -->
                         <%= f.hidden_field :item_id, value:@item.id %>
